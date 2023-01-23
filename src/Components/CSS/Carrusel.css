@@ -1,0 +1,52 @@
+.carru{
+    height: 100%;
+   
+    margin-top: 50px;
+    margin-left: 6cm;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+
+.propa{
+    width:9cm;
+    margin-top: 50px;
+    margin-left: 13.5cm;
+    margin-bottom: 30px;
+    padding: 5px;
+    /* position: relative; */
+    /* display: flex; */
+    /* align-items: center; */
+
+}
+
+.palabras{
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+    /* margin-top: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap; */
+
+/* 
+    margin-top: 50px;
+    margin-left: 2cm;
+    margin-bottom: 30px;
+    padding: 5px; */
+
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 5px 10px;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
+    background:rgb(37, 87, 253);
+    /* cursor: pointer; */
+}
+
+.palabras:hover{
+    /* transition: 0.2s; */
+    border: none;
+    background:rgb(31, 75, 223);
+}

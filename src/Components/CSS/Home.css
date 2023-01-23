@@ -1,0 +1,37 @@
+.cards{
+    justify-content: center;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1cm;
+}
+.list{
+    list-style: none;
+    text-align: center;
+    flex-wrap: wrap;
+    margin-top: 1cm;
+}
+.num {
+    font-size: 16px;
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 5px 10px;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
+    background:#3c74cc;
+    cursor: pointer;
+}
+.num:hover{
+    transition: 0.2s;
+    border: none;
+    background:#2d5597;
+}
+.logo{
+    margin-left: 1cm;
+}
+.cardLink{
+    text-decoration: none;
+    color: black;
+}
+

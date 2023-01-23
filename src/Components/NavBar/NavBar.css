@@ -1,0 +1,23 @@
+.lhome{
+    height: 200px;
+    position: relative;
+    left: 25px;
+    top: 20px
+
+}
+.btnCart{
+    margin-right: 1.5cm;
+}
+.btnFav{
+    margin-right: 1.5cm;
+}
+.btnLogin{
+    text-decoration: none;
+    margin-left: 5px;
+}
+.btnLogin:hover{
+    transition: 0.2s;
+    border: none;
+    background:rgb(37, 78, 212);
+    color: white;
+}
