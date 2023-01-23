@@ -22,7 +22,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import { Favoritos } from './Components/UserPerfil/Favoritos';
 import { OrdersUser } from './Components/UserPerfil/OrdersUser';
 import { UpdateUser } from './Components/UserPerfil/UpdateUser';
-
+import { ProductosRender } from './Components/Productos/Productos render';
 
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
           <Route path='/Home' element={<Home />} />
           <Route exact path='/crear' element={<Formulario />} />
           <Route exact path='/zapatillas/:id' element={<Details />} />
-          <Route path='/zapatillas' element={<Productos />} />
+          <Route path='/zapatillas' element={<ProductosRender />} />
           <Route path='/zapatillas/ofertas' element={<Ofertas />} />
         </Routes>
         <Contenido />
