@@ -19,7 +19,7 @@ import { Navbar } from "react-bootstrap";
 import { useRef, useCallback } from "react";
 import useProductos from "../../Hooks/useProductos";
 
-
+export default function Productos(){ 
 
 
 
