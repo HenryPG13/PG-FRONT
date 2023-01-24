@@ -19,7 +19,7 @@ import {
 export const CartItem = ({ item }) => {
 
   const [cantidad, setCantidad] = useState(item.qty);
-
+  const Dinero = item.oferta ? (item.precio/2)  : item.precio
   const dispatch = useDispatch()
 
   //increase cantidad
@@ -102,7 +102,7 @@ export const CartItem = ({ item }) => {
                     </MDBCol>
                     <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
                       <MDBTypography tag="h5" className="mb-0">
-                        ${item.precio}
+                        ${Dinero}
                       </MDBTypography>
                     </MDBCol>
                     <MDBCol md="1" lg="1" xl="1" className="text-end">

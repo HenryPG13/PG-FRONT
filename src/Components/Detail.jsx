@@ -12,6 +12,8 @@ import Footer from './Footer/Footer';
 import swal from 'sweetalert';
 import { addToFav, removeToFav } from '../Actions';
 
+
+
 import publi01 from './imagenes/detalleB01.png';
 import publi02 from './imagenes/detalleB02.png';
 import publi03 from './imagenes/detalleB03.png';
@@ -36,11 +38,6 @@ export default function Details() {
       dispatch(getZapaById(id))
    }, [id])
 
-   const handlePay = () => {
-      console.log("ESTO TIENE DETAIL ", [zapa]);
-      // dispatch(payOneZapa(zapa))
-      axios.post('http://localhost:3001/payment/single', [zapa]).then((res) => window.location.href = res.data.response.body.init_point)
-   }
 
    const handleToCart = (e) => {
       e.preventDefault();
@@ -60,6 +57,8 @@ export default function Details() {
          title: 'Producto agregado a la lista de favoritos!'
        });
    }
+
+
 
 const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
 
@@ -112,9 +111,19 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                      <div className="details col-md-6">
                         <h3 className="product-title">{zapa.marca}</h3>
                         <p className="product-description">{zapa.modelo}</p>
+                       {zapa.oferta ? (
+                       <>
+                        <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
+                        <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
+                       </>
+                       ):
+                       (
                         <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
 
-                        <h4 className="price">PRECIO: <span>${Dinero}</span></h4>
+                       )
+
+                       }
+
                         <h5>TALLES:
 
                            <select class="sizes">
@@ -129,7 +138,7 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                         </h5>
                         <div class="action">
                            <Button value='add' className='btnCart' variant="primary" onClick={handleToFavorite}>❤️</Button>
-                           <Button variant="primary" onClick={handlePay}>Comprar</Button>
+                           <Button variant="primary">Comprar</Button>
                            <Button value='add' className='btnCart' variant="primary" onClick={handleToCart}
                            >Añadir al carrito</Button>
                                                                                                                
