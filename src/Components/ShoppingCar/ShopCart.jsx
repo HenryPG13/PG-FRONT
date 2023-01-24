@@ -71,11 +71,11 @@ export const ShopCart = ({ history }) => {
           {precioTotal}
         </div>
       </div>
-      <div class="action">
+      {/* <div class="action">
         <Button variant="primary" onClick={handlePay}>
           Comprar
         </Button>
-      </div>
+      </div> */}
       <Order props={[history, precioTotal]} />
     </div>
   );

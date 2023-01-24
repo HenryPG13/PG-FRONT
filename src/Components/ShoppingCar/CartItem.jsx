@@ -77,7 +77,8 @@ export const CartItem = ({ item }) => {
                     </MDBCol>
                     <MDBCol md="3" lg="3" xl="3">
                       <h3 className="lead fw-normal mb-2">{item.marca}</h3>
-                      <h7>{item.modelo}</h7>
+                      {/* <h7>{item.modelo}</h7> */}
+                      {item.modelo}
                       <p>
                         <span className="text-muted">Talle: </span>{item.talle}
 

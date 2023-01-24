@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert';
 
 export function getZapas() {
     return async function (dispatch) {
@@ -103,16 +104,16 @@ export function clearCart() {
 export function AgregarOrden(orden) {
     return async function (dispatch) {
         try {
-            const { data } = await axios.post('http://localhost:3001/pedido', orden);
-            const { msg, ordenResp } = data;
+            const order = await axios.post('http://localhost:3001/pedido', orden);
+            const { msg, ordenResp } = order.data;
             dispatch(crearOrden(ordenResp));
-            // Swal.fire({
+            // swal.fire({
             //     icon: 'success',
             //     title: `${msg}`,
             //     showConfirmButton: false,
             //     timer: 2000
             // })
-
+            console.log("AGREGARORDEN TRAJO ESTO ", ordenResp.preferenceId);
             return ordenResp.preferenceId;
         } catch (error) {
             console.log("ERROR EN AGREGAR ORDEN ", error)
