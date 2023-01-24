@@ -40,11 +40,13 @@ export default function Productos() {
   }, [dispatch]);
 
 
+
   
 
   // console.log("Esto esta en current zapas ", allZapas);
   return (
     <div>
+      
       <div className="cards">
         {currentZapas.map((e, i) => {
           return (
@@ -55,6 +57,7 @@ export default function Productos() {
                   image={e.imagenes && e.imagenes[0]}
                   modelo={e.modelo}
                   precio={e.precio}
+                  oferta={e.oferta}
                 />
               </Link>
             </div>
