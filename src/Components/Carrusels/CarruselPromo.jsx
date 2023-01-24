@@ -14,44 +14,45 @@ export default function CarruselPromo(){
 
       <Carousel variant="dark">
       <Carousel.Item>
-      <Link to='/zapatillas/63c59f1b822019881ceef8f0'>
+      <a href='/zapatillas/63c59f1b822019881ceef8f0'>
       <img
       className="propa"
       src={publi01}
       alt="First slide"
       />
-      </Link>
+      </a>
       
       </Carousel.Item>
       <Carousel.Item>
-      <Link to='/zapatillas/63c59f1b822019881ceef8d8'>
+      <a href='/zapatillas/63c59f1b822019881ceef8d8'>
 <img
 className="propa"
 src={publi02}
 alt="Second slide"
 />
-</Link>
+</a>
+
 
 </Carousel.Item>
 <Carousel.Item>
-<Link to='/zapatillas/63c59f1b822019881ceef8cd'>
+<a href='/zapatillas/63c59f1b822019881ceef8cd'>
 <img
 className="propa"
 src={publi03}
 alt="Third slide"
 />
-</Link>
+</a>
 
 </Carousel.Item>
 
 <Carousel.Item>
-<Link to='/zapatillas/63c59f1b822019881ceef8f6'>
+<a href='/zapatillas/63c59f1b822019881ceef8f6'>
 <img
 className="propa"
 src={publi04}
 alt="Forth slide"
 />
-    </Link>
+    </a>
     
     </Carousel.Item>
     </Carousel>

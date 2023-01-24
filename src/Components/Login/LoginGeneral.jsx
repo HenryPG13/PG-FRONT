@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logUser } from '../../Actions';
+import './LoginGeneral.css'
+
 
 export const LoginGeneral = () => {
 
@@ -30,7 +32,7 @@ export const LoginGeneral = () => {
     }
 
     return (
-        <div>
+        <div className='fondito'>
             {error && <p>Usuario y/o contraseña errados</p>}
             <form onSubmit={handleLog}>
                 <div>
