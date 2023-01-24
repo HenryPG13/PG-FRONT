@@ -21,14 +21,7 @@ import useProductos from "../../Hooks/useProductos";
 
 
 
-export default function Productos() {
-  const dispatch = useDispatch();
-  const allZapas = useSelector((state) => state.zapas);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [zapasPerPage, setZapasPerPage] = useState(5);
-  const indexOfLastZapa = currentPage * zapasPerPage;
-  const indexOfFirstZapa = indexOfLastZapa - zapasPerPage;
-  const currentZapas = allZapas.slice(indexOfFirstZapa, indexOfLastZapa);
+
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
