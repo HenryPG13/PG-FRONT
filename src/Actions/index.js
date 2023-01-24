@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert';
 
 export function getZapas() {
     return async function (dispatch) {
@@ -10,6 +11,16 @@ export function getZapas() {
         })
     }
 };
+
+export function getZapasRango({inicial, final}){
+    return async function(dispatch){
+        var json = await axios.get(`http://localhost:3001/productos/zapatillas/rango?inicial=${inicial}&&final=${final}`)
+        return dispatch({
+        type: 'GET_ZAPAS_RANGO',
+        payload: json.data
+        })
+    }
+}
 
 export function getModeloZapas(modelo) {
     return async function (dispatch) {
@@ -41,9 +52,9 @@ export function getZapaById(id) {
     }
 };
 
-export function getFilters({ talla, precio, actividad, order }) {
+export function getFilters({ talle, precio, actividad, order }) {
     return async function (dispatch) {
-        var filters = await axios.get(`http://localhost:3001/productos/filtros?talla=${talla}&&precio=${precio}&&actividad=${actividad}&&order=${order}`)
+        var filters = await axios.get(`http://localhost:3001/productos/filtros?talle=${talle}&&precio=${precio}&&actividad=${actividad}&&order=${order}`)
         return dispatch({
             type: "GET_FILTERS",
             payload: filters.data
@@ -65,11 +76,9 @@ export function addToCart(id) {
     return async function (dispatch) {
         const product = await axios.get(`http://localhost:3001/productos/zapatillas/${id}`);
         dispatch({
-            type: "ADD_TO_CART",
-            payload: product.data,
-
-
-        })
+          type: "ADD_TO_CART",
+          payload: product.data,
+        });
     }
 };
 
@@ -81,6 +90,47 @@ export function removeToCart(id) {
         })
     }
 };
+
+export function clearCart() {
+    return async function (dispatch) {
+        dispatch({
+            type: "CLEAR_CART"
+        })
+    }
+};
+
+//--------------------Acciones de la orden------------------------//
+
+export function AgregarOrden(orden) {
+    return async function (dispatch) {
+        try {
+            const order = await axios.post('http://localhost:3001/pedido', orden);
+            const { msg, ordenResp } = order.data;
+            dispatch(crearOrden(ordenResp));
+            // swal.fire({
+            //     icon: 'success',
+            //     title: `${msg}`,
+            //     showConfirmButton: false,
+            //     timer: 2000
+            // })
+            console.log("AGREGARORDEN TRAJO ESTO ", ordenResp.preferenceId);
+            return ordenResp.preferenceId;
+        } catch (error) {
+            console.log("ERROR EN AGREGAR ORDEN ", error)
+        }
+    }
+}
+
+export function crearOrden(orden) {
+    return async function (dispatch) {
+        dispatch({
+            type: "AGREGAR_ORDEN",
+            payload: orden
+        })
+    }
+}
+
+//----------------------------------------------------------------//
 
 export function addToFav(id) {
     return async function (dispatch) {

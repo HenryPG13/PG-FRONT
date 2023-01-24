@@ -12,9 +12,9 @@ import './Filters.css'
 export const Filters = () => {
 
     const inicialState = {
-        talla: '',
+        talle: '',
         precio: '',
-        actividad: 'moda',
+        actividad: '',
         order: 'default'
     };
 
@@ -29,7 +29,7 @@ export const Filters = () => {
         setValue({ ...value, actividad: e.target.value })
     };
 
-    const filterTalla = (e) => {
+    const filterTalle = (e) => {
         setValue({ ...value, talla: e.target.value })
     };
 
@@ -44,6 +44,12 @@ export const Filters = () => {
     const handleOnFilters = () => {
         dispatch(getFilters(value))
     };
+
+    const cleanFilters = (e) => {
+        e.preventDefault(); //por si renderiza lento
+        setValue(inicialState);
+        dispatch(getZapas())
+    }
 
     return (
         <div className='filters'>
@@ -77,15 +83,15 @@ export const Filters = () => {
 
             <DropdownButton onClick={(e) => filterActividad(e)} id="dropdown-basic-button" title="Selecciona una actividad">
 
-                <Dropdown.Item><option value={'sin-actividad'}> Cualquiera </option></Dropdown.Item>
+                <Dropdown.Item><option value={'default'}> Cualquiera </option></Dropdown.Item>
                 <Dropdown.Item><option value={'Moda'}> Moda </option></Dropdown.Item>
                 <Dropdown.Item><option value={'Basquet'}> Basquet </option></Dropdown.Item>
 
             </DropdownButton>
 
-            <DropdownButton onClick={(e) => filterTalla(e)} id="dropdown-basic-button" title="Selecciona una talla">
+            <DropdownButton onClick={(e) => filterTalle(e)} id="dropdown-basic-button" title="Selecciona una talla">
 
-                <Dropdown.Item><option value={"sin-talla"}> Cualquiera </option></Dropdown.Item>
+                <Dropdown.Item><option value={"default"}> Cualquiera </option></Dropdown.Item>
                 <Dropdown.Item><option value={34}> 34 </option></Dropdown.Item>
                 <Dropdown.Item><option value={35}> 35 </option></Dropdown.Item>
                 <Dropdown.Item><option value={36}> 36 </option></Dropdown.Item>
@@ -118,6 +124,9 @@ export const Filters = () => {
             </DropdownButton>
             <div>
                 <Button onClick={() => handleOnFilters()} variant="primary">Aplicar filtros</Button>
+            </div>
+            <div>
+                <Button onClick={(e) => cleanFilters(e)} variant="primary" class="btn btn-danger">Limpiar filtros</Button>
             </div>
         </div>
     )

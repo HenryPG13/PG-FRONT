@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeToCart } from '../../Actions';
@@ -18,7 +18,25 @@ import {
 
 export const CartItem = ({ item }) => {
 
+  const [cantidad, setCantidad] = useState(item.qty);
+
   const dispatch = useDispatch()
+
+  //increase cantidad
+  const increase = () => {
+    setCantidad(cantidad => cantidad + 1);
+    item.qty = cantidad;
+  };
+ 
+  //decrease cantidad
+  const decrease = () => {
+    if (item.qty <= 1) {
+      setCantidad(1);
+    }else {
+      setCantidad(cantidad => cantidad - 1);
+    }
+    item.qty = cantidad;
+  };
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -59,7 +77,8 @@ export const CartItem = ({ item }) => {
                     </MDBCol>
                     <MDBCol md="3" lg="3" xl="3">
                       <h3 className="lead fw-normal mb-2">{item.marca}</h3>
-                      <h7>{item.modelo}</h7>
+                      {/* <h7>{item.modelo}</h7> */}
+                      {item.modelo}
                       <p>
                         <span className="text-muted">Talle: </span>{item.talle}
 
@@ -68,13 +87,16 @@ export const CartItem = ({ item }) => {
                     </MDBCol>
                     <MDBCol md="3" lg="3" xl="2"
                       className="d-flex align-items-center justify-content-around">
-                      <MDBBtn color="link" className="px-2">
+                      <MDBBtn color="link" className="px-2" onClick={decrease}>
                         <MDBIcon fas icon="minus" />
                       </MDBBtn>
 
-                      <MDBInput min={0} defaultValue={item.qty} type="number" size="sm" />
+                      {/* <MDBInput min={0} Value={item.qty} type="number" size="sm" /> */}
+                      <MDBTypography tag="h5" className="mb-0">
+                        {item.qty}
+                      </MDBTypography>
 
-                      <MDBBtn color="link" className="px-2">
+                      <MDBBtn color="link" className="px-2" onClick={increase}>
                         <MDBIcon fas icon="plus" />
                       </MDBBtn>
                     </MDBCol>
