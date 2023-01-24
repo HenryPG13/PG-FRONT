@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-const Cards = React.forwardRef(({id, marca, image, modelo, precio}, ref) => {
+const Cards = React.forwardRef(({id, marca, image, modelo, precio,oferta}, ref) => {
   const cardsBody = (
     
        <Card.Body>

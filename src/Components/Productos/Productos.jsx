@@ -92,7 +92,7 @@ export default function Home(){
             <NavBar/>
             <Filters/>
 
-<Filters />
+{/* <Filters /> */}
             <div className="cards">
                 {contenido}
                 

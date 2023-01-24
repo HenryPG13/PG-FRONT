@@ -11,6 +11,7 @@ const initialState = {
     reviews: [],
     orders: [],
     order: {},
+    ofertas:[],
 }
 
 function rootReducer(state = initialState, action) {
@@ -83,6 +84,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 detail: action.payload
             };
+
         case "CREATE_USER":
             return {
                 ...state,
@@ -141,10 +143,27 @@ function rootReducer(state = initialState, action) {
                 ...state,
             };
 
-        default:
-            return state
-    }
-
+            case "GET_OFERTAS_ZAPAS":
+                
+                const ofertasZapas = action.payload;
+                console.log(ofertasZapas, "ASFDASFADSFGA")
+                // const ofertasFiltradas = ofertasZapas !== null ? ofertasZapas : 
+                
+                // const ofertasFiltradas = action.payload !== undefined ? ofertasZapas : ofertasZapas.filter((zapas) => zapas.oferta? zapas.oferta.includes(action.payload) : zapas.oferta.map((e) => e.oferta)); 
+                
+                
+                
+                
+                return {
+                    ...state,
+                    // ofertas: ofertasFiltradas,
+                    ofertas: ofertasZapas
+                    
+                }
+                
+                default:
+                    return state
+            }
 }
 
 export default rootReducer;

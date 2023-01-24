@@ -44,7 +44,7 @@ export default function Home() {
 
         <div>
             <NavBar />
-            <Filters />
+            {/* <Filters /> */}
             <Carrusel />
 
             <div className="cards">
