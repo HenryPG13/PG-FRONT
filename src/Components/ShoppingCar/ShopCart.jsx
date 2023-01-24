@@ -34,7 +34,12 @@ export const ShopCart = ({ history }) => {
 
     cart.forEach((item) => {
       items += item.qty;
-      price += item.qty * item.precio;
+      if(item.oferta){
+        price += item.qty * (item.precio/2); //este valor de oferta esta hardcodeado
+      }else{
+        price += item.qty * item.precio;
+      }
+
     });
 
     setArticulosTotales(items);
