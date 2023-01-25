@@ -1,5 +1,5 @@
 .lhome{
-    height: 200px;
+    height: 500px;
     position: relative;
     left: 25px;
     top: 20px
@@ -10,6 +10,7 @@
 }
 .btnFav{
     margin-right: 1.5cm;
+    padding: 5px;
 }
 .btnLogin{
     text-decoration: none;
@@ -21,6 +22,7 @@
     background:rgb(37, 78, 212);
     color: white;
 }
+
 
 .icons {
     display: flex;
@@ -79,3 +81,13 @@
     color: white;
     position: relative;
   }
+
+.productos{
+    /* left: 0px; */
+    top: 20px;
+    padding: 10cm;
+    /* text-decoration: none; */
+    margin-left: 25px;
+
+}
+
