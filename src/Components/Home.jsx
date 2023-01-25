@@ -44,10 +44,10 @@ export default function Home() {
 
         <div>
             <NavBar />
-            <Filters />
+            {/* <Filters /> */}
             <Carrusel />
 
-            <div className="cards">
+            {/* <div className="cards">
                 {
                     currentZapas && currentZapas.map((e, i) => {
                         return (
@@ -64,13 +64,13 @@ export default function Home() {
                         )
                     })
                 }
-            </div>
+            </div> */}
 
-            <Paginado
+            {/* <Paginado
                 zapasPerPage={zapasPerPage}
                 allZapas={allZapas.length}
                 paginado={paginado}
-            />
+            /> */}
 
             <CarruselFav />
             <CarruselMasV />

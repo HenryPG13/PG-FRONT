@@ -58,6 +58,10 @@ export default function Details() {
        });
    }
 
+
+
+const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
+
    return (
 
 
@@ -107,7 +111,19 @@ export default function Details() {
                      <div className="details col-md-6">
                         <h3 className="product-title">{zapa.marca}</h3>
                         <p className="product-description">{zapa.modelo}</p>
+                       {zapa.oferta ? (
+                       <>
                         <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
+                        <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
+                       </>
+                       ):
+                       (
+                        <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
+
+                       )
+
+                       }
+
                         <h5>TALLES:
 
                            <select class="sizes">

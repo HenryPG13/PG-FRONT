@@ -1,4 +1,5 @@
 import SearchBar from "../SearchBar/SearchBar";
+
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./NavBar.css";
@@ -38,20 +39,19 @@ export default function NavBar() {
   console.log(notificaciones);
 
   return (
+
     <Navbar className="bg-primary bg-gradient">
       <Link to="/Home">
         <img
           src={logo}
-          width="100"
-          height="80"
+          width="125"
+          height="100"
           className="logo"
           alt="React Bootstrap logo"
         />
       </Link>
       <Container>
-        <Navbar.Brand href="#home" className="text-white">
-          FootShop
-        </Navbar.Brand>
+       
         <Nav className="me-auto">
         <div className="navbar">
           <div className="icon" onClick={() => setOpen(!open)}>
@@ -72,21 +72,22 @@ export default function NavBar() {
           </div>
         </div>
           <Link to="/home">
-            <button className=" bg-transparent border-0 text-white">
-              Home
-            </button>
+            <Button className="productos">
+            FootShop
+            </Button>
           </Link>
 
           <Link to="/zapatillas">
-            <button className="bg-transparent border-0 text-white">
+            <Button className="productos">
               Productos
-            </button>
+            </Button>
           </Link>
-
           <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Link to='/zapatillas/ofertas'>
+            <Button className="productos" >Ofertas</Button>
+          </Link>
+          </Nav>
 
-          
-        </Nav>
 
         <Link className="btnCart" to={"/compras"}>
           <Button variant="light">🛒</Button>
@@ -96,7 +97,7 @@ export default function NavBar() {
         </Link>
         
 
-        <SearchBar />
+        {/* <SearchBar /> */}
 
         <Link className="btnLogin" to="/login">
           <Button variant="light">Ingresar</Button>
