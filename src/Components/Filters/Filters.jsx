@@ -57,7 +57,7 @@ export const Filters = () => {
             case "37":
                 setTitleDropTalle("Talle: 37")
                 break;
-            case "37,7":
+            case "37.7":
                 setTitleDropTalle("Talle: 37,5")
                 break;
             case "38":
@@ -72,7 +72,7 @@ export const Filters = () => {
             case "41":
                 setTitleDropTalle("Talle: 41")
                 break;
-            case "41,5":
+            case "41.5":
                 setTitleDropTalle("Talle: 41,5")
                 break;
             case "42":
