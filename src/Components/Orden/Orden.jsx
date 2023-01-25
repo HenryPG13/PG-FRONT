@@ -42,8 +42,8 @@ export const Order = (prop) => {
             setValue("apellido", `${userData?.apellido}`)
             setValue("telefono", `${userData?.telefono}`)  //capaz no va o capaz es del formulario de mercadopago
             setValue("email", `${userData?.email}`)
-            setValue("calle", `${userData?.domicilio?.calle}`)  //capaz no va o capaz es del formulario de mercadopago
-            setValue("numero", `${userData?.domicilio?.numero}`)  //capaz no va o capaz es del formulario de mercadopago
+            setValue("direccion", `${userData?.direccion}`)  //capaz no va o capaz es del formulario de mercadopago
+            // setValue("numero", `${userData?.domicilio?.numero}`)  //capaz no va o capaz es del formulario de mercadopago
             setValue("cp", `${userData?.domicilio?.cp}`)  //capaz no va o capaz es del formulario de mercadopago
             setValue("localidad", `${userData?.ciudad}`)
             setValue("provincia", `${userData?.domicilio?.provincia}`)  //capaz no va o capaz es del formulario de mercadopago
@@ -118,6 +118,7 @@ export const Order = (prop) => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="input-group m-1">
+                    <span className="input-group-text">Nombre</span>
                       <input
                         type="text"
                         className="form-control"
@@ -134,6 +135,7 @@ export const Order = (prop) => {
 
                   <div className="col-md-6">
                     <div className="input-group m-1">
+                    <span className="input-group-text">Apellido</span>
                       <input
                         type="text"
                         className="form-control"
@@ -149,57 +151,60 @@ export const Order = (prop) => {
                   </div>
                 </div>
 
-                <div className="col">
-                  <div className="input-group m-1 ">
-                    <span className="input-group-text">Telef</span>
-                    <input
-                      type="number"
-                      className="form-control text-center"
-                      placeholder="Telefono"
-                      name="telefono"
-                      // readOnly
-                      {...register("telefono")}
-                    />
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="input-group m-1 ">
+                      <span className="input-group-text">Telef</span>
+                      <input
+                        type="number"
+                        className="form-control text-center"
+                        placeholder="Telefono"
+                        name="telefono"
+                        // readOnly
+                        {...register("telefono")}
+                      />
+                    </div>
+                    <span className="text-danger text-small d-block m-1">
+                      {errors.telefono && errors.telefono.message}
+                    </span>
                   </div>
-                  <span className="text-danger text-small d-block m-1">
-                    {errors.telefono && errors.telefono.message}
-                  </span>
+
+                  <div className="col-md-6">
+                    <div className="input-group m-1">
+                      <span className="input-group-text">Email</span>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="email"
+                        // readOnly
+                        {...register("email")}
+                      />
+                    </div>
+                    <span className="text-danger text-small d-block m-1">
+                      {errors.email && errors.email.message}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="col">
-                  <div className="input-group m-1">
-                    <span className="input-group-text">Email</span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="email"
-                      // readOnly
-                      {...register("email")}
-                    />
-                  </div>
-                  <span className="text-danger text-small d-block m-1">
-                    {errors.email && errors.email.message}
-                  </span>
-                </div>
 
                 <div className="row">
                   <div className="col-md-6">
                     <div className="input-group m-1">
-                      <span className="input-group-text">Calle</span>
+                      <span className="input-group-text">Direccion</span>
                       <input
                         type="text"
                         className="form-control"
-                        name="calle"
+                        name="direccion"
                         // readOnly
-                        {...register("calle")}
+                        {...register("direccion")}
                       />
                       <span className="text-danger text-small d-block mb-2">
-                        {errors.calle && errors.calle.message}
+                        {errors.direccion && errors.direccion.message}
                       </span>
                     </div>
                   </div>
 
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <div className="input-group m-1">
                       <span className="input-group-text">N°</span>
                       <input
@@ -214,10 +219,7 @@ export const Order = (prop) => {
                     <span className="text-danger text-small d-block m-1">
                       {errors.numero && errors.numero.message}
                     </span>
-                  </div>
-                </div>
-
-                <div className="row">
+                  </div> */}
                   <div className="col-md-6">
                     <div className="col">
                       <div className="input-group m-1">
@@ -229,13 +231,15 @@ export const Order = (prop) => {
                           // readOnly
                           {...register("localidad")}
                         />
+                        <span className="text-danger text-small d-block mb-2 text-center">
+                          {errors.localidad && errors.localidad.message}
+                        </span>
                       </div>
                     </div>
-
-                    <span className="text-danger text-small d-block mb-2 text-center">
-                      {errors.localidad && errors.localidad.message}
-                    </span>
                   </div>
+
+                  {/* <div className="row">
+                  </div> */}
 
                   <div className="col-md-6">
                     <div className="input-group m-1">
@@ -248,28 +252,29 @@ export const Order = (prop) => {
                         // readOnly
                         {...register("cp")}
                       />
+                      <span className="text-danger text-small d-block mb-2 text-center">
+                        {errors.cp && errors.cp.message}
+                      </span>
                     </div>
+                  </div>
 
-                    <span className="text-danger text-small d-block mb-2 text-center">
-                      {errors.cp && errors.cp.message}
+
+                  <div className="col-md-6">
+                    <div className="input-group m-1 ">
+                      <span className="input-group-text">Provincia</span>
+                      <input
+                        type="text"
+                        className="form-control text-center"
+                        placeholder="Provincia"
+                        name="provincia"
+                        // readOnly
+                        {...register("provincia")}
+                      />
+                    </div>
+                    <span className="text-danger text-small d-block m-1">
+                      {errors.provincia && errors.provincia.message}
                     </span>
                   </div>
-                </div>
-                <div className="col">
-                  <div className="input-group m-1 ">
-                    <span className="input-group-text">Provincia</span>
-                    <input
-                      type="text"
-                      className="form-control text-center"
-                      placeholder="Provincia"
-                      name="provincia"
-                      // readOnly
-                      {...register("provincia")}
-                    />
-                  </div>
-                  <span className="text-danger text-small d-block m-1">
-                    {errors.provincia && errors.provincia.message}
-                  </span>
                 </div>
               </>
             )}
@@ -299,7 +304,10 @@ export const Order = (prop) => {
                   </div>
                 ) : (
                   <div>
-                    <button className="bg-transparent border-0 text-white" disabled>
+                    <button
+                      className="bg-transparent border-0 text-white"
+                      disabled
+                    >
                       IR A PAGAR
                     </button>
                   </div>

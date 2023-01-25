@@ -117,7 +117,7 @@ export function AgregarOrden(orden) {
             //     showConfirmButton: false,
             //     timer: 2000
             // })
-            console.log("AGREGARORDEN TRAJO ESTO ", ordenResp.preferenceId);
+            console.log("AGREGARORDEN TRAJO ESTO ", ordenResp.preferenceId, "---", msg);
             return ordenResp.preferenceId;
         } catch (error) {
             console.log("ERROR EN AGREGAR ORDEN ", error)
