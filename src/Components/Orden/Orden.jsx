@@ -106,7 +106,7 @@ export const Order = (prop) => {
               }}
             >
               <span className="h5 me-2 text-muted">
-                Verificar dirección de envio
+                Cambiar datos para el envio
               </span>
               <i className="bi bi-eye text-primary" style={{ fontSize: 25 }} />
             </button>
@@ -287,12 +287,12 @@ export const Order = (prop) => {
                     type="submit"
                   >
                     <i className="bi bi-check-circle" />
-                    <h6>Proceder al checkout</h6>
+                    <h6>Comenzar proceso de pago</h6>
                   </button>
                 )}
                 {ordenFin ? (
                   <div>
-                    <button className="bg-transparent border-0 text-white">
+                    <button className="btn btn-sm me-2 text-success">
                       <a
                         href={linkMP}
                         target="_blank"

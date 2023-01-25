@@ -46,10 +46,7 @@ export const ShopCart = ({ history }) => {
     setPrecioTotal(price);
   }, [cart, precioTotal, articulosTotales, setPrecioTotal, setArticulosTotales]);
 
-  // cart.forEach((element) => {
-  //   precioTotal = element.precio + precioTotal;
-  //   articulosTotales = element.qty + articulosTotales;
-  // });
+  
 
   return (
     <div>

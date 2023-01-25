@@ -138,7 +138,7 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                         </h5>
                         <div class="action">
                            <Button value='add' className='btnCart' variant="primary" onClick={handleToFavorite}>❤️</Button>
-                           <Button variant="primary">Comprar</Button>
+                           {/* <Button variant="primary">Comprar</Button> */}
                            <Button value='add' className='btnCart' variant="primary" onClick={handleToCart}
                            >Añadir al carrito</Button>
                                                                                                                
