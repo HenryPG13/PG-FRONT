@@ -83,7 +83,7 @@ export default function NavBar() {
             </Button>
           </Link>
 
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+         
 
           <Link to='/zapatillas/ofertas'>
             <Button className="productos" >Ofertas</Button>

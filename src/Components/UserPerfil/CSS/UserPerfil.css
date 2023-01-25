@@ -43,16 +43,29 @@
     margin-left:35cm;
     border-radius: 10px;
     top: 110px;
-    background: rgba(234, 234, 234, 0.926);
+    /* background: rgba(234, 234, 234, 0.926); */
     
 }
-.quepasa{
-    
-    margin-right: 20px;
-    margin-left: 20px;
-    border-radius: 10px;
-    background-color: rgb(132, 132, 132);
-}
+input[type="bttnperfil"]{
+    padding: 10px;
+    width:max-content;
+    box-sizing:border-box;
+    height: 50px;
+    border: 1px solid;
+    background: #007bff;
+    border-radius: 25px;
+    font-size: 18px;
+    text-align: center;
+
+    color: #e9f4fb;
+    /* font-weight: 600; */
+    cursor: pointer;
+    /* outline: none; */
+  }
+  input[type="bttnperfil"]:hover{
+    border-color: #2691d9;
+    transition: .5s;
+  }
 .estrucBttnUsuario{
     position: center;
 

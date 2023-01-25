@@ -60,7 +60,6 @@ export const LoginGeneral = () => {
             <label>Contraseña</label>
           </div>
           <input type="submit" value="Ingresar" />
-          {/* <Button type='submit'>Ingresar</Button> */}
         </form>
         <Link to={"/crearusuario"}>
           <div className="signup_link">

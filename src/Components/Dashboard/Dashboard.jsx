@@ -1,25 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SidebarDashboard from './SidebarDashboard/SidebarDashboard.jsx'
 import './Dashboard.css'
-import NavDashboard from "./NavDashboard/NavDashboard.jsx";
+
 
 export default function Dashboard () {
     
     return (
-        <div>
-            <h1 className="DashTitulo"> Dashboard de Administrador</h1>
-            
-            {/* <NavDashboard/> */}
-            <div className='listadoLink'>
+        <div className="DashTitulo">
+            <div className="From">
 
-            <Link to={'/tablerousuarios'}><p>Usuarios</p></Link>
-            <Link to={'/tableroproductos'}><p>Productos</p></Link>
-            <Link to={'/tablerordenes'}><p>Ordenes</p></Link>
-            <Link to={'/tablerorevisiones'}><p>Revisiones</p></Link>
+            
+
+            <div className="listadoAdmnLink">
+            <h1 > Dashboard Administrador</h1>
+
+            <Link to={'/tablerousuarios'}>
+            <input type="btnPerfAdm" value="Usuarios" />
+            </Link>
+            <Link to={'/tableroproductos'}>
+            <input type="btnPerfAdm" value="Productos" />
+            </Link>
+            <Link to={'/tablerordenes'}>
+            <input type="btnPerfAdm" value="Ordenes" />
+            </Link>
+            <Link to={'/tablerorevisiones'}>
+            <input type="btnPerfAdm" value="Revisiones" />
+            </Link>
+            <Link to={'/sendNotification'}>
+            <input type="btnPerfAdm" value="Notificaciones" />
+                </Link>
+            </div>
             </div>
         
-            {/* <SidebarDashboard/> */}
+
         </div>
     )
 }

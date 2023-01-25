@@ -40,13 +40,8 @@ export default function Cards({id, marca, image, modelo, precio, oferta}){
   const Dinero = oferta ? (precio/2)  : precio
    console.log(oferta,'asdsadsadsad')
   return(
-<<<<<<< HEAD
-    
     <div>
-   <Card style={{ width: '15rem' }}>
-=======
    <Card style={{ width: '17rem' }}>
->>>>>>> develop
      <Card.Img variant="top" src={image} />
      <Card.Body>
        <Card.Title>{marca}</Card.Title>

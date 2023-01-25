@@ -114,9 +114,9 @@ export default function UserDashboard() {
 
 
   return (
-    <div className='estrucUserDash' >
-      <div >
-        <SidebarDashboard />
+    <div  className='estrucUserDash'>
+      <SidebarDashboard />
+      <div className='listadoUsers'>
         {users?.length > 0 ? (
           <>
             <h1>USUARIOS REGISTRADOS</h1>
