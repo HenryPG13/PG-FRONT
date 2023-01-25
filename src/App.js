@@ -22,6 +22,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import { Favoritos } from './Components/UserPerfil/Favoritos';
 import { OrdersUser } from './Components/UserPerfil/OrdersUser';
 import { UpdateUser } from './Components/UserPerfil/UpdateUser';
+import SendNotification from "./Components/Dashboard/SendNotification/SendNotification"
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route exact path='/tablerorevisiones' element={<ReviewsDashboard />} ></Route>
           <Route exact path='/tableroproductos' element={<ProductDashboard />} ></Route>
           <Route exact path='/tablerousuarios' element={<UserDashboard />} ></Route>
+          <Route exact path='/sendNotification' element={<SendNotification />} ></Route>
           <Route exact path='/perfiladmin' element={<Dashboard />}></Route>
           <Route exact path='/perfilusuario/:id/favoritos' element={<Favoritos />}></Route>
           <Route exact path='/perfilusuario/:id/modificarinfo' element={<UpdateUser />}></Route>

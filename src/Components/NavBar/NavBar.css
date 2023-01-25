@@ -21,3 +21,61 @@
     background:rgb(37, 78, 212);
     color: white;
 }
+
+.icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-left: 50px;
+    cursor: pointer;
+    position: relative;
+  }
+  .iconImg {
+    width: 20px;
+    height: 20px;
+  }
+  .counter {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+  }
+  .nButton {
+    border:none;
+    border-radius: 5px;
+  }
+
+  .notifications {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgb(228, 191, 191);
+    color: black;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .notification {
+    padding: 5px;
+    font-size: 14px;
+  }
+  .navbar {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    position: relative;
+  }

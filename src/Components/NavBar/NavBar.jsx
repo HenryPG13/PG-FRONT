@@ -1,54 +1,43 @@
 import SearchBar from "../SearchBar/SearchBar";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "./NavBar.css";
+import notificacion from "../../img/bell.png";
+import Button from "react-bootstrap/Button";
 
-import './NavBar.css'
-
-import Button from 'react-bootstrap/Button';
-
-import logo from "../imagenes/footshopb.png"
-
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import '../CSS/Home.css'
-
+import logo from "../imagenes/footshopb.png";
+import { io } from "socket.io-client";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import "../CSS/Home.css";
 
 export default function NavBar() {
+  const [socket, setSocket] = useState(null);
+  const [notificaciones, setNotificaciones] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [haySocket, setHaySocket] = useState(false);
+
+  useEffect(() => {
+    setSocket(io("http://localhost:5000"));
+    setHaySocket(true);
+  }, []);
+  useEffect(() => {
+    if (haySocket) {
+      socket.on("notificacion", (msg) => {
+        setNotificaciones((prev) => [...prev, msg]);
+      });
+    }
+  }, [socket]);
+
+  const handleRead = () => {
+    setNotificaciones([]);
+    setOpen(false);
+  };
+
+  console.log(notificaciones);
+
   return (
-    //     <div>
-
-    //         <h1  className='titulo'>Zapatero a tus servicios</h1>
-
-    //         <SearchBar/>
-
-    //         <Link  className='create' to='/Home'><img className='lhome' src={logo} alt='a'/></Link>
-
-    //         <div className='contenidoselects'>
-    //             <select >
-    //             <option defaultValue='all'>Orden Alfabetico</option>
-    //                 <option value='asc'>A - Z</option>
-    //                 <option value='desc'>Z - A</option>
-    //             </select>
-
-    //             <select >
-    //             <option value="all">Orden Por Precio</option>
-    //                 <option value="asc">Ascendente</option>
-    //                 <option value="des">Descendente</option>
-    //             </select>
-
-    //             {/* <select  >
-    //               <option defaultValue='All'>Marcas</option>
-    //             { allZapas.map((e,i)=>{
-    //                 return (
-    //                     <option key={i}>{e}</option>
-    //                     )}
-    //                     )
-    //                 }
-    //         </select> */}
-
-    //         </div>
-    // </div>
-
     <Navbar className="bg-primary bg-gradient">
       <Link to="/Home">
         <img
@@ -64,6 +53,24 @@ export default function NavBar() {
           FootShop
         </Navbar.Brand>
         <Nav className="me-auto">
+        <div className="navbar">
+          <div className="icon" onClick={() => setOpen(!open)}>
+            <img src={notificacion} className="iconImg"></img>
+            {notificaciones.length > 0 && (
+              <div className="counter">{notificaciones.length}</div>
+            )}
+            {open && (
+              <div className="notifications">
+                {notificaciones.map((n) => (
+                  <span>{n}</span>
+                ))}
+                <button className="nButton" onClick={handleRead}>
+                  Marcar como leido
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
           <Link to="/home">
             <button className=" bg-transparent border-0 text-white">
               Home
@@ -77,6 +84,8 @@ export default function NavBar() {
           </Link>
 
           <Nav.Link href="#pricing">Pricing</Nav.Link>
+
+          
         </Nav>
 
         <Link className="btnCart" to={"/compras"}>
@@ -85,6 +94,7 @@ export default function NavBar() {
             <Button variant="light">❤️</Button>
           </Link>
         </Link>
+        
 
         <SearchBar />
 
