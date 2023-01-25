@@ -106,14 +106,18 @@ export function AgregarOrden(orden) {
         try {
             const order = await axios.post('http://localhost:3001/pedido', orden);
             const { msg, ordenResp } = order.data;
-            dispatch(crearOrden(ordenResp));
+            // crearOrden(ordenResp);
+            dispatch({
+                type: "ADD_ORDER",
+                payload: ordenResp
+            })
             // swal.fire({
             //     icon: 'success',
             //     title: `${msg}`,
             //     showConfirmButton: false,
             //     timer: 2000
             // })
-            console.log("AGREGARORDEN TRAJO ESTO ", ordenResp.preferenceId);
+            console.log("AGREGARORDEN TRAJO ESTO ", ordenResp.preferenceId, "---", msg);
             return ordenResp.preferenceId;
         } catch (error) {
             console.log("ERROR EN AGREGAR ORDEN ", error)
@@ -124,7 +128,7 @@ export function AgregarOrden(orden) {
 export function crearOrden(orden) {
     return async function (dispatch) {
         dispatch({
-            type: "AGREGAR_ORDEN",
+            type: "ADD_ORDER",
             payload: orden
         })
     }

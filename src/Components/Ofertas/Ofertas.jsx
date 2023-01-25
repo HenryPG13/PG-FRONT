@@ -58,10 +58,10 @@ export default function Ofertas(){
                                 <Link to={'/zapatillas/' + e._id} className='cardLink'>
                                     <CardOferta
                                         marca={e.marca}
-                                        image={e.imagen1}
+                                        image={e.imagenes && e.imagenes[0]}
                                         modelo={e.modelo}
                                         precio={e.precio}
-                                        oferta= {e.oferta}
+                                    
                                         />
                                 </Link>
                             </div>
