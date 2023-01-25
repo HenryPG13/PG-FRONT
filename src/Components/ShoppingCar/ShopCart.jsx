@@ -45,10 +45,13 @@ export const ShopCart = ({ history }) => {
     setPrecioTotal(price);
   }, [cart, precioTotal, articulosTotales, setPrecioTotal, setArticulosTotales]);
 
-  // cart.forEach((element) => {
-  //   precioTotal = element.precio + precioTotal;
-  //   articulosTotales = element.qty + articulosTotales;
-  // });
+  const handleArticulosTotales = () => {
+    let items = 0;
+    cart.forEach((item) => {
+      items += item.qty;
+    })
+    setArticulosTotales(items);
+  }
 
   return (
     <div>
@@ -62,7 +65,7 @@ export const ShopCart = ({ history }) => {
               <Link to={"/home"}>Regresar</Link>
             </div>
           ) : (
-            cart.map((e) => <CartItem item={e} />)
+            cart.map((e) => <CartItem articulosTotales={handleArticulosTotales} item={e} />)
           )}
         </div>
         

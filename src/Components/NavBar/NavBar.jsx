@@ -50,12 +50,35 @@ export default function NavBar() {
           alt="React Bootstrap logo"
         />
       </Link>
+      <Link className="btnTitle" to="/home">
+          <Button className="bg-transparent border-0">
+            FootShop
+          </Button>
+      </Link>
+      
       <Container>
        
         <Nav className="me-auto">
-        <div className="navbar">
+        
+          
+          <div className="btnCont">
+          
+
+          <Link className="btnProductos" to="/zapatillas">
+            <Button className="bg-transparent border-0">
+              Productos
+            </Button>
+          </Link>
+
+          <Link className="btnOfertas"  to='/zapatillas/ofertas'>
+            <Button className="bg-transparent border-0">Ofertas</Button>
+          </Link>
+          </div>
+          </Nav>
+
+          <div className="navbar">
           <div className="icon" onClick={() => setOpen(!open)}>
-            <img src={notificacion} className="iconImg"></img>
+            <Button className="bg-transparent border-dark"><img src={notificacion} className="iconImg"></img></Button>
             {notificaciones.length > 0 && (
               <div className="counter">{notificaciones.length}</div>
             )}
@@ -71,38 +94,22 @@ export default function NavBar() {
             )}
           </div>
         </div>
-          <Link to="/home">
-            <Button className="productos">
-            FootShop
-            </Button>
-          </Link>
-
-          <Link to="/zapatillas">
-            <Button className="productos">
-              Productos
-            </Button>
-          </Link>
-
-         
-
-          <Link to='/zapatillas/ofertas'>
-            <Button className="productos" >Ofertas</Button>
-          </Link>
-          </Nav>
 
 
         <Link className="btnCart" to={"/compras"}>
-          <Button variant="light">🛒</Button>
-          <Link className="btnFav" to={"/favoritos"}>
-            <Button variant="light">❤️</Button>
-          </Link>
+          <Button className="bg-transparent border-dark">🛒</Button>
         </Link>
+          
+        <Link className="btnFav" to={"/favoritos"}>
+          <Button className="bg-transparent border-dark ">❤️</Button>
+        </Link>
+        
         
 
         {/* <SearchBar /> */}
 
         <Link className="btnLogin" to="/login">
-          <Button variant="light">Ingresar</Button>
+          <Button className="bg-transparent border-dark ">Ingresar</Button>
         </Link>
       </Container>
     </Navbar>

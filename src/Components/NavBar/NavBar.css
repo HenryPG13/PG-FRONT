@@ -6,22 +6,13 @@
 
 }
 .btnCart{
-    margin-right: 1.5cm;
+    margin-right: 0.7cm;
 }
 .btnFav{
-    margin-right: 1.5cm;
+    margin-right: 2cm;
     padding: 5px;
 }
-.btnLogin{
-    text-decoration: none;
-    margin-left: 5px;
-}
-.btnLogin:hover{
-    transition: 0.2s;
-    border: none;
-    background:rgb(37, 78, 212);
-    color: white;
-}
+
 
 
 .icons {
@@ -82,12 +73,17 @@
     position: relative;
   }
 
-.productos{
-    /* left: 0px; */
-    top: 20px;
-    padding: 10cm;
-    /* text-decoration: none; */
-    margin-left: 25px;
-
+.btnProductos{
+    margin-top: 0.5cm;
+    margin-left: 5cm;
+    height: 1cm;
 }
-
+.btnOfertas{
+  margin-left: 2cm;
+}
+.btnTitle{
+  margin-left: 0.5cm;
+}
+.logo{
+  padding: 2px;
+}

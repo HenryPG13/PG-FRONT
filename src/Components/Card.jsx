@@ -39,8 +39,12 @@ import Card from 'react-bootstrap/Card';
 export default function Cards({id, marca, image, modelo, precio, oferta}){
   const Dinero = oferta ? (precio/2)  : precio
    console.log(oferta,'asdsadsadsad')
-  return(
-    <div>
+
+  
+   return(
+  
+  <div>
+
    <Card style={{ width: '17rem' }}>
      <Card.Img variant="top" src={image} />
      <Card.Body>

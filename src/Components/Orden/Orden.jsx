@@ -44,9 +44,9 @@ export const Order = (prop) => {
             setValue("email", `${userData?.email}`)
             setValue("direccion", `${userData?.direccion}`)  //capaz no va o capaz es del formulario de mercadopago
             // setValue("numero", `${userData?.domicilio?.numero}`)  //capaz no va o capaz es del formulario de mercadopago
-            setValue("cp", `${userData?.domicilio?.cp}`)  //capaz no va o capaz es del formulario de mercadopago
+            setValue("cp", `${""}`)  //capaz no va o capaz es del formulario de mercadopago
             setValue("localidad", `${userData?.ciudad}`)
-            setValue("provincia", `${userData?.domicilio?.provincia}`)  //capaz no va o capaz es del formulario de mercadopago
+            setValue("pais", `${userData?.pais}`)  //capaz no va o capaz es del formulario de mercadopago
             setUserId(userData?._id)
 
         
@@ -71,9 +71,9 @@ export const Order = (prop) => {
         const order = {
             items: items,
             user: userId,
-            direccion:"test2", //esto esta hardcodeado
-            pais:"test",
-            ciudad:"test1",
+            direccion: userData.direccion.length !== 0 ? userData.direccion : "No ingreso direccion", //esto esta hardcodeado
+            pais: userData.pais.length !== 0 ? userData.pais : "No ingreso pais",
+            ciudad: userData.ciudad.length !== 0 ? userData.ciudad : "No ingreso ciudad",
             total: total,
         }
         console.log(order)
@@ -106,7 +106,7 @@ export const Order = (prop) => {
               }}
             >
               <span className="h5 me-2 text-muted">
-                Verificar dirección de envio
+                Cambiar datos para el envio
               </span>
               <i className="bi bi-eye text-primary" style={{ fontSize: 25 }} />
             </button>
@@ -122,7 +122,7 @@ export const Order = (prop) => {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Nombre"
+                        
                         name="nombre"
                         // readOnly
                         {...register("nombre")}
@@ -139,7 +139,7 @@ export const Order = (prop) => {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Apellido"
+                        
                         name="apellido"
                         // readOnly
                         {...register("apellido")}
@@ -158,7 +158,7 @@ export const Order = (prop) => {
                       <input
                         type="number"
                         className="form-control text-center"
-                        placeholder="Telefono"
+                        
                         name="telefono"
                         // readOnly
                         {...register("telefono")}
@@ -261,14 +261,14 @@ export const Order = (prop) => {
 
                   <div className="col-md-6">
                     <div className="input-group m-1 ">
-                      <span className="input-group-text">Provincia</span>
+                      <span className="input-group-text">Pais</span>
                       <input
                         type="text"
                         className="form-control text-center"
-                        placeholder="Provincia"
-                        name="provincia"
+                        placeholder="Pais"
+                        name="pais"
                         // readOnly
-                        {...register("provincia")}
+                        {...register("pais")}
                       />
                     </div>
                     <span className="text-danger text-small d-block m-1">
@@ -287,12 +287,12 @@ export const Order = (prop) => {
                     type="submit"
                   >
                     <i className="bi bi-check-circle" />
-                    <h6>Proceder al checkout</h6>
+                    <h6>Comenzar proceso de pago</h6>
                   </button>
                 )}
                 {ordenFin ? (
                   <div>
-                    <button className="bg-transparent border-0 text-white">
+                    <button className="btn btn-sm me-2 text-success">
                       <a
                         href={linkMP}
                         target="_blank"

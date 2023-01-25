@@ -76,12 +76,14 @@ export default function ProductDashboard() {
     event.stopPropagation();
   }
     return (
+
       <div className='estrucUserDash'>
           <SidebarDashboard />
         <div className='listadoUsers'>
         <Link  to= '/Crear'>
         <input type="cargarZapa" value="Cargar Zapas" />
         </Link>  
+
 
           {allzapas?.length > 0 ? (
             <>
