@@ -33,19 +33,31 @@ import Card from 'react-bootstrap/Card';
 
 //   return content;
 // })
-
 // export default Cards;
-export default function Cards({id, marca, image, modelo, precio}){
-   
+export default function Cards({id, marca, image, modelo, precio, oferta}){
+  const Dinero = oferta ? (precio/2)  : precio
+   console.log(oferta,'asdsadsadsad')
   return(
-   <Card style={{ width: '15rem' }}>
+   <Card style={{ width: '17rem' }}>
      <Card.Img variant="top" src={image} />
      <Card.Body>
        <Card.Title>{marca}</Card.Title>
        <Card.Text>
          {modelo}
        </Card.Text>
-       <Card.Title>${precio}</Card.Title>
+       {/* <Card.Title>${precio}</Card.Title> */}
+       {oferta ? (
+                       <>
+                        <Card.Title className="price">PRECIO: <span>${precio}</span></Card.Title>
+                        <Card.Title className="price">OFERTA: <span>${Dinero}</span></Card.Title>
+                       </>
+                       ):
+                       (
+                        <Card.Title className="price">PRECIO: <span>${precio}</span></Card.Title>
+
+                       )
+
+                       }
        <Button variant="primary">Comprar</Button>
      </Card.Body>
    </Card>
