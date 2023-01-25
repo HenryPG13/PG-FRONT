@@ -1,0 +1,18 @@
+.cloudinary{
+    background: linear-gradient(90deg, rgb(218, 218, 218) 0%, rgb(179, 178, 178) 35%, rgb(212, 212, 212) 100%);
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgb(172, 172, 172);
+    border-radius: 8px;
+    width: 500px;
+    margin-left: 10cm;
+    padding-bottom: 1cm;
+}
+.titleimg{
+    margin-left: 12.5cm;
+    margin-top: 10px;
+}
+.spinner{
+    margin-left: 16cm;
+    margin-top: 2cm;
+}

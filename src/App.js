@@ -57,7 +57,6 @@ function App() {
           <Route exact path='/' element={<LandingPage />} />
           <Route exact path='/uploadImg' element={<UploadImg />} />
           <Route path='/Home' element={<Home />} />
-          <Route exact path='/crear' element={<Formulario />} />
           <Route exact path='/zapatillas/:id' element={<Details />} />
           <Route path='/zapatillas' element={<ProductosRender />} />
           <Route path='/zapatillas/ofertas' element={<Ofertas />} />
