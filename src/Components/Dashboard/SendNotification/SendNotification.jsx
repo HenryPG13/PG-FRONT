@@ -2,6 +2,7 @@ import {io} from "socket.io-client"
 import { useEffect } from "react"
 import React from "react";
 import { useState } from "react";
+import SidebarDashboard from '../SidebarDashboard/SidebarDashboard'
 
 
 export default function SendNotification () {
@@ -28,6 +29,7 @@ export default function SendNotification () {
 
     return (
         <>
+        <SidebarDashboard/>
         <span>Escribí tu notificacion: </span>
         <input onChange={handleInputChange} value={noti}></input>
         <button onClick={handleNotification} >Mandar Notificación</button>
