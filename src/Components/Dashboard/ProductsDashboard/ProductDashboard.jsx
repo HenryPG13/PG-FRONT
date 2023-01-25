@@ -9,6 +9,8 @@ import PieActiveProducts from "../Charts/PieActiveProducts";
 import BarProductsRaiting from "../Charts/BarProductsRaiting";
 
 
+import SidebarDashboard from "../SidebarDashboard/SidebarDashboard";
+
 export default function ProductDashboard() {
   const columns = [
     { field: "_id", headerName: "ID" },
@@ -29,15 +31,17 @@ export default function ProductDashboard() {
       renderCell: (cellValues) => {
         return (
           <>
-            <button
+            <input
+            type="actualizar"
               variant="contained"
               color="primary"
               onClick={(event) => {
                 handleUpdateProduct(event, cellValues);
               }}
+              value='Actualizar'
             >
-              Actualizar
-            </button>
+            
+            </input>
           </>
         );
       },
@@ -72,10 +76,15 @@ export default function ProductDashboard() {
     event.stopPropagation();
   }
     return (
-      <div >
-        <div>
-        <button><Link  to= '/uploadimg'>Cargar Zapas</Link></button>   
-          {/* <SidebarDashboard /> */}
+
+      <div className='estrucUserDash'>
+          <SidebarDashboard />
+        <div className='listadoUsers'>
+        <Link  to= '/Crear'>
+        <input type="cargarZapa" value="Cargar Zapas" />
+        </Link>  
+
+
           {allzapas?.length > 0 ? (
             <>
               <h1>Productos</h1>

@@ -95,6 +95,7 @@ export default function NavBar() {
           </div>
         </div>
 
+
         <Link className="btnCart" to={"/compras"}>
           <Button className="bg-transparent border-dark">🛒</Button>
         </Link>

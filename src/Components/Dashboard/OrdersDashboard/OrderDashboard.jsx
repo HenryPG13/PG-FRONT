@@ -5,6 +5,7 @@ import { getOrders } from "../../../Actions";
 import { updateOrder } from "../../../Actions";
 import BarUsersOrders from "../Charts/BarUserOrders";
 import { Link } from "react-router-dom";
+import SidebarDashboard from "../SidebarDashboard/SidebarDashboard";
 
 export default function OrderDashboard() {
 
@@ -75,9 +76,9 @@ export default function OrderDashboard() {
     event.stopPropagation();
   }
   return (
-    <div >
-      <div >
-        {/* <SidebarDashboard /> */}
+    <div className='estrucUserDash'>
+        <SidebarDashboard />
+      <div className='listadoUsers'>
         {allorders?.length > 0 ? (
           <>
             <h1>Ordenes de compra</h1>
@@ -92,6 +93,7 @@ export default function OrderDashboard() {
             </div>
           </>
         ) : null}
+
         <div>
           <BarUsersOrders />
         </div>
