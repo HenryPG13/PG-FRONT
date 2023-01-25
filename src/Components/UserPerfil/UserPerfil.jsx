@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { singleUser } from '../../Actions';
+
+
+import './CSS/UserPerfil.css'
 
 export const UserPerfil = () => {
     
@@ -18,37 +22,35 @@ export const UserPerfil = () => {
 
     return (
         <div>
-            <h1>Bienvenido {user.nombre}</h1>
-            <div>
-                <h3>Informacion de usuario:</h3>
+            <div className='estrcPerfilUsuario'>
+            <h1 className='userprofTitulo'>Bienvenido {user.nombre}</h1>
+                <h4>Informacion de usuario:</h4>
                 <p>Nombre: {user.nombre}</p>
                 <p>apellido: {user.apellido}</p>
                 <p>E-mail: {user.email}</p>
-                <p>Cumpleaños: {user.cumpleaños}</p>
                 <p>Ciudad: {user.ciudad}</p>
                 <p>Pais: {user.pais}</p>
                 <p>Direccion: {user.direccion}</p>
-                <p>Tarjeta: {user.tarjeta}</p>
+                {/* <p>Tarjeta: {user.tarjeta}</p> */}
             </div>
+            <div className='listadoOpcionesUsuario'>
             {
                 user.admin &&
-                <Link to={"/perfiladmin"}>
-                    <button>Perfil admin</button>
+                <Link className='quepasa' to={"/perfiladmin"}>
+                    <Button>Perfil admin</Button>
                 </Link>
             }
-            <Link to={`/home`}>
-                <button>a comprar!</button>
+                        <Link className='quepasa' to={`/perfilusuario/${user._id}/favoritos`}>
+                <Button >favoritos</Button>
             </Link>
-            <Link to={`/perfilusuario/${user._id}/favoritos`}>
-                <button>favoritos</button>
+            <Link className='quepasa' to={`/perfilusuario/${user._id}/ordenesdecompra`}>
+                <Button>Historial ordenes de compra</Button>
             </Link>
-            <Link to={`/perfilusuario/${user._id}/ordenesdecompra`}>
-                <button>Historial ordenes de compra</button>
+            <Link className='quepasa' to={`/perfilusuario/${user._id}/modificarinfo`}>
+                <Button>Cambiar datos de usuario</Button>
             </Link>
-            <Link to={`/perfilusuario/${user._id}/modificarinfo`}>
-                <button>Cambiar datos de usuario</button>
-            </Link>
-            <h1>Esta logeado</h1>
+            </div>
+            <h5 className='detalleUsuarioPerfil'>*No es requerido agregar los datos de Ciudad, Pais y Direccion. Pero son necesarios para realizar el pedido*</h5>
         </div>
     )
 };

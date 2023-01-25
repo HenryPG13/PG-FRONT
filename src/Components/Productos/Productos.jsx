@@ -6,14 +6,13 @@ import { getZapas } from "../../Actions";
 import Cards from '../Card'
 import Paginado from "../Paginado";
 import Carrusel from "../Carrusels/Carrusel";
-import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import '../CSS/Home.css'
 import './Productos.css'
 import { Filters } from "../Filters/Filters";
 
 
-import { Navbar } from "react-bootstrap";
+
 
 //imports para pruebas de scroll infinito
 import { useRef, useCallback } from "react";

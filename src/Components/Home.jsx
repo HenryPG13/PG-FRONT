@@ -6,9 +6,8 @@ import { getZapas } from "../Actions";
 import Cards from "./Card";
 import Paginado from "./Paginado";
 import Carrusel from "./Carrusels/Carrusel";
-import NavBar from "./NavBar/NavBar";
+
 import './CSS/Home.css'
-import Footer from "./Footer/Footer";
 import { Filters } from "./Filters/Filters";
 
 
@@ -44,8 +43,6 @@ export default function Home() {
     return (
 
         <div>
-            <NavBar />
-            {/* <Filters /> */}
             <Carrusel />
 
             {/* <div className="cards">
@@ -75,7 +72,6 @@ export default function Home() {
 
             <CarruselFav />
             <CarruselMasV />
-            <Footer />
 
         </div>
     )

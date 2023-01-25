@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getZapaById } from '../Actions';
 import Carousel from 'react-bootstrap/Carousel';
-import NavBar from './NavBar/NavBar';
 import Button from 'react-bootstrap/Button';
 import { addToCart } from '../Actions';
 import { payOneZapa } from '../Actions';
@@ -66,7 +65,6 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
 
 
       <div>
-         <NavBar />
          <div className="container">
             <div className="card">
                <div className="container-fliud">
@@ -123,6 +121,7 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                        )
 
                        }
+                        <h6 className="price">En Stock: <span>{zapa.inventario}</span></h6>
 
                         <h5>TALLES:
 

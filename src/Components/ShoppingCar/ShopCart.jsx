@@ -3,7 +3,6 @@ import axios from 'axios';
 import { CartItem } from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
 import './ShopCart.css'
 import Button from 'react-bootstrap/Button';
 import { Order } from '../Orden/Orden';
@@ -53,8 +52,6 @@ export const ShopCart = ({ history }) => {
 
   return (
     <div>
-      <NavBar />
-
       <h3>Carrito de compras</h3>
       <div className="row">
         <div className="col-md-6 scroll">

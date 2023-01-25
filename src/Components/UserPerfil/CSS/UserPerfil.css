@@ -1,0 +1,70 @@
+.UserPtitulo{
+    letter-spacing: 3px;
+  padding: 20px;
+  width: 400px;
+  font-size: 30px;
+  margin: 30px;
+  color: rgb(0, 0, 0);
+  position: flex;
+  margin-left:150px;
+  border-radius: 10px;
+  top: 110px;
+  background: rgba(227, 227, 227, 0.932);}
+  .userprofTitulo{
+    font-size : 40px;
+    position: flex;
+    margin-left: 260px;
+  }
+.estrcPerfilUsuario{
+   
+    padding: 20px;
+    width: 25cm;
+    font-size: 20px;
+    margin: 70px;
+    color: rgb(0, 0, 0);
+    position: flex;
+    margin-left:100px;
+    border-radius: 10px;
+    top: 110px;
+    background: rgba(235, 235, 235, 0.923);
+}
+.listadoOpcionesUsuario{
+    padding: 10px;
+    width: 8cm;
+    height: 6cm;
+    font-size: 30px;
+    margin: 150px;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left:35cm;
+    border-radius: 10px;
+    top: 110px;
+    background: rgba(234, 234, 234, 0.926);
+    
+}
+.quepasa{
+    
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    background-color: rgb(132, 132, 132);
+}
+.estrucBttnUsuario{
+    position: center;
+
+}
+.detalleUsuarioPerfil{
+    margin-left: 70px;
+    margin-right: 21.5cm;
+    padding-bottom: 5px;;
+    background: rgba(229, 229, 229, 0.923);
+    background-size:cover;
+    border-radius: 10px;
+    box-shadow:   0 0 20px;
+
+
+}

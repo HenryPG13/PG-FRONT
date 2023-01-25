@@ -1,66 +1,78 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { logUser } from '../../Actions';
-import './LoginGeneral.css'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logUser } from "../../Actions";
+import { Button, Form } from "react-bootstrap";
 
+import "./CSS/LoginGeneral.css";
 
 export const LoginGeneral = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [contraseña, setContraseña] = useState("");
 
-    const [email, setEmail] = useState("");
-    const [contraseña, setContraseña] = useState("");
+  const user = useSelector((state) => state.userLog);
 
-    const user = useSelector(state => state.userLog)
+  const { error, userInfo } = user;
 
-    const { error, userInfo } = user
-
-
-    useEffect(() => {
-        if (userInfo) {
-            return navigate("/perfilusuario")
-        }
-    }, [userInfo]);
-
-    const handleLog = (e) => {
-        e.preventDefault();
-        dispatch(logUser(email, contraseña));
-        setContraseña('');
-        setEmail("");
+  useEffect(() => {
+    if (userInfo) {
+      return navigate("/perfilusuario");
     }
+  }, [userInfo]);
 
-    return (
-        <div className='fondito'>
-            {error && <p>Usuario y/o contraseña errados</p>}
-            <form onSubmit={handleLog}>
-                <div>
-                    <p>Email</p>
-                    <input
-                        name='email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type="text"
-                    />
-                </div>
-                <div>
-                    <p>Contraseña</p>
-                    <input
-                        name='contraseña'
-                        value={contraseña}
-                        onChange={(e) => setContraseña(e.target.value)}
-                        type="text"
-                    />
-                </div>
-                <button type='submit'>Ingresar</button>
-            </form>
-            <Link to={"/crearusuario"}>
-                <button>Crear cuenta</button>
-            </Link>
-            <Link to={"/login/google"}>
-                <button>Ingresa con tu cuenta de Google</button>
-            </Link>
-        </div>
-    )
+  const handleLog = (e) => {
+    e.preventDefault();
+    dispatch(logUser(email, contraseña));
+    setContraseña("");
+    setEmail("");
+  };
+
+  return (
+    <div className="fondito">
+      <div className="centro">
+        {error && <p>Usuario y/o contraseña errados</p>}
+        <h1>Login</h1>
+        <form onSubmit={handleLog}>
+          <div className="txtField">
+            <input
+              className="recuadroEmail"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              required
+            />
+            <span></span>
+            <label>Email</label>
+          </div>
+          <div className="txtField">
+            <input
+              name="contraseña"
+              value={contraseña}
+              onChange={(e) => setContraseña(e.target.value)}
+              type="text"
+              required
+            />
+            <span></span>
+            <label>Contraseña</label>
+          </div>
+          <input type="submit" value="Ingresar" />
+          {/* <Button type='submit'>Ingresar</Button> */}
+        </form>
+        <Link to={"/crearusuario"}>
+          <div className="signup_link">
+            <a href="#">Crear Cuenta</a>
+          </div>
+        </Link>
+        <Link to={"/login/google"}>
+          <div className="signup_link">
+            <a href="#">Ingresa con tu cuenta de Google</a>
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
 };
