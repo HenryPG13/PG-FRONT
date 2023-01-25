@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
-const HookForm = () => {
+const HookForm = (url) => {
     // if (!whitespacesParameter.test(newrecipe.name) || !alphabeticalPattern.test(newrecipe.name)){
     //     errors.name= "El nombre ingresado no puede contener caracteres especiales ni números"
     //   }
@@ -81,7 +81,7 @@ const HookForm = () => {
 
     let [error, setError] = useState({})
 
-    //console.log(input)
+
 
     const handleInputChange = (event) => {
         // console.log('event.target.value')
@@ -168,6 +168,8 @@ const HookForm = () => {
         console.log(input, 'input')
     }
 
+    console.log(url)
+
     return (
         <Fragment>
             <h2>Carga de productos</h2>
@@ -207,39 +209,7 @@ const HookForm = () => {
                     <p>{error.precio}</p>
                 )}
 
-                <input
-                    placeholder="Link de la imagen1..."
-                    type="text"
-                    name="imagen1"
-                    onChange={handleInputChange}
-                    value={input.imagen1}
-                    autoComplete='off'
-                />
-                {error.imagen1 && (
-                    <p>{error.imagen1}</p>
-                )}
-                <input
-                    placeholder="Ingrese la imagen2..."
-                    type="text"
-                    name="imagen2"
-                    onChange={handleInputChange}
-                    value={input.imagen2}
-                    autoComplete='off'
-                />
-                {error.imagen2 && (
-                    <p>{error.imagen2}</p>
-                )}
-                <input
-                    placeholder="Ingrese la imagen3..."
-                    type="text"
-                    name="imagen3"
-                    onChange={handleInputChange}
-                    value={input.imagen3}
-                    autoComplete='off'
-                />
-                {error.imagen3 && (
-                    <p>{error.imagen3}</p>
-                )}
+                
 
                 <input
                     placeholder="Ingrese el o los colores..."
@@ -285,9 +255,10 @@ const HookForm = () => {
                 {error.actividad && (
                     <p>{error.actividad}</p>
                 )}
+                {/* {url && url.map((u) => <span>{`tus imagenes : ${url}`}</span>)} */}
 
-
-                <button type="submit" onClick={handleSubmit} disabled={Object.entries(error).length === 0 ? false : true}>Enviar</button>
+                <button type="submit" onClick={handleSubmit} 
+                disabled={Object.entries(error).length === 0 ? false : true}>Enviar</button>
 
 
             </form>

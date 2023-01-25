@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Formulario from "../Formulario/Formulario"
 
 export default function UploadImg() {
   const [loading, setLoading] = useState(false);
@@ -130,23 +131,14 @@ export default function UploadImg() {
   return (
     <div>
       <div>
-        {url && (
-          <div>
-            Accede a el link de tu img = {" "}
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              {url}
-            </a>
-          </div>
-        )}
+        {url &&  <Formulario url={url}/>}
       </div>
       <div>
-        {loading ? (
-          <div className="flex items-center justify-center">
+        {loading && <div >
             <h1>Cargando...</h1>
-          </div>
-        ) : (
-          <UploadInput />
-        )}
+            </div>
+      }
+      {!url && <UploadInput />}
       </div>
     </div>
   );
