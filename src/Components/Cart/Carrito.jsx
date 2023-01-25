@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ajustarCantidad, removerDelCarrito } from "../../Actions";
-import NavBar from "../NavBar/NavBar";
+
 
 export default function Carrito({history}){
     const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export default function Carrito({history}){
 
     return (
         <>
-            <NavBar />
+          
             <div className="b-example-divider"></div>
 
             <div className="container my-5">

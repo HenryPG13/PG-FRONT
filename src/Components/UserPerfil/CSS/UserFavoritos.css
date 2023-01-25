@@ -1,0 +1,46 @@
+.FavPtitulo{
+    letter-spacing: 3px;
+  padding: 20px;
+  width: 400px;
+  font-size: 30px;
+  margin: 30px;
+  color: rgb(0, 0, 0);
+  position: flex;
+  margin-left:150px;
+  border-radius: 10px;
+  top: 110px;
+  background: rgba(203, 203, 203, 0.801);
+
+}
+
+.detalleFav{
+    font-size: 20px;
+    margin-top: 5cm;
+    margin-left: 20cm; 
+    margin-right: 23.5cm;
+    border-radius: 10px;
+    background: rgba(203, 203, 203, 0.801);
+
+}
+.favZapasDisplay{
+   
+  padding: 10px;
+  width: 10cm;
+  font-size: 15px;
+  margin: 60px;
+  color: rgb(0, 0, 0);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  margin-left:100px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  top: 110px;
+  background: rgba(203, 203, 203, 0.801);
+}
+.ordenProductos{
+  display: grid;
+  grid-template-columns: (3,1fr);
+  grid-gap: 10px;
+}

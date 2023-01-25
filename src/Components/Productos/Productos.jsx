@@ -6,18 +6,18 @@ import { getZapas } from "../../Actions";
 import Cards from '../Card'
 import Paginado from "../Paginado";
 import Carrusel from "../Carrusels/Carrusel";
-import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import '../CSS/Home.css'
 import './Productos.css'
 import { Filters } from "../Filters/Filters";
 
 
-import { Navbar } from "react-bootstrap";
+
 
 //imports para pruebas de scroll infinito
 import { useRef, useCallback } from "react";
 import useProductos from "../../Hooks/useProductos";
+
 
 
 export default function Productos() {
@@ -28,6 +28,7 @@ export default function Productos() {
   const indexOfLastZapa = currentPage * zapasPerPage;
   const indexOfFirstZapa = indexOfLastZapa - zapasPerPage;
   const currentZapas = allZapas.slice(indexOfFirstZapa, indexOfLastZapa);
+
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);

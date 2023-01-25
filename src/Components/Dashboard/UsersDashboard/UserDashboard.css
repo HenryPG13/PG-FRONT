@@ -1,0 +1,8 @@
+.estrucUserDash{
+    background-color: rgba(106, 106, 106, 0.832);
+}
+.config{
+    width: 400px;
+    height: 500px;
+display: absolute;  
+}

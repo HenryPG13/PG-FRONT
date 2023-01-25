@@ -7,7 +7,7 @@ import { getZapas, getOfertasZapas } from "../../Actions";
 import CardOferta from '../CardsZapas/CardOferta'
 import Paginado from "../Paginado";
 import Carrusel from "../Carrusels/Carrusel";
-import NavBar from "../NavBar/NavBar";
+
 import '../CSS/Home.css'
 // import './Productos.css'
 import '../CardsZapas/CardOferta.css'
@@ -16,7 +16,7 @@ import { Filters } from "../Filters/Filters";
 
 
 
-import { Navbar } from "react-bootstrap";
+
 
 
 
@@ -47,7 +47,7 @@ export default function Ofertas(){
 
         <div>
 
-<NavBar/>
+
 
 <Filters />
             <div className="cards">

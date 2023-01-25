@@ -4,7 +4,7 @@ import ChatBot from 'react-simple-chatbot'
 import { ThemeProvider } from "styled-components";
 import Productos from "../Productos/Productos";
 import ListadoOfertas from "./Apartados/ApartadoOfertas";
-import Busqueda from "./Apartados/ApartadoBusqueda";
+
 import ListadoProductos from './Apartados/ApartadosProductos';
 
 
@@ -51,7 +51,6 @@ export default class Contenido extends Component {
                         options: [
                             {value: "a", label: "Ver listado de Productos", trigger:"3a"},
                             {value: "b", label: "Ver listado de Ofertas", trigger:"3b"},
-                            {value: "c", label: "Buscar zapatilla:", trigger:"3c"},
                         ]
                     },                    
                     {
@@ -65,11 +64,6 @@ export default class Contenido extends Component {
                         component: <ListadoOfertas />,
                         asMessage: true,
                         trigger: "preguntaVuelta"
-                    }, {
-                        id: "3c",
-                        component: <Busqueda />,
-                        // message: "Hey, fuck you!",
-                        trigger: "preguntaVuelta",
                     },
                         
                     {
