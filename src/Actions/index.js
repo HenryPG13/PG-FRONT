@@ -106,7 +106,11 @@ export function AgregarOrden(orden) {
         try {
             const order = await axios.post('http://localhost:3001/pedido', orden);
             const { msg, ordenResp } = order.data;
-            dispatch(crearOrden(ordenResp));
+            // crearOrden(ordenResp);
+            dispatch({
+                type: "ADD_ORDER",
+                payload: ordenResp
+            })
             // swal.fire({
             //     icon: 'success',
             //     title: `${msg}`,
@@ -124,7 +128,7 @@ export function AgregarOrden(orden) {
 export function crearOrden(orden) {
     return async function (dispatch) {
         dispatch({
-            type: "AGREGAR_ORDEN",
+            type: "ADD_ORDER",
             payload: orden
         })
     }

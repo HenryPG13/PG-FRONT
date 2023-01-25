@@ -76,6 +76,8 @@ export default function NavBar() {
             </button>
           </Link>
 
+          
+
           <Link to='/zapatillas/ofertas'>
             <Button className="productos" >Ofertas</Button>
           </Link>

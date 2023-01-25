@@ -3,21 +3,24 @@ import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { AgregarOrden } from "../../Actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../Actions";
 import swal from 'sweetalert';
 
 export const Order = (prop) => {
     const { props } = prop;
-    const [history, total] = props;
+    const total = props;
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     // const emailUser = useSelector((state) => state.user.email)
     const user = useSelector((state) => state.user)
 
-    const [userId, setUserId] = useState("")
-    const [mostrar, setMostrar] = useState(false)
+    const [userId, setUserId] = useState("");
+    const [mostrar, setMostrar] = useState(false);
+    const [linkMP, setLinkMP] = useState("");
+    const [ordenFin, setOrdenFin] = useState(false);
     // const [userData, setUserData] = useState()
     const userData = useSelector((state) => state.user)
 
@@ -49,6 +52,10 @@ export const Order = (prop) => {
         
     }, [userData, setValue])
 
+    
+
+
+
     const onSubmit = async () => {
 
         const items = cart.map(c => {
@@ -71,12 +78,18 @@ export const Order = (prop) => {
         }
         console.log(order)
         const respuesta = await dispatch(AgregarOrden(order))
-        console.log("ESTA ES MI RESPUESTA ", respuesta);
+        // dispatch(AgregarOrden(order))
+        setLinkMP(respuesta)
+        setOrdenFin(true)
+        // dispatch(AgregarOrden(order))
+        // console.log("ESTA ES MI RESPUESTA ", respuesta);
         // dispatch(clearCart())
         swal({
-            icon: "success",
-            title: 'Felicidades, orden aprobada, dirijase a Checkout para completar el pago'
-          });
+          icon: "success",
+          title: 'Felicidades, orden aprobada, dirijase a Checkout para completar el pago',
+        });
+        
+        // navigate(respuesta)
         //console.log(respuesta)
         // history.replace({ pathname: "/Checkout", state: { preferenceId: `${respuesta}` } })
         // (<Link to="/zapatillas">Pagar</Link>)
@@ -262,20 +275,51 @@ export const Order = (prop) => {
             )}
             <div className="d-grid">
               <div className="text-center gap-2 mt-3">
-                {cart.length !== 0 &&
-                                <button className="btn btn-sm me-2 text-success" style={{ fontSize: 25 }} type="submit">
-                                    <i className="bi bi-check-circle" />
-                                    <h6>Confirmar</h6>
-                                </button>
-                            }
+                {cart.length !== 0 && (
+                  <button
+                    className="btn btn-sm me-2 text-success"
+                    style={{ fontSize: 25 }}
+                    type="submit"
+                  >
+                    <i className="bi bi-check-circle" />
+                    <h6>Proceder al checkout</h6>
+                  </button>
+                )}
+                {ordenFin ? (
+                  <div>
+                    <button className="bg-transparent border-0 text-white">
+                      <a
+                        href={linkMP}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        IR A PAGAR
+                      </a>
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <button className="bg-transparent border-0 text-white" disabled>
+                      IR A PAGAR
+                    </button>
+                  </div>
+                )}
                 {/* <Link to="/Checkout" type="submit">Pagar</Link> */}
-
-                {/* {mostrar === true &&
-                                <Link to="/user" className="btn btn-sm text-warning" style={{ fontSize: 20 }}>
-                                    <i className="bi bi-pencil-fill" />
-                                    <h6>Cambiar dirección</h6>
-                                </Link>
-                            } */}
+                {/* <Link to="/checkout">
+            <button className="bg-transparent border-0 text-white">
+              Checkout
+            </button>
+          </Link> */}
+                {/* {mostrar === true && (
+                  <Link
+                    to="/user"
+                    className="btn btn-sm text-warning"
+                    style={{ fontSize: 20 }}
+                  >
+                    <i className="bi bi-pencil-fill" />
+                    <h6>Cambiar dirección</h6>
+                  </Link>
+                )} */}
               </div>
             </div>
           </form>
