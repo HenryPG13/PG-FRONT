@@ -5,7 +5,9 @@ import Card from 'react-bootstrap/Card';
 
 
 // const Cards = React.forwardRef(({id, marca, image, modelo, precio,oferta}, ref) => {
-//   const cardsBody = (
+
+  // const cardsBody = (
+
 
     
 //        <Card.Body>
@@ -61,5 +63,7 @@ export default function Cards({id, marca, image, modelo, precio}){
    //         <h5>{precio}</h5>
    //      </div>           
    //   </div>
-     );
-  }
+
+);
+}
+
