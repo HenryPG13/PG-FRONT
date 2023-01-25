@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Formulario from "../Formulario/Formulario";
 
 export default function UploadImg() {
   const [loading, setLoading] = useState(false);
@@ -111,18 +112,11 @@ export default function UploadImg() {
     }
     uploadMultipleImages(base64s);
   };
-
+  
   return (
     <div>
       <div>
-        {url && (
-          <div>
-            Accede a el link de tu img = {" "}
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              {url}
-            </a>
-          </div>
-        )}
+        {url && <Formulario img={url}/>}
       </div>
       <div>
         {loading ? (
@@ -130,7 +124,7 @@ export default function UploadImg() {
             <h1>Cargando...</h1>
           </div>
         ) : (
-          <UploadInput />
+          !url && <UploadInput />
         )}
       </div>
     </div>

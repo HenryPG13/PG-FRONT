@@ -20,6 +20,7 @@ import { useRef, useCallback } from "react";
 import useProductos from "../../Hooks/useProductos";
 
 
+
 export default function Productos() {
   const dispatch = useDispatch();
   const allZapas = useSelector((state) => state.zapas);
@@ -28,6 +29,7 @@ export default function Productos() {
   const indexOfLastZapa = currentPage * zapasPerPage;
   const indexOfFirstZapa = indexOfLastZapa - zapasPerPage;
   const currentZapas = allZapas.slice(indexOfFirstZapa, indexOfLastZapa);
+
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);

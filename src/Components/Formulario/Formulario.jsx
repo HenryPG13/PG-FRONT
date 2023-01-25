@@ -1,16 +1,17 @@
 import React, { Fragment, useState } from "react";
-
+import UploadImg from "../Admin/uploadImg";
 import { postProduct } from "../../Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 
-const HookForm = () => {
+const HookForm = (url) => {
     // if (!whitespacesParameter.test(newrecipe.name) || !alphabeticalPattern.test(newrecipe.name)){
     //     errors.name= "El nombre ingresado no puede contener caracteres especiales ni números"
     //   }
-    
+
     function validation(input) {
         let whitespacesParameter = /(?!^\s+$)^.*$/m;  //controla caracteres especiales
         let alphabeticalPattern = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/; //controla que solo sean letras
@@ -36,27 +37,27 @@ const HookForm = () => {
             error.precio = "El precio solo puede contener numeros"
         }
 
-        if (input.imagen1.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.imagen1)) {
-            error.imagen1 = 'URL de imagen 1 no valida'
+        if (input.imagenes.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.imagenes)) {
+            error.imagenes = 'URL de imagen 1 no valida'
         }
 
-        if (input.imagen2.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.imagen2)) {
-            error.imagen2 = 'URL de imagen 2 no valida'
-        }
+        // if (input.imagen2.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.imagen2)) {
+        //     error.imagen2 = 'URL de imagen 2 no valida'
+        // }
 
-        if (input.imagen3.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.imagen3)) {
-            error.imagen3 = 'URL de imagen 3 no valida'
-        }
+        // if (input.imagen3.length !== 0 && !/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.imagen3)) {
+        //     error.imagen3 = 'URL de imagen 3 no valida'
+        // }
 
-        if(input.talle1 && input.talle1 < 28 || input.talle1 > 49) {
-            error.talle1 = 'Debes ingresar una talla entre 28 y 49'
+        if (input.talle && input.talle < 28 || input.talle > 49) {
+            error.talle = 'Debes ingresar una talla entre 28 y 49'
         }
 
         // if ((!whitespacesParameter.test(input.color1) || !alphabeticalPattern.test(input.color1))) {
         //     error.color1 = "El color ingresado no puede contener caracteres especiales ni números"
         // }
 
-       
+
         return error
     }
 
@@ -67,15 +68,15 @@ const HookForm = () => {
     const [input, setInput] = useState({
         actividad: "",
         marca: "",
-        imagen1: "",
-        imagen2: "",
-        imagen3: "",
+        imagenes: [].concat(url.img),
         precio: 1,
         modelo: "",
-        talles: [],
-        color: [],
-        color1: "",
-        talle1: 0
+        talle: 1,
+        color: "",
+        descripcion: ""
+        // color1: "",
+        // talle1: 0
+        
     })
 
 
@@ -102,48 +103,11 @@ const HookForm = () => {
 
 
     // -----------------------------------------------------------------------------
-    const handleAddTalle = (e) => {
-
-        setInput({
-            ...input,
-            talles: [
-                ...input.talles,
-                input.talle1
-            ],
-            talle1: 0
-        });
-        setError(validation({
-            ...input,
-            talles: [
-                ...input.talles,
-                input.talle1
-            ],
-            talle1: 0
-        }))
-    }
-
-    const handleAddColor = (e) => {
-
-        setInput({
-            ...input,
-            color: [
-                ...input.color,
-                input.color1
-            ],
-            color1: ""
-        });
-        setError(validation({
-            ...input,
-            color: [
-                ...input.color,
-                input.color1
-            ],
-            color1: ""
-        }))
-        
-    }
+    
+    
     // -----------------------------------------------------------------------------
-
+    console.log(input.imagenes, 'img')
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log ()
@@ -152,20 +116,19 @@ const HookForm = () => {
         setInput({
             actividad: "",
             marca: "",
-            imagen1: "",
-            imagen2: "",
-            imagen3: "",
+            imagenes: [],
             precio: 1,
             modelo: "",
-            talles: [],
-            color: [],
-            color1: "",
-            talle1: 0
+            talle: 1,
+            color: "",
+            descripcion: ""
+            // color1: "",
+            // talle1: 0
 
         })
         // history.push('/home')
+
         
-        console.log(input, 'input')
     }
 
     return (
@@ -207,18 +170,21 @@ const HookForm = () => {
                     <p>{error.precio}</p>
                 )}
 
-                <input
-                    placeholder="Link de la imagen1..."
+                {/* <input
+                    placeholder="Link de la imagen..."
                     type="text"
-                    name="imagen1"
+                    name="imagen"
                     onChange={handleInputChange}
-                    value={input.imagen1}
+                    value={input.imagenes}
                     autoComplete='off'
                 />
-                {error.imagen1 && (
-                    <p>{error.imagen1}</p>
-                )}
-                <input
+                {error.imagenes && (
+                    <p>{error.imagenes}</p>
+                )} */}
+                {/* <button type="button" onClick={handleImg}>
+                    agregar imagen
+                </button> */}
+                {/* <input
                     placeholder="Ingrese la imagen2..."
                     type="text"
                     name="imagen2"
@@ -239,39 +205,39 @@ const HookForm = () => {
                 />
                 {error.imagen3 && (
                     <p>{error.imagen3}</p>
-                )}
+                )} */}
 
                 <input
                     placeholder="Ingrese el o los colores..."
                     type="text"
-                    name="color1"
+                    name="color"
                     onChange={handleInputChange}
-                    value={input.color1}
+                    value={input.color}
                     autoComplete='off'
                     defaultValue='Blanco'
                 />
-                {/* {error.color1 && (
-                    <p>{error.color1}</p>
-                )} */}
+                {error.color && (
+                    <p>{error.color}</p>
+                )}
 
-                <button type="button" onClick={handleAddColor} >
+                {/* <button type="button" onClick={handleAddColor} >
                     Agregar nuevo color
-                </button>
+                </button> */}
 
                 <input
                     placeholder="Ingrese los talles"
                     type="number"
-                    name="talle1"
+                    name="talle"
                     onChange={handleInputChange}
-                    value={input.talle1}
+                    value={input.talle}
                     autoComplete='off'
                 />
-                {error.talle1 && (
-                    <p>{error.talle1}</p>
+                {error.talle && (
+                    <p>{error.talle}</p>
                 )}
-                <button type="button" onClick={handleAddTalle} disabled={error.talle1? true: false}>
+                {/* <button type="button" onClick={handleAddTalle} disabled={error.talle1? true: false}>
                     Agregar nuevo talle
-                </button>
+                </button> */}
 
 
                 <input
@@ -285,6 +251,15 @@ const HookForm = () => {
                 {error.actividad && (
                     <p>{error.actividad}</p>
                 )}
+
+                <input
+                    placeholder="Ingrese la descripción..."
+                    type="text"
+                    name="descripcion"
+                    onChange={handleInputChange}
+                    value={input.descripcion}
+                    autoComplete='off'
+                />
 
 
                 <button type="submit" onClick={handleSubmit} disabled={Object.entries(error).length === 0 ? false : true}>Enviar</button>
