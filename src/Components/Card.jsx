@@ -5,7 +5,9 @@ import Card from 'react-bootstrap/Card';
 
 
 // const Cards = React.forwardRef(({id, marca, image, modelo, precio,oferta}, ref) => {
+
   // const cardsBody = (
+
 
     
 //        <Card.Body>
@@ -38,7 +40,13 @@ export default function Cards({id, marca, image, modelo, precio, oferta}){
   const Dinero = oferta ? (precio/2)  : precio
    console.log(oferta,'asdsadsadsad')
   return(
+<<<<<<< HEAD
+    
+    <div>
+   <Card style={{ width: '15rem' }}>
+=======
    <Card style={{ width: '17rem' }}>
+>>>>>>> develop
      <Card.Img variant="top" src={image} />
      <Card.Body>
        <Card.Title>{marca}</Card.Title>
@@ -61,6 +69,7 @@ export default function Cards({id, marca, image, modelo, precio, oferta}){
        <Button variant="primary">Comprar</Button>
      </Card.Body>
    </Card>
+   </div>
    
    //   <div>
    //      <h3>{marca}</h3>
@@ -70,5 +79,7 @@ export default function Cards({id, marca, image, modelo, precio, oferta}){
    //         <h5>{precio}</h5>
    //      </div>           
    //   </div>
+
 );
 }
+

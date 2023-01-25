@@ -12,6 +12,7 @@ export default function SidebarDashboard (){
             <Link className='listadoLink' to={'/tableroproductos'}><p>Productos</p></Link>
             <Link to={'/tablerordenes'}><p>Ordenes</p></Link>
             <Link to={'/tablerorevisiones'}><p>Revisiones</p></Link>
+            <Link to={'/sendNotification'}><p>Notificaciones</p></Link>
         </div>
     )
 }

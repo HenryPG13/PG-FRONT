@@ -22,6 +22,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import { Favoritos } from './Components/UserPerfil/Favoritos';
 import { OrdersUser } from './Components/UserPerfil/OrdersUser';
 import { UpdateUser } from './Components/UserPerfil/UpdateUser';
+import SendNotification from "./Components/Dashboard/SendNotification/SendNotification"
 import { ProductosRender } from './Components/Productos/Productos render';
 import { Checkout } from './Components/Checkout/Checkout';
 import { Order } from './Components/Orden/Orden';
@@ -29,6 +30,7 @@ import NavBar from './Components/NavBar/NavBar';
 
 import './App.css'
 import Footer from './Components/Footer/Footer';
+
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
           <Route exact path='/tablerorevisiones' element={<ReviewsDashboard />} ></Route>
           <Route exact path='/tableroproductos' element={<ProductDashboard />} ></Route>
           <Route exact path='/tablerousuarios' element={<UserDashboard />} ></Route>
+          <Route exact path='/sendNotification' element={<SendNotification />} ></Route>
           <Route exact path='/perfiladmin' element={<Dashboard />}></Route>
           <Route exact path='/perfilusuario/:id/favoritos' element={<Favoritos />}></Route>
           <Route exact path='/perfilusuario/:id/modificarinfo' element={<UpdateUser />}></Route>
