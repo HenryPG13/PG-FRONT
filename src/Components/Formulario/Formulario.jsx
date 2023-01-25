@@ -1,9 +1,11 @@
-import React, { Fragment, useState } from "react";
-import UploadImg from "../Admin/uploadImg";
+import React, { Fragment, useState} from "react";
 import { postProduct } from "../../Actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate  } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import swal from 'sweetalert';
+import './Form.css'
 
 
 
@@ -56,6 +58,9 @@ const HookForm = (url) => {
         // if ((!whitespacesParameter.test(input.color1) || !alphabeticalPattern.test(input.color1))) {
         //     error.color1 = "El color ingresado no puede contener caracteres especiales ni números"
         // }
+        if (!input.descripcion) {
+            error.descripcion = 'Por favor inserta una descripcion del producto'
+        }
 
 
         return error
@@ -63,7 +68,7 @@ const HookForm = (url) => {
 
     const dispatch = useDispatch();
 
-    //const history = useHistory();
+    const navigate = useNavigate();
 
     const [input, setInput] = useState({
         actividad: "",
@@ -76,7 +81,7 @@ const HookForm = (url) => {
         descripcion: ""
         // color1: "",
         // talle1: 0
-        
+
     })
 
 
@@ -103,16 +108,20 @@ const HookForm = (url) => {
 
 
     // -----------------------------------------------------------------------------
-    
-    
+
+
     // -----------------------------------------------------------------------------
     console.log(input.imagenes, 'img')
-    
+
     const handleSubmit = (e) => {
         e.preventDefault()
         // console.log ()
         dispatch(postProduct(input))
-        alert('¡Producto cargado con exito!')
+        swal({
+            icon: "success",
+            title: 'Producto agregado con éxito!'
+          });
+        
         setInput({
             actividad: "",
             marca: "",
@@ -126,148 +135,141 @@ const HookForm = (url) => {
             // talle1: 0
 
         })
-        // history.push('/home')
+         navigate('/home')
 
-        
+
     }
 
     return (
         <Fragment>
-            <h2>Carga de productos</h2>
             <form onSubmit={handleSubmit}>
-                {/* <form> */}
-                <input
-                    placeholder="Ingrese la marca..."
-                    type="text"
-                    name="marca"
-                    onChange={handleInputChange}
-                    value={input.marca}
-                    autoComplete='off'
-                />
-                {error.marca && (
-                    <p>{error.marca}</p>
-                )}
-                <input
-                    placeholder="Ingrese el modelo..."
-                    type="text"
-                    name="modelo"
-                    onChange={handleInputChange}
-                    value={input.modelo}
-                    autoComplete='off'
-                />
-                {error.modelo && (
-                    <p>{error.modelo}</p>
-                )}
-                <input
-                    placeholder="Ingrese el precio..."
-                    type="number"
-                    name="precio"
-                    onChange={handleInputChange}
-                    value={input.precio}
-                    autoComplete='off'
-                />
-                {error.precio && (
-                    <p>{error.precio}</p>
-                )}
+            <Form className="formCont">
 
-                {/* <input
-                    placeholder="Link de la imagen..."
-                    type="text"
-                    name="imagen"
-                    onChange={handleInputChange}
-                    value={input.imagenes}
-                    autoComplete='off'
-                />
-                {error.imagenes && (
-                    <p>{error.imagenes}</p>
-                )} */}
-                {/* <button type="button" onClick={handleImg}>
-                    agregar imagen
-                </button> */}
-                {/* <input
-                    placeholder="Ingrese la imagen2..."
-                    type="text"
-                    name="imagen2"
-                    onChange={handleInputChange}
-                    value={input.imagen2}
-                    autoComplete='off'
-                />
-                {error.imagen2 && (
-                    <p>{error.imagen2}</p>
-                )}
-                <input
-                    placeholder="Ingrese la imagen3..."
-                    type="text"
-                    name="imagen3"
-                    onChange={handleInputChange}
-                    value={input.imagen3}
-                    autoComplete='off'
-                />
-                {error.imagen3 && (
-                    <p>{error.imagen3}</p>
-                )} */}
+                <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicEmail">
+                    <h3>Marca</h3>
+                    <Form.Control
+                        required
+                        className="inputs"
+                        placeholder="Ingrese la marca..."
+                        type="text"
+                        name="marca"
+                        onChange={handleInputChange}
+                        value={input.marca}
+                        autoComplete='off' />
 
-                <input
-                    placeholder="Ingrese el o los colores..."
-                    type="text"
-                    name="color"
-                    onChange={handleInputChange}
-                    value={input.color}
-                    autoComplete='off'
-                    defaultValue='Blanco'
-                />
-                {error.color && (
-                    <p>{error.color}</p>
-                )}
+                    {error.marca && (
+                        <p>{error.marca}</p>
+                    )}
+                </Form.Group>
 
-                {/* <button type="button" onClick={handleAddColor} >
-                    Agregar nuevo color
-                </button> */}
+                <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicEmail">
+                    <h3>Modelo</h3>
+                    <Form.Control
+                        className="inputs"
+                        placeholder="Ingrese el modelo..."
+                        type="text"
+                        name="modelo"
+                        onChange={handleInputChange}
+                        value={input.modelo}
+                        autoComplete='off' />
 
-                <input
-                    placeholder="Ingrese los talles"
-                    type="number"
-                    name="talle"
-                    onChange={handleInputChange}
-                    value={input.talle}
-                    autoComplete='off'
-                />
-                {error.talle && (
-                    <p>{error.talle}</p>
-                )}
-                {/* <button type="button" onClick={handleAddTalle} disabled={error.talle1? true: false}>
-                    Agregar nuevo talle
-                </button> */}
+                    {error.marca && (
+                        <p>{error.marca}</p>
+                    )}
+                </Form.Group>
 
+                <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicEmail">
+                    <h3>Precio</h3>
+                    <Form.Control
+                        className="inputs"
+                        placeholder="Ingrese el precio..."
+                        type="number"
+                        name="precio"
+                        onChange={handleInputChange}
+                        value={input.precio}
+                        autoComplete='off'
+                    />
+                    {error.precio && (
+                        <p>{error.precio}</p>
+                    )}
+                </Form.Group>
 
-                <input
-                    placeholder="Actividad"
-                    type="text"
-                    name="actividad"
-                    onChange={handleInputChange}
-                    value={input.actividad}
-                    autoComplete='off'
-                />
-                {error.actividad && (
-                    <p>{error.actividad}</p>
-                )}
+                <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicEmail">
+                    <h3>Color</h3>
+                    <Form.Control
+                        className="inputs"
+                        placeholder="Ingrese el o los colores..."
+                        type="text"
+                        name="color"
+                        onChange={handleInputChange}
+                        value={input.color}
+                        autoComplete='off'
+                        defaultValue='Blanco'
+                    />
+                    {error.color && (
+                        <p>{error.color}</p>
+                    )}
+                </Form.Group>
 
-                <input
-                    placeholder="Ingrese la descripción..."
-                    type="text"
-                    name="descripcion"
-                    onChange={handleInputChange}
-                    value={input.descripcion}
-                    autoComplete='off'
-                />
+                <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicEmail">
+                    <h3>Talle</h3>
+                    <Form.Control
+                        className="inputs"
+                        placeholder="Ingrese los talles"
+                        type="number"
+                        name="talle"
+                        onChange={handleInputChange}
+                        value={input.talle}
+                        autoComplete='off'
+                    />
+                    {error.talle && (
+                        <p>{error.talle}</p>
+                    )}
+                </Form.Group>
 
+                <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicEmail">
+                    <h3>Actividad</h3>
+                    <Form.Control
+                        className="inputs"
+                        placeholder="Actividad"
+                        type="text"
+                        name="actividad"
+                        onChange={handleInputChange}
+                        value={input.actividad}
+                        autoComplete='off'
+                    />
+                    {error.actividad && (
+                        <p>{error.actividad}</p>
+                    )}
+                </Form.Group>
 
-                <button type="submit" onClick={handleSubmit} disabled={Object.entries(error).length === 0 ? false : true}>Enviar</button>
+                <Form.Group onSubmit={handleSubmit} className="mb-3" controlId="formBasicEmail">
+                    <h3>Descripción</h3>
+                    <Form.Control
+                        className="inputs"
+                        placeholder="Ingrese la descripción..."
+                        type="text"
+                        name="descripcion"
+                        onChange={handleInputChange}
+                        value={input.descripcion}
+                        autoComplete='off'
+                    />
+                    {error.descripcion && (
+                        <p>{error.descripcion}</p>
+                    )}
+                </Form.Group>
+            </Form>
+            
+            <div className="btns">
+            <Button className="btnBack"><Link className="text-white text-decoration-none" to="/home">Volver</Link></Button>
+
+            <Button className='btnSub' variant='primary' type="submit" onClick={handleSubmit} disabled={Object.entries(error).length === 0 ? false : true}>Enviar</Button>
+            </div>
+            
+            
 
 
             </form>
-
-            <button><Link to="/home">Volver</Link></button>
         </Fragment>
     );
 }

@@ -74,7 +74,7 @@ export default function ProductDashboard() {
     return (
       <div >
         <div>
-        <button><Link  to= '/Crear'>Cargar Zapas</Link></button>   
+        <button><Link  to= '/uploadimg'>Cargar Zapas</Link></button>   
           {/* <SidebarDashboard /> */}
           {allzapas?.length > 0 ? (
             <>
