@@ -9,7 +9,7 @@ class ListadoOfertas extends Component {
         return (
             <div>
                 <p>Aca tenes el Listado de Ofertas: </p>
-                <a href={'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley'} >Listado de Ofertas</a>
+                <Link to={'/zapatillas/ofertas'} target="_blank">Listado de Ofertas</Link>                
             </div>
         )
     }

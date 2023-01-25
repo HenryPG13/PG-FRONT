@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFav, removeToFav } from "../../Actions";
-import NavBar from "../NavBar/NavBar";
+
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
@@ -40,7 +40,6 @@ export default function Favorito({history}){
 
     return (
         <>
-            <NavBar />
             <div className="b-example-divider"></div>
 
             <div className="container my-5">

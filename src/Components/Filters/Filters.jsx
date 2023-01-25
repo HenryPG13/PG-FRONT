@@ -83,7 +83,7 @@ export const Filters = () => {
 
             <DropdownButton onClick={(e) => filterActividad(e)} id="dropdown-basic-button" title="Selecciona una actividad">
 
-                <Dropdown.Item><option value={'default'}> Cualquiera </option></Dropdown.Item>
+                <Dropdown.Item><option defaultValue={'default'}> Cualquiera </option></Dropdown.Item>
                 <Dropdown.Item><option value={'Moda'}> Moda </option></Dropdown.Item>
                 <Dropdown.Item><option value={'Basquet'}> Basquet </option></Dropdown.Item>
 

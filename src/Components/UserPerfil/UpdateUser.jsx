@@ -4,6 +4,7 @@ import { updateUser } from '../../Actions';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import './CSS/UpdateUser.css';
 
 export const UpdateUser = () => {
 
@@ -41,32 +42,36 @@ export const UpdateUser = () => {
     };
 
     return (
-        <div >
-            <h3 >Datos de usuario.</h3>
+        <div className='fondoCambioUsuario' >
+            <div className='centro'>
+            <h3>Datos de usuario</h3>
             <form onSubmit={handleSubmitRegister}>
-                <div>
-                    <p >Nombre</p>
+                <div className='recuadroInfo'>
+                    <p>Nombre</p>
                     <input
                         placeholder="Nombre"
                         value={data.nombre}
                         name="nombre"
                         onChange={handleChange}
                         type="text"
+                        required
                     />
                 </div>
 
-                <div>
-                    <p>Apellido</p>
+                <div className='recuadroInfo'>
                     <input
                         placeholder="apellido"
                         value={data.apellido}
                         name="apellido"
                         onChange={handleChange}
                         type="text"
-                    />
+                        
+                        />
+                        <span></span>
+                    <label>Apellido</label>
                 </div>
 
-                <div>
+                <div className='recuadroInfo'>
                     <p>E-mail</p>
                     <input
                         placeholder="email"
@@ -74,57 +79,65 @@ export const UpdateUser = () => {
                         name="email"
                         onChange={handleChange}
                         type="email"
+                        required
                     />
                 </div>
 
-                <div>
-                    <p>Ciudad</p>
+                <div className='recuadroInfo'>
                     <input
                         placeholder="ciudad"
                         value={data.ciudad}
-                        name="ciudad"
+                        name="Ciudad"
                         onChange={handleChange}
                         type="text"
-                    />
+                        />
+                        <span></span>
+                        <label>Ciudad</label>
                 </div>
 
-                <div>
-                    <p>Pais</p>
+                <div className='recuadroInfo'>
                     <input
                         placeholder="pais"
                         value={data.pais}
                         name="pais"
                         onChange={handleChange}
                         type="text"
-                    />
+                        />
+                    <span></span>
+                    <label>Pais</label>
                 </div>
 
-                <div>
-                    <p>Direccion</p>
+                <div className='recuadroInfo'>
                     <input
                         placeholder="direccion"
                         value={data.direccion}
                         name="direccion"
                         onChange={handleChange}
                         type="text"
-                    />
+                        />
+                        <span></span>
+                        <label>Direccion</label>
                 </div>
 
-                <div>
-                    <p>Contraseña</p>
+                <div className='recuadroInfo'>
                     <input
                         placeholder="Contraseña"
                         value={data.contraseña}
                         name="contraseña"
                         onChange={handleChange}
                         type="password"
-                    />
+                        required
+                        />
+                        <span></span>
+                        <label>Contraseña</label>
                 </div>
 
                 <div >
-                    <button >Guardar cambios</button>
+                <input type="submit" value="Guardar Cambios" />
+                    {/* <button className='bttnGuardar'>Guardar cambios</button> */}
                 </div>
             </form>
+            </div>
         </div>
 
     );

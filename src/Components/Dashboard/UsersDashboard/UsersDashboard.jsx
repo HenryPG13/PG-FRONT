@@ -6,7 +6,10 @@ import { getUsers, updateUserAdmin, updateUserEstado } from '../../../Actions';
 import PieChart from '../Charts/PieActiveUsers';
 import BarUsersOrders from '../Charts/BarUserOrders';
 
+import './UserDashboard.css'
+
 import style from "./UsersDashboard.module.css";
+import SidebarDashboard from '../SidebarDashboard/SidebarDashboard';
 
 export default function UserDashboard() {
 
@@ -109,10 +112,11 @@ export default function UserDashboard() {
   }, []);
 
 
+
   return (
-    <div >
+    <div className='estrucUserDash' >
       <div >
-        {/* <SidebarDashboard /> */}
+        <SidebarDashboard />
         {users?.length > 0 ? (
           <>
             <h1>USUARIOS REGISTRADOS</h1>

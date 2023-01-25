@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { getOrders } from '../../Actions';
 
+import './CSS/OrdersUser.css'
+
 export const OrdersUser = () => {
 
     const { id } = useParams();
@@ -19,10 +21,10 @@ export const OrdersUser = () => {
     //console.log(ordersUser)
     return (
         <div>
-            <h1>Ordenes de compra</h1>
+            <h1 className='OrderUsertitulo'>Ordenes de compra</h1>
             {ordersUser?.map(e => {
                 return (
-                    <div>
+                    <div className='estrcOrderUsuario'>
                         <h2>Oden de compra No: {e._id}</h2>
                         <h3>Detalles de envio:</h3>
                         <p>Direccion: {e.direccionEntrega.direccion}</p>
