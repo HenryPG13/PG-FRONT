@@ -87,7 +87,7 @@ const HookForm = (url) => {
 
     let [error, setError] = useState({})
 
-    //console.log(input)
+
 
     const handleInputChange = (event) => {
         // console.log('event.target.value')
@@ -139,6 +139,8 @@ const HookForm = (url) => {
 
 
     }
+
+    console.log(url)
 
     return (
         <Fragment>

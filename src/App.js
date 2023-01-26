@@ -55,7 +55,7 @@ function App() {
           <Route Route exact path='/compras' element={<ShopCart />}></Route>
           <Route exact path='/login/google' element={<LoginGoogle />} />
           <Route exact path='/' element={<LandingPage />} />
-          <Route exact path='/uploadImg' element={<UploadImg />} />
+          <Route exact path='/crear' element={<UploadImg />} />
           <Route path='/Home' element={<Home />} />
           <Route exact path='/zapatillas/:id' element={<Details />} />
           <Route path='/zapatillas' element={<ProductosRender />} />

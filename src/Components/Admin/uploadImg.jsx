@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Formulario from "../Formulario/Formulario";
-import NavBar from "../NavBar/NavBar";
 import Spinner from 'react-bootstrap/Spinner';
 import swal from 'sweetalert';
 import './Cloudinary.css'
+import { useNavigate } from "react-router-dom";
 
 export default function UploadImg() {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false)
   const [url, setUrl] = useState("");
-
+  const navigate = useNavigate()
 
   // converBase64 => es una función que convierte una imagen en una serie de digitos y letras 
   // para que lo pueda leer
@@ -23,6 +24,7 @@ export default function UploadImg() {
       };
 
       fileReader.onerror = (error) => {
+        
         reject(error);
       };
     });
@@ -85,7 +87,13 @@ export default function UploadImg() {
         });
       })
       .then(() => setLoading(false))
-      .catch(console.log);
+      .catch((err) =>{
+        console.log(err)
+        setError(true)
+        setLoading(false)
+        navigate("/uploadImg")
+        alert("Hubo un problema, al intentar subir la imagen :(");
+      });
   }
   //uploadMultipleImages => función que se ejecuta si subis mas de una imagen =) (encaragada de hacer
   // el .post)
@@ -101,7 +109,13 @@ export default function UploadImg() {
         });
       })
       .then(() => setLoading(false))
-      .catch(console.log);
+      .catch((err) =>{
+        console.log(err)
+        setError(true)
+        setLoading(false)
+        navigate("/uploadImg")
+        alert("Hubo un problema, al intentar subir la imagen :(");
+      });
   }
 
   //uploadImage => funcion que termina por convertir toda la información y subirla =)
@@ -125,7 +139,7 @@ export default function UploadImg() {
 
   return (
     <div>
-      <NavBar />
+
       
       <div >
 
