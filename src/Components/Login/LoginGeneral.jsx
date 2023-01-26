@@ -42,7 +42,7 @@ export const LoginGeneral = () => {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              type="text"
+              type="email"
               required
             />
             <span></span>
@@ -53,7 +53,7 @@ export const LoginGeneral = () => {
               name="contraseña"
               value={contraseña}
               onChange={(e) => setContraseña(e.target.value)}
-              type="text"
+              type="password"
               required
             />
             <span></span>

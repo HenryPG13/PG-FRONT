@@ -47,7 +47,7 @@ export default function NavBar() {
 
   return (
     <Navbar className="bg-primary bg-gradient">
-      
+
       <Link to="/Home">
         <img
           src={logo}
@@ -89,21 +89,21 @@ export default function NavBar() {
             {notificaciones.length > 0 && (
               <div className="counter">{notificaciones.length}</div>
             )}
-         
+
             {open && (
               <div className="notifications">
                 {notificaciones.map((n) => (
                   <div className="n">
-                  <span className="notification">{n}</span>
+                    <span className="notification">{n}</span>
                   </div>
                 ))}
-                {notificaciones.length === 0 && <span className="notification">No hay notificaciones sin leer</span> }
+                {notificaciones.length === 0 && <span className="notification">No hay notificaciones sin leer</span>}
                 <button className="nButton" onClick={handleRead}>
                   Marcar como leido
                 </button>
               </div>
             )}
-            
+
           </div>
         </div>
 
@@ -112,9 +112,11 @@ export default function NavBar() {
           <Button className="bg-transparent border-dark">🛒</Button>
         </Link>
 
-        <Link className="btnFav" to={"/favoritos"}>
-          <Button className="bg-transparent border-dark ">❤️</Button>
-        </Link>
+        {Object.entries(logUser).length > 0 ?
+          <Link className="btnFav" to={`/perfilusuario/${logUser._id}/favoritos`}>
+            <Button className="bg-transparent border-dark ">❤️</Button>
+          </Link> : <Button className="bg-transparent border-dark " disabled>❤️</Button>
+        }
 
         {Object.entries(logUser).length !== 0 || user ? <Link to='/perfilusuario'>
           <Button className="productos" >Mi perfil</Button>
@@ -124,7 +126,7 @@ export default function NavBar() {
           <Button className="productos" >Admin</Button>
         </Link> : null}
         {/* <SearchBar /> */}
-        {Object.entries(logUser).length !== 0 || user?
+        {Object.entries(logUser).length !== 0 || user ?
           <button onClick={handleLogOut}>Logout</button>
           : <Link className="btnLogin" to="/login">
             <Button variant="light">Ingresar</Button>
@@ -135,7 +137,7 @@ export default function NavBar() {
         {/* <SearchBar /> */}
 
       </Container>
-      
+
     </Navbar>
 
   );

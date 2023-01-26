@@ -15,7 +15,6 @@ export default function OrderDashboard() {
     { field: "_id", headerName: "ID" },
     { field: "usuario", headerName: "Id usuario" },
     { field: "metodoDePago", headerName: "metodoDePago" },
-    { field: "precioEnvio", headerName: "precioEnvio", type: 'number', editable: true },
     { field: "estadoEntrega", headerName: "estadoEntrega", type: 'boolean', editable: true },
     { field: "precioTotal", headerName: "precioTotal"},
     {
@@ -67,8 +66,8 @@ export default function OrderDashboard() {
   const handleUpdateOrder = (event, cellValues) => {
     const _id = cellValues.row._id;
     const estadoEntrega = cellValues.row.estadoEntrega;
-    const precioEnvio = cellValues.row.precioEnvio;
-    dispatch(updateOrder({ _id, estadoEntrega, precioEnvio }));
+    dispatch(updateOrder({ _id, estadoEntrega }));
+    window.location.reload();
   };
 
   const handleCellClick = (param, event) => {

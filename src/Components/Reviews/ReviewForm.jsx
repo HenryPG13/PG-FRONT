@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { addReview } from "../../Actions";
 import styles from "./ReviewForm.module.css";
 
@@ -10,6 +10,7 @@ export default function ReviewForm() {
   const user = useSelector((state) => state.user);
   const [formData, setFormData] = useState("");
   const [score, setScore] = useState();
+  const navigate = useNavigate();
 
 
   function handleSubmit(e) {
@@ -22,6 +23,7 @@ export default function ReviewForm() {
           id,
         })
       );
+      navigate(`/zapatillas/${id}`)
   }
   function handleScore(e) {
     e.preventDefault();

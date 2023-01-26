@@ -1,19 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { singleUser } from '../../Actions'
+import { singleUser, removeFavorites  } from '../../Actions'
 
 import'./CSS/UserFavoritos.css'
 export const Favoritos = () => {
 
     const {id} = useParams();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user)
 
     useEffect(()=> {
         dispatch(singleUser(id))
-    },[]);
+    },[user]);
 
-    const user = useSelector(state => state.user)
+    const handleDelete = (e) => {
+         const id = e.producto
+         dispatch(removeFavorites(id));
+     }
 
   return (
     <div>
@@ -30,6 +34,7 @@ export const Favoritos = () => {
                     <p>Talle: {e.talle}</p>
                     <p>Color: {e.color}</p>
                     <p>Actividad: {e.actividad}</p>
+                    <button onClick={()=> handleDelete (e)} >Eliminar</button>
                 </div>
             )
         }): <p className='detalleFav'>No has agregado favoritos</p>}

@@ -123,17 +123,19 @@ export const Order = (prop) => {
       <>
         <div className="p-2 align-items-center rounded-3 border confirm shadow-lg">
           <div className="card-header h6 text-center mb-3">
+            <Link to={`/perfilusuario/${user._id}/modificarinfo`}>
             <button
               className="btn btn-sm"
-              onClick={() => {
-                setMostrar(!mostrar);
-              }}
+              // onClick={() => {
+              //   setMostrar(!mostrar);
+              // }}
             >
               <span className="h5 me-2 text-muted">
                 Cambiar datos para el envio
               </span>
               <i className="bi bi-eye text-primary" style={{ fontSize: 25 }} />
             </button>
+            </Link>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">

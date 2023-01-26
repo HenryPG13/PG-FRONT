@@ -88,14 +88,14 @@ export default function UserDashboard() {
     const _id = cellValues.row._id
     const estado1 = cellValues.row.estado
     dispatch(updateUserEstado({_id, estado1}))
-
+    window.location.reload()
   }
   const handleClickAdmin = (event, cellValues) => {
     //console.log(cellValues.row)
     const _id = cellValues.row._id
     const admin1 = cellValues.row.admin
     dispatch(updateUserAdmin({_id, admin1}))
-    // navigate("/dashboard/users")
+    window.location.reload()
   }
   const handleCellClick = (param, event) => {
     event.stopPropagation();

@@ -11,6 +11,8 @@ import Footer from './Footer/Footer';
 import swal from 'sweetalert';
 import { addToFav, removeToFav } from '../Actions';
 import Reviews from './Reviews/Reviews';
+import { addFavorites } from '../Actions';
+
 
 
 
@@ -34,10 +36,11 @@ export default function Details() {
    const dispatch = useDispatch()
    const zapa = useSelector(state => state.detail)
    // console.log("ZAPA," , zapa);
+   const user = useSelector(state => state.user)
 
    useState(() => {
       dispatch(getZapaById(id))
-   }, [id])
+   }, [id, zapa])
 
 
    const handleToCart = (e) => {
@@ -51,8 +54,9 @@ export default function Details() {
    }
    const handleToFavorite = (e) => {
       e.preventDefault();
-      //console.log(id)
-      dispatch(addToFav(id))
+      const idproduct = id;
+      const iduser = user._id;
+      dispatch(addFavorites({ idproduct, iduser }));
       swal({
          icon: "success",
          title: 'Producto agregado a la lista de favoritos!'
@@ -112,18 +116,18 @@ export default function Details() {
                         <h3 className="product-title">{zapa.marca}</h3>
                         <p className="product-description">{zapa.modelo}</p>
 
-                       {zapa.oferta ? (
-                       <>
-                        <h4 className="precioprev">PRECIO: <span>${zapa.precio}</span></h4>
-                        <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
-                       </>
-                       ):
-                       (
-                        <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
+                        {zapa.oferta ? (
+                           <>
+                              <h4 className="precioprev">PRECIO: <span>${zapa.precio}</span></h4>
+                              <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
+                           </>
+                        ) :
+                           (
+                              <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
 
-                       )
+                           )
 
-                       }
+                        }
 
                         <h6 className="price">En Stock: <span>{zapa.inventario}</span></h6>
 
@@ -140,7 +144,9 @@ export default function Details() {
                            </select>
                         </h5>
                         <div class="action">
-                           <Button value='add' className='btnCart' variant="primary" onClick={handleToFavorite}>❤️</Button>
+                           {Object.entries(user).length > 0 ?
+                              <Button value='add' className='btnCart' variant="primary" onClick={handleToFavorite}>❤️</Button> :
+                              <Button value='add' className='btnCart' variant="primary" disabled>❤️</Button>}
                            {/* <Button variant="primary">Comprar</Button> */}
                            <Button value='add' className='btnCart' variant="primary" onClick={handleToCart}
                            >Añadir al carrito</Button>
