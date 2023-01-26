@@ -6,12 +6,15 @@ import { Button, Form } from "react-bootstrap";
 
 import "./CSS/LoginGeneral.css";
 
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
+
+
 export const LoginGeneral = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [contraseña, setContraseña] = useState("");
+  const [email, setEmail] = useLocalStorage( 'email', '');
+  const [contraseña, setContraseña] = useLocalStorage('contraseña','');
 
   const user = useSelector((state) => state.userLog);
 
