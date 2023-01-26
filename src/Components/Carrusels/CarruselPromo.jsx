@@ -14,7 +14,7 @@ export default function CarruselPromo(){
 
       <Carousel variant="dark">
       <Carousel.Item>
-      <a href='/zapatillas/63c59f1b822019881ceef8f0'>
+      <a href='/zapatillas/63d19e5bc0f2a5fa2cb35b24'>
       <img
       className="propa"
       src={publi01}
@@ -24,7 +24,7 @@ export default function CarruselPromo(){
       
       </Carousel.Item>
       <Carousel.Item>
-      <a href='/zapatillas/63c59f1b822019881ceef8d8'>
+      <a href='/zapatillas/63d19e5bc0f2a5fa2cb35b0c'>
 <img
 className="propa"
 src={publi02}
@@ -35,7 +35,7 @@ alt="Second slide"
 
 </Carousel.Item>
 <Carousel.Item>
-<a href='/zapatillas/63c59f1b822019881ceef8cd'>
+<a href='/zapatillas/63d19e5bc0f2a5fa2cb35b01'>
 <img
 className="propa"
 src={publi03}
@@ -46,7 +46,7 @@ alt="Third slide"
 </Carousel.Item>
 
 <Carousel.Item>
-<a href='/zapatillas/63c59f1b822019881ceef8f6'>
+<a href='/zapatillas/63d19e5bc0f2a5fa2cb35b2a'>
 <img
 className="propa"
 src={publi04}

@@ -55,7 +55,7 @@ export default function Cards({id, marca, image, modelo, precio, oferta}){
        {/* <Card.Title>${precio}</Card.Title> */}
        {oferta ? (
                        <>
-                        <Card.Title className="price">PRECIO: <span>${precio}</span></Card.Title>
+                        <Card.Title className="precioprev">PRECIO: <span>${precio}</span></Card.Title>
                         <Card.Title className="price">OFERTA: <span>${Dinero}</span></Card.Title>
                        </>
                        ):

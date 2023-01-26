@@ -23,7 +23,7 @@ export default function SendNotification () {
 
         socket.emit("notificacion", noti)
         setNoti("")
-        alert("notificación enviada con exito ;)");
+        
     }
 
     return (
@@ -34,6 +34,7 @@ export default function SendNotification () {
         <h3>Escribí tu notificacion: </h3>
         <form>
         <div className="txtNoti">
+
         <input onChange={handleInputChange} value={noti}></input>
         
         <label>Notificaión :</label>
@@ -42,6 +43,7 @@ export default function SendNotification () {
         </form>
         </div>
         </div>
+
 
     )
 

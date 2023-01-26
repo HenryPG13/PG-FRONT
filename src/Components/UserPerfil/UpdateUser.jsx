@@ -54,7 +54,7 @@ export const UpdateUser = () => {
                         name="nombre"
                         onChange={handleChange}
                         type="text"
-                        required
+                       
                     />
                 </div>
 
@@ -79,7 +79,7 @@ export const UpdateUser = () => {
                         name="email"
                         onChange={handleChange}
                         type="email"
-                        required
+                    
                     />
                 </div>
 
@@ -87,7 +87,7 @@ export const UpdateUser = () => {
                     <input
                         placeholder="ciudad"
                         value={data.ciudad}
-                        name="Ciudad"
+                        name="ciudad"
                         onChange={handleChange}
                         type="text"
                         />
@@ -126,7 +126,7 @@ export const UpdateUser = () => {
                         name="contraseña"
                         onChange={handleChange}
                         type="password"
-                        required
+                        
                         />
                         <span></span>
                         <label>Contraseña</label>

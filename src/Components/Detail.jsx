@@ -111,18 +111,20 @@ export default function Details() {
                      <div className="details col-md-6">
                         <h3 className="product-title">{zapa.marca}</h3>
                         <p className="product-description">{zapa.modelo}</p>
-                        {zapa.oferta ? (
-                           <>
-                              <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
-                              <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
-                           </>
-                        ) :
-                           (
-                              <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
 
-                           )
+                       {zapa.oferta ? (
+                       <>
+                        <h4 className="precioprev">PRECIO: <span>${zapa.precio}</span></h4>
+                        <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
+                       </>
+                       ):
+                       (
+                        <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
 
-                        }
+                       )
+
+                       }
+
                         <h6 className="price">En Stock: <span>{zapa.inventario}</span></h6>
 
                         <h5>TALLES:
