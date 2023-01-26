@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function Favorito({ history }) {
+export default function Favorito({history}){
     const dispatch = useDispatch();
     const favorito = useSelector(state => state.favorite);
     const [precioTotal, setPrecioTotal] = useState(0);
@@ -32,7 +32,7 @@ export default function Favorito({ history }) {
 
     const borrarDefavorito = (id) => {
         console.log("ESTOY REMOVIENDO ", id);
-
+        
         dispatch(removeToFav(id));
     }
 
@@ -44,7 +44,7 @@ export default function Favorito({ history }) {
 
             <div className="container my-5">
                 <div className="row">
-                    {favorito.length === 0 ?
+                    {favorito.length === 0 ? 
                         (
                             <>
                                 <div>
@@ -65,26 +65,26 @@ export default function Favorito({ history }) {
                                                 <div>
                                                     <h3>{item.marca}</h3>
                                                     <h3>{item.modelo}</h3>
-                                                    <img src={item.imagenes} />
-
-
-
-
+                                                    <img src={item.imagenes }/>
+                                 
+                                
+                               
+                              
                                                     <br />
                                                     <span>
-                                                        <h1>${item.qty && (item.precio * item.qty)}</h1>
+                                                       <h1>${item.qty && (item.precio * item.qty)}</h1> 
                                                     </span>
                                                     <hr />
                                                 </div>
 
-
-                                                <div className="col">
-                                                    <button className="btn btn-danger" onClick={() => borrarDefavorito(item._id)}>
-                                                        Quitar item
-                                                    </button>
-                                                </div>
-
-
+                                                                                              
+                                                        <div className="col">
+                                                            <button className="btn btn-danger" onClick={() => borrarDefavorito(item._id)}>
+                                                                Quitar item
+                                                            </button>
+                                                        </div>
+                                                   
+                                                
                                             </div>
                                         </li>
                                     ))
@@ -109,19 +109,19 @@ export default function Favorito({ history }) {
                                 </div>
                             </div>
                         </div>
+      
+                                                <div class="action">
+               {/* <Button variant="primary" > */}
+                <Link to={"/home"}>Regresar</Link>
+                {/* </Button> */}
 
-                        <div class="action">
-                            {/* <Button variant="primary" > */}
-                            <Link to={"/home"}>Regresar</Link>
-                            {/* </Button> */}
-
-
-
-                        </div>
+                                             
+                                            
+                                          </div>
                         {/* Aqui iria la Orden */}
                     </div>
-
-
+                   
+    
                 </div>
             </div>
         </>

@@ -16,7 +16,6 @@ export default function ProductDashboard() {
     { field: "_id", headerName: "ID" },
     { field: "actividad", headerName: "actividad"},
     { field: "color", headerName: "color" },
-    { field: "imagenes", headerName: "imagenes", type: 'string', editable: true  },
     { field: "marca", headerName: "marca" },
     { field: "modelo", headerName: "modelo" },
     { field: "precio", headerName: "precio", type: 'number', editable: true  },
@@ -58,14 +57,13 @@ export default function ProductDashboard() {
 
   const handleUpdateProduct = (event, cellValues) => {
     const _id = cellValues.row._id;
-    const imagenes = cellValues.row.imagenes;
     const precio = cellValues.row.precio;
     const descripcion = cellValues.row.descripcion;
     const inventario = cellValues.row.inventario;
     const estado = cellValues.row.estado;
     const oferta = cellValues.row.oferta;
-
-    dispatch(updateProduct({ _id, imagenes, precio, descripcion, inventario, estado, oferta }));
+    dispatch(updateProduct({ _id, precio, descripcion, inventario, estado, oferta }));
+    window.location.reload();
   };
 
   const handleCellClick = (param, event) => {

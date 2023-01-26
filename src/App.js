@@ -6,7 +6,7 @@ import Formulario from './Components/Formulario/Formulario'
 import LoginGoogle from './Components/Login/LoginGoogle';
 import { LoginGeneral } from './Components/Login/LoginGeneral';
 import Productos from './Components/Productos/Productos';
-//import Favorito from './Components/Favoritos/Favoritos';
+import Favorito from './Components/Favoritos/Favoritos';
 import UploadImg from "./Components/Admin/uploadImg";
 import ShopCart from './Components/ShoppingCar/ShopCart';
 import Contenido from './Components/ChatBot/ChatBot';
@@ -64,7 +64,7 @@ function App() {
           <Route exact path='/perfilusuario' element={<UserPerfil />}></Route>
           <Route exact path='/login' element={<LoginGeneral />}></Route>
           <Route exact path='/crearusuario' element={<CreateUserForm />}></Route>
-          <Route Route exact path='/favoritos' element={<Favoritos />}></Route>
+          <Route Route exact path='/favoritos' element={<Favorito />}></Route>
           <Route Route exact path='/compras' element={<ShopCart />}></Route>
           <Route exact path='/login/google' element={<LoginGoogle />} />
           <Route exact path='/' element={<LandingPage />} />

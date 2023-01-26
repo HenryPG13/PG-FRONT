@@ -175,11 +175,23 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         reviews: action.payload
-      }
+      };
     case "ADD_REVIEWS":
       return {
         ...state
-      }
+      };
+    case 'ADD_FAVORITES':
+      return {
+        ...state,
+      };
+    case 'REMOVE_FAVORITES':
+      return {
+        ...state
+      };
+    case "REMOVE_REVIEW":
+      return {
+        ...state
+      };
 
     default:
       return state;

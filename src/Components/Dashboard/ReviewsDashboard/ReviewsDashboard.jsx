@@ -3,8 +3,10 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import SidebarDashboard from "../SidebarDashboard/SidebarDashboard.jsx";
 import { getReviews } from '../../../Actions/index.js';
+import { removeReview } from '../../../Actions/index.js';
 
 export default function ReviewsDashboard() {
+
 
   const columns = [
     { field: '_id', headerName: 'ID' },
@@ -24,24 +26,24 @@ export default function ReviewsDashboard() {
               variant="contained"
               color="primary"
               onClick={(event) => {
-                //handleClick(event, cellValues);
+              handleClick(event, cellValues);
               }}
             >
-              Desactivar
+              Eliminar
             </button>
           )
-        } else {
-          return (
-            <button
-              variant="contained"
-              color="primary"
-              onClick={(event) => {
-                //handleClick(event, cellValues);
-              }}
-            >
-              Aceptar
-            </button>
-          )
+        // } else {
+        //   return (
+        //     <button
+        //       variant="contained"
+        //       color="primary"
+        //       onClick={(event) => {
+        //       handleClick(event, cellValues);
+        //       }}
+        //     >
+        //       Aceptar
+        //     </button>
+        //   )
         }
       }
     },
@@ -53,12 +55,11 @@ export default function ReviewsDashboard() {
     dispatch(getReviews())
   }, []);
 
-  // const handleClick = (event, cellValues) => {
-  //   console.log(cellValues.row)
-  //   const id = cellValues.row.id
-  //   const status = cellValues.row.status
-  //   dispatch(reviewActive({ id, status }))
-  // }
+  const handleClick = (event, cellValues) => {
+    const id = cellValues.row._id;
+    dispatch(removeReview(id));
+    window.location.reload();
+  }
 
   const handleCellClick = (param, event) => {
     event.stopPropagation();

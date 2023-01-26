@@ -315,11 +315,12 @@ export function getOrders() {
     }
 };
 
-export function updateOrder({ _id, estadoEntrega, precioEnvio }) {
+export function updateOrder({ _id, estadoEntrega, precioEnvio, preferenceId }) {
 
     const payload = {
         estadoEntrega,
         precioEnvio,
+        preferenceId,
     };
 
     return async function (dispatch) {
@@ -395,6 +396,52 @@ export function addReview({ id, reviewData, score, usuario, nombre }) {
         }
     }
 };
+
+export function addFavorites({ idproduct, iduser }) {
+    return async function (dispatch) {
+        try {
+            const favorites = await axios.post(`http://localhost:3001/usuarios/${idproduct}/favorito?iduser=${iduser}`);
+            return dispatch({
+                type: 'ADD_FAVORITES',
+                payload: favorites.data
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+};
+
+export function removeFavorites(id) {
+
+    return async function (dispatch) {
+        try {
+            const fav = await axios.delete(`http://localhost:3001/usuarios/favoritos/${id}`);
+            return dispatch({
+                type: 'REMOVE_FAVORITES',
+                payload: fav.data
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+};
+
+export function removeReview(id) {
+  
+     return async function (dispatch) {
+         try {
+             const rev = await axios.delete(`http://localhost:3001/productos/revisiones/${id}`);
+             return dispatch({
+                 type: 'REMOVE_REVIEW',
+                 payload: rev.data
+             });
+         } catch (error) {
+             console.log(error)
+         }
+     }
+ };
+ 
+
 
 
 
