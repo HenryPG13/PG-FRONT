@@ -79,15 +79,22 @@ export const Order = (prop) => {
         console.log(order)
         const respuesta = await dispatch(AgregarOrden(order))
         // dispatch(AgregarOrden(order))
-        setLinkMP(respuesta)
-        setOrdenFin(true)
         // dispatch(AgregarOrden(order))
         // console.log("ESTA ES MI RESPUESTA ", respuesta);
         // dispatch(clearCart())
-        swal({
-          icon: "success",
-          title: 'Felicidades, orden aprobada, dirijase a Checkout para completar el pago',
-        });
+        if (respuesta.estado === "ok") {
+          setLinkMP(respuesta.orderResp)
+          setOrdenFin(true)
+          swal({
+            icon: "success",
+            title: 'Felicidades, orden aprobada, proceda al boton de pagar para completar la orden',
+          });
+        } else if (respuesta.estado === "fail") {
+          swal({
+            icon: "success",
+            title: respuesta.msg,
+          });
+        }
         
         // navigate(respuesta)
         //console.log(respuesta)
