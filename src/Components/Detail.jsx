@@ -111,7 +111,7 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                         <p className="product-description">{zapa.modelo}</p>
                        {zapa.oferta ? (
                        <>
-                        <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
+                        <h4 className="precioprev">PRECIO: <span>${zapa.precio}</span></h4>
                         <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
                        </>
                        ):

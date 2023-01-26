@@ -42,7 +42,7 @@ export default function SendNotification () {
         type="text"   
         />
         <span></span>
-        <label>Email</label>
+        <label>mensaje que desea enviar</label>
         <input type="ingres" value="Mandar Notificación" />
         </div></form></div></div>
 

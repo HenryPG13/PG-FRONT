@@ -15,6 +15,7 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import './CartItem.css'
 
 export const CartItem = (prop) => {
 

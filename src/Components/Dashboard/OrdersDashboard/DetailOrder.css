@@ -1,0 +1,39 @@
+.estruOrden{
+    letter-spacing: 3px;
+  padding: 20px;
+  width: 20cm;
+  font-size: 16px;
+  margin: 30px;
+  color: rgb(0, 0, 0);
+  /* box-shadow:   0 0 15px; */
+  position: flex;
+  margin-left:150px;
+  border-radius: 10px;
+  top: 110px;
+  background: rgba(203, 203, 203, 0.801);
+}
+.estruOrden h1{
+    font-size: 20px;
+
+}
+.estruOrden h3{
+    font-size: 18px;
+    padding-top: 5px;
+
+}
+
+.detalleZapa{
+   
+    padding: 10px;
+    width: 12cm;
+    font-size: 14px;
+    margin: 50px;
+    color: rgb(0, 0, 0);
+    box-shadow:   0 0 15px;
+    position:flex;
+    margin-left:100px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    top: 30px;
+    background: rgba(203, 203, 203, 0.801);
+}
