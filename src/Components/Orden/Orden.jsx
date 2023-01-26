@@ -71,30 +71,47 @@ export const Order = (prop) => {
         const order = {
             items: items,
             user: userId,
-            direccion: userData.direccion.length !== 0 ? userData.direccion : "No ingreso direccion", //esto esta hardcodeado
-            pais: userData.pais.length !== 0 ? userData.pais : "No ingreso pais",
-            ciudad: userData.ciudad.length !== 0 ? userData.ciudad : "No ingreso ciudad",
+            direccion: userData.direccion?.length !== 0 ? userData.direccion : "No ingreso direccion", //esto esta hardcodeado
+            pais: userData.pais?.length !== 0 ? userData.pais : "No ingreso pais",
+            ciudad: userData.ciudad?.length !== 0 ? userData.ciudad : "No ingreso ciudad",
             total: total,
         }
-        console.log(order)
-        const respuesta = await dispatch(AgregarOrden(order))
-        // dispatch(AgregarOrden(order))
-        // dispatch(AgregarOrden(order))
-        // console.log("ESTA ES MI RESPUESTA ", respuesta);
-        // dispatch(clearCart())
-        if (respuesta.estado === "ok") {
-          setLinkMP(respuesta.orderResp)
+        if (typeof order.direccion === 'undefined') {
+          swal({
+            icon: "warning",
+            title: 'No has seleccionado una direccion para la orden de compra',
+          });
+        } else if (typeof order.pais === 'undefined') {
+          swal({
+            icon: "warning",
+            title: 'No has seleccionado un pais para la orden de compra',
+          });
+        } else if (typeof order.ciudad === 'undefined') {
+          swal({
+            icon: "warning",
+            title: 'No has seleccionado una ciudad para la orden de compra',
+          });
+        } else {
+          const respuesta = await dispatch(AgregarOrden(order))
+          // dispatch(AgregarOrden(order))
+          // dispatch(AgregarOrden(order))
+          // console.log("ESTA ES MI RESPUESTA ", respuesta);
+          // dispatch(clearCart())
+          setLinkMP(respuesta)
           setOrdenFin(true)
           swal({
             icon: "success",
             title: 'Felicidades, orden aprobada, proceda al boton de pagar para completar la orden',
           });
-        } else if (respuesta.estado === "fail") {
-          swal({
-            icon: "success",
-            title: respuesta.msg,
-          });
         }
+        // console.log(order)
+        // if (respuesta.estado === "ok") {
+        // } else if (respuesta.estado === "fail") {
+        //   swal({
+        //     icon: "success",
+        //     title: respuesta.msg,
+        //   });
+        // }
         
         // navigate(respuesta)
         //console.log(respuesta)
@@ -285,6 +302,8 @@ export const Order = (prop) => {
                 </div>
               </>
             )}
+            
+            
             <div className="d-grid">
               <div className="text-center gap-2 mt-3">
                 {cart.length !== 0 && (

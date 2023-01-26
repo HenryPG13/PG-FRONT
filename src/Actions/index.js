@@ -105,26 +105,24 @@ export function AgregarOrden(orden) {
     return async function (dispatch) {
         try {
             const order = await axios.post('http://localhost:3001/pedido', orden);
-            const { msg, ordenResp, estado } = order.data;
+            const { msg, ordenResp, estatus } = order.data;
             // crearOrden(ordenResp);
             dispatch({
                 type: "ADD_ORDER",
                 payload: ordenResp
             })
-            // swal.fire({
-            //     icon: 'success',
-            //     title: `${msg}`,
-            //     showConfirmButton: false,
-            //     timer: 2000
-            // })
+            // swal({
+            //     icon: "success",
+            //     title: 'Felicidades, orden aprobada, proceda al boton de pagar para completar la orden',
+            // });
 
-            if (estado === "fail") {
-                return { msg: msg, orderResp: ordenResp, estado: estado };
-            }
+            // if (estatus === "fail") {
+            //     // return { msg: msg, orderResp: ordenResp, estatus: estatus };
+            //     console.log("AGREGARORDEN TRAJO ESTO ", estatus, "---", msg);
+            // }
 
-            // console.log("AGREGARORDEN TRAJO ESTO ", ordenResp.preferenceId, "---", msg);
-            // return ordenResp.preferenceId;
-            return { msg: msg, orderResp: ordenResp.preferenceId, estado: estado };
+            return ordenResp.preferenceId;
+            // return { msg: msg, orderResp: ordenResp.preferenceId, estatus: estatus };
         } catch (error) {
             console.log("ERROR EN AGREGAR ORDEN ", error)
         }
