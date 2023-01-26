@@ -4,8 +4,8 @@ import { CartItem } from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './ShopCart.css'
-import Button from 'react-bootstrap/Button';
 import { Order } from '../Orden/Orden';
+import { Button } from 'react-bootstrap';
 
 
 
@@ -56,41 +56,53 @@ export const ShopCart = ({ history }) => {
   return (
     <div>
       <h3>Carrito de compras</h3>
-      <div className="row">
-        <div className="col-md-6 scroll">
+      
+      <div className="cartCont">
+        <div className="cartCard">
           {cart.length === 0 ? (
-            <div>
-              <p>El carrito esta vacio </p>
+            <div className='emptyCart'>
+              <p className='emptyCartText'>El carrito esta vacio </p>
 
-              <Link to={"/home"}>Regresar</Link>
+              <Link className='emptyCartBtn' to={"/home"}>
+                <Button>Regresar</Button>
+              </Link>
             </div>
           ) : (
             cart.map((e) => <CartItem articulosTotales={handleArticulosTotales} item={e} />)
           )}
         </div>
         
-        <div className="col-md-6">
+        
+        
+        
+        
+        
+        
+        <div className="cardPay">
+       
+        <div>
           <Order props={precioTotal} />
         </div>
         
-        <div className="row mb-3">
-          <div className="col-4">
-            <span className="text-muted">Cant. articulos:</span>{" "}
+        <div >
+          <div >
+            <span className="text-dark">Cant. articulos:</span>{" "}
             {articulosTotales}
           </div>
           <div className="col-4">
-            <span className="text-muted">Total:</span> $ {precioTotal}
+            <span className="text-dark">Total:</span> $ {precioTotal}
           </div>
         </div>
-
+        
+        </div>
+          
       </div>
-
       <br />
-      {/* <div class="action">
-        <Button variant="primary" onClick={handlePay}>
-          Comprar
-        </Button>
-      </div> */}
+      <br />
+      <br />
+      <br />
+      <br />
+      
     </div>
   );
 };

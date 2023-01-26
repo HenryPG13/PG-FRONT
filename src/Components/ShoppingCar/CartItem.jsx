@@ -50,8 +50,8 @@ export const CartItem = (prop) => {
   return (
     <div>
 
-      <section className="h-100" style={{ backgroundColor: "#eee" }}>
-        <MDBContainer className="py-5 h-100">
+      
+        <MDBContainer>
           <MDBRow className="justify-content-center align-items-center h-100">
             <MDBCol md="10">
 
@@ -112,7 +112,7 @@ export const CartItem = (prop) => {
                       </MDBTypography>
                     </MDBCol>
                     <MDBCol md="1" lg="1" xl="1" className="text-end">
-                      <Button color='light' onClick={handleDelete}>Quitar estos productos</Button>
+                      <MDBIcon className='btnDelete' onClick={handleDelete} fas icon="trash text-danger" size="lg" />
                     </MDBCol>
                   </MDBRow>
                 </MDBCardBody>
@@ -121,7 +121,6 @@ export const CartItem = (prop) => {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-      </section>
       
     </div >
   )
