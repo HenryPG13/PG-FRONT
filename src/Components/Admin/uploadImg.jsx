@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Formulario from "../Formulario/Formulario";
-import NavBar from "../NavBar/NavBar";
 import Spinner from 'react-bootstrap/Spinner';
 import swal from 'sweetalert';
 import './Cloudinary.css'
+import { useNavigate } from "react-router-dom";
 
 export default function UploadImg() {
   const [loading, setLoading] = useState(false);
@@ -139,7 +139,7 @@ export default function UploadImg() {
 
   return (
     <div>
-      <NavBar />
+
       
       <div >
 
