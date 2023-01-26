@@ -13,6 +13,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector } from "react-redux";
 import './NavBar.css'
 import "../CSS/Home.css";
+import {socket} from "../../Hooks/socket"
 
 export default function NavBar() {
 
@@ -21,21 +22,15 @@ export default function NavBar() {
   const handleLogOut = () => {
     logout({ returnTo: window.location.origin });
   }
-  const [socket, setSocket] = useState(null);
   const [notificaciones, setNotificaciones] = useState([]);
   const [open, setOpen] = useState(false);
-  const [haySocket, setHaySocket] = useState(false);
+
+
 
   useEffect(() => {
-    setSocket(io("http://localhost:5000"));
-    setHaySocket(true);
-  }, []);
-  useEffect(() => {
-    if (haySocket) {
       socket.on("notificacion", (msg) => {
         setNotificaciones((prev) => [...prev, msg]);
-      });
-    }
+      }); 
   }, [socket]);
 
   const handleRead = () => {
@@ -43,7 +38,7 @@ export default function NavBar() {
     setOpen(false);
   };
 
-  console.log(notificaciones);
+  console.log(socket);
 
   return (
     <Navbar className="bg-primary bg-gradient">
