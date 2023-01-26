@@ -19,7 +19,7 @@ export const LoginGeneral = () => {
 
   useEffect(() => {
     if (userInfo) {
-      return navigate("/perfilusuario");
+      return navigate("/home");
     }
   }, [userInfo]);
 

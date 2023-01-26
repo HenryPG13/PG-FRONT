@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../Actions";
+import { useNavigate } from "react-router-dom";
 
 import './CSS/SingIn.css'
 
@@ -14,6 +15,7 @@ const CreateUserForm = () => {
   const [register, setRegister] = useState(INITIAL_STATE);
  
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleChange = (evt) => {
     const { name, value } = evt.currentTarget;
@@ -28,6 +30,7 @@ const CreateUserForm = () => {
     evt.preventDefault();
     dispatch(createUser(register));
     setRegister(INITIAL_STATE);
+    navigate("/home")
   };
 
   return (

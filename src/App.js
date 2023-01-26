@@ -6,7 +6,7 @@ import Formulario from './Components/Formulario/Formulario'
 import LoginGoogle from './Components/Login/LoginGoogle';
 import { LoginGeneral } from './Components/Login/LoginGeneral';
 import Productos from './Components/Productos/Productos';
-import Favorito from './Components/Favoritos/Favoritos';
+//import Favorito from './Components/Favoritos/Favoritos';
 import UploadImg from "./Components/Admin/uploadImg";
 import ShopCart from './Components/ShoppingCar/ShopCart';
 import Contenido from './Components/ChatBot/ChatBot';
@@ -26,6 +26,11 @@ import SendNotification from "./Components/Dashboard/SendNotification/SendNotifi
 import { ProductosRender } from './Components/Productos/Productos render';
 import { Checkout } from './Components/Checkout/Checkout';
 import { Order } from './Components/Orden/Orden';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createUser } from './Actions';
+import { useAuth0 } from '@auth0/auth0-react';
+import ReviewForm from './Components/Reviews/ReviewForm';
 import NavBar from './Components/NavBar/NavBar';
 
 import './App.css'
@@ -33,6 +38,14 @@ import Footer from './Components/Footer/Footer';
 
 
 function App() {
+
+  const dispatch = useDispatch();
+  const logUser = useSelector(state => state.user);
+  const { user } = useAuth0();
+  useEffect(() => {
+   user && dispatch(createUser({ email: user?.email, nombre: user?.given_name, contraseña: 123456 }))
+  }, [user]);
+
   return (
     <BrowserRouter>
       <div className='fondoFootShoop'>
@@ -51,7 +64,7 @@ function App() {
           <Route exact path='/perfilusuario' element={<UserPerfil />}></Route>
           <Route exact path='/login' element={<LoginGeneral />}></Route>
           <Route exact path='/crearusuario' element={<CreateUserForm />}></Route>
-          <Route Route exact path='/favoritos' element={<Favorito />}></Route>
+          <Route Route exact path='/favoritos' element={<Favoritos />}></Route>
           <Route Route exact path='/compras' element={<ShopCart />}></Route>
           <Route exact path='/login/google' element={<LoginGoogle />} />
           <Route exact path='/' element={<LandingPage />} />
@@ -61,6 +74,7 @@ function App() {
           <Route path='/zapatillas' element={<ProductosRender />} />
           <Route path='/zapatillas/ofertas' element={<Ofertas />} />
           <Route path='/Checkout' element={<Checkout />} />
+          <Route path='/reseña/:id' element={<ReviewForm />} />
         </Routes>
         <Contenido />
       </div>
