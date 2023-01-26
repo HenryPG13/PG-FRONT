@@ -20,16 +20,90 @@ export const Filters = () => {
 
     let dispatch = useDispatch();
     let [value, setValue] = useState(inicialState);
+    let [titleDropOrd, setTitleDropOrd] = useState("Ordenar por: ")
+    let [titleDropAct, setTitleDropAct] = useState("Actividad: ")
+    let [titleDropTalle, setTitleDropTalle] = useState("Talle: ")
 
     useEffect(() => {
         dispatch(getZapas())
     }, []);
 
     const filterActividad = (e) => {
+        switch (e.target.value) {
+            case "Moda":
+                setTitleDropAct("Actividad: Moda")
+                break;
+            case "Basquet":
+                setTitleDropAct("Actividad: Basquet")
+                break;
+            default:
+                setTitleDropAct("Actividad: Cualquiera")
+                break;
+        }
         setValue({ ...value, actividad: e.target.value })
     };
 
     const filterTalle = (e) => {
+        switch (e.target.value) {
+            case "34":
+                setTitleDropTalle("Talle: 34")
+                break;
+            case "35":
+                setTitleDropTalle("Talle: 35")
+                break;
+            case "36":
+                setTitleDropTalle("Talle: 36")
+                break;
+            case "37":
+                setTitleDropTalle("Talle: 37")
+                break;
+            case "37.7":
+                setTitleDropTalle("Talle: 37,5")
+                break;
+            case "38":
+                setTitleDropTalle("Talle: 38")
+                break;
+            case "39":
+                setTitleDropTalle("Talle: 39")
+                break;
+            case "40":
+                setTitleDropTalle("Talle: 40")
+                break;
+            case "41":
+                setTitleDropTalle("Talle: 41")
+                break;
+            case "41.5":
+                setTitleDropTalle("Talle: 41,5")
+                break;
+            case "42":
+                setTitleDropTalle("Talle: 42")
+                break;
+            case "43":
+                setTitleDropTalle("Talle: 43")
+                break;
+            case "44":
+                setTitleDropTalle("Talle: 44")
+                break;
+            case "45":
+                setTitleDropTalle("Talle: 45")
+                break;
+            case "46":
+                setTitleDropTalle("Talle: 46")
+                break;
+            case "47":
+                setTitleDropTalle("Talle: 47")
+                break;
+            case "48":
+                setTitleDropTalle("Talle: 48")
+                break;
+            case "49":
+                setTitleDropTalle("Talle: 49")
+                break;
+            
+            default:
+                setTitleDropTalle("Talle: Cualquiera")
+                break;
+        }
         setValue({ ...value, talla: e.target.value })
     };
 
@@ -38,6 +112,23 @@ export const Filters = () => {
     };
 
     const setOrder = (e) => {
+        switch (e.target.value) {
+            case "modeloUp":
+                setTitleDropOrd("Ordenar por: A - Z")
+                break;
+            case "modeloDown":
+                setTitleDropOrd("Ordenar por: Z - A")
+                break;
+            case "precioUp":
+                setTitleDropOrd("Ordenar por: Mayor a menor precio")
+                break;
+            case "precioDown":
+                setTitleDropOrd("Ordenar por: Menor a mayor precio")
+                break;
+            default:
+                setTitleDropOrd("Ordenar por: Cualquiera")
+                break;
+        }
         setValue({ ...value, order: e.target.value })
     };
 
@@ -81,15 +172,15 @@ export const Filters = () => {
             </Form>
 
 
-            <DropdownButton onClick={(e) => filterActividad(e)} id="dropdown-basic-button" title="Selecciona una actividad">
+            <DropdownButton onClick={(e) => filterActividad(e)} id="dropdown-basic-button" title={titleDropAct}>
 
-                <Dropdown.Item><option value={'default'}> Cualquiera </option></Dropdown.Item>
+                <Dropdown.Item><option defaultValue={'default'}> Cualquiera </option></Dropdown.Item>
                 <Dropdown.Item><option value={'Moda'}> Moda </option></Dropdown.Item>
                 <Dropdown.Item><option value={'Basquet'}> Basquet </option></Dropdown.Item>
 
             </DropdownButton>
 
-            <DropdownButton onClick={(e) => filterTalle(e)} id="dropdown-basic-button" title="Selecciona una talla">
+            <DropdownButton onClick={(e) => filterTalle(e)} id="dropdown-basic-button" title={titleDropTalle}>
 
                 <Dropdown.Item><option value={"default"}> Cualquiera </option></Dropdown.Item>
                 <Dropdown.Item><option value={34}> 34 </option></Dropdown.Item>
@@ -113,7 +204,16 @@ export const Filters = () => {
 
             </DropdownButton>
 
-            <DropdownButton onClick={(e) => setOrder(e)} id="dropdown-basic-button" title="Ordenar por precio o modelo">
+            {/* <DropdownButton onClick={(e) => setOrder(e)} id="dropdown-basic-button" title="Ordenar por precio o modelo">
+
+                <Dropdown.Item><option value={'default'}> Cualquiera </option></Dropdown.Item>
+                <Dropdown.Item><option value={'precioUp'}> Mayor a menor precio </option></Dropdown.Item>
+                <Dropdown.Item><option value={'precioDown'}> Menor a mayor precio </option></Dropdown.Item>
+                <Dropdown.Item><option value={'modeloUp'}> A - Z </option></Dropdown.Item>
+                <Dropdown.Item><option value={'modeloDown'}> Z - A </option></Dropdown.Item>
+
+            </DropdownButton> */}
+            <DropdownButton onClick={(e) => setOrder(e)} id="dropdown-basic-button" title={titleDropOrd}>
 
                 <Dropdown.Item><option value={'default'}> Cualquiera </option></Dropdown.Item>
                 <Dropdown.Item><option value={'precioUp'}> Mayor a menor precio </option></Dropdown.Item>

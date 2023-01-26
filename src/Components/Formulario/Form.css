@@ -1,0 +1,33 @@
+.inputs{
+    width: 50%;
+    margin-bottom: 20px;
+    padding: 7px;
+    margin: 17px 0px;
+    box-sizing: border-box;
+    font-size: 17px;
+    border-radius: 7px;
+}
+.formCont{
+    width: 450px;
+    margin: 0px 11cm;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    margin-top: 1cm;
+    border: 2px solid rgb(158, 158, 158);
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgb(204, 204, 204) 0%, rgb(179, 178, 178) 35%, rgb(204, 204, 204) 100%);
+    
+}
+.btns{
+    margin-right: 13cm;
+    margin-bottom: 1cm;
+    display: flex;
+    justify-content: space-around;
+}
+.btnBack{
+    margin-right: 13cm;
+}
+.btnSub{
+    margin-right: 5cm;
+}

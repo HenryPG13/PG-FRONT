@@ -16,8 +16,9 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 
-export const CartItem = ({ item }) => {
+export const CartItem = (prop) => {
 
+  const { item, articulosTotales } = prop
   const [cantidad, setCantidad] = useState(item.qty);
   const Dinero = item.oferta ? (item.precio/2)  : item.precio
   const dispatch = useDispatch()
@@ -26,6 +27,7 @@ export const CartItem = ({ item }) => {
   const increase = () => {
     setCantidad(cantidad => cantidad + 1);
     item.qty = cantidad;
+    articulosTotales()
   };
  
   //decrease cantidad
@@ -36,6 +38,7 @@ export const CartItem = ({ item }) => {
       setCantidad(cantidad => cantidad - 1);
     }
     item.qty = cantidad;
+    articulosTotales()
   };
 
   const handleDelete = (e) => {
@@ -87,18 +90,20 @@ export const CartItem = ({ item }) => {
                     </MDBCol>
                     <MDBCol md="3" lg="3" xl="2"
                       className="d-flex align-items-center justify-content-around">
-                      <MDBBtn color="link" className="px-2" onClick={decrease}>
+                      {/* <MDBBtn color="link" className="px-2" onClick={decrease}>
                         <MDBIcon fas icon="minus" />
-                      </MDBBtn>
+                      </MDBBtn> */}
+                      <Button variant="outline-primary" onClick={decrease}><MDBIcon fas icon="minus" /></Button>
 
                       {/* <MDBInput min={0} Value={item.qty} type="number" size="sm" /> */}
                       <MDBTypography tag="h5" className="mb-0">
                         {item.qty}
                       </MDBTypography>
 
-                      <MDBBtn color="link" className="px-2" onClick={increase}>
+                      <Button variant="outline-primary" onClick={increase}><MDBIcon fas icon="plus" /></Button>
+                      {/* <MDBBtn color="link" className="px-2" onClick={increase}>
                         <MDBIcon fas icon="plus" />
-                      </MDBBtn>
+                      </MDBBtn> */}
                     </MDBCol>
                     <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
                       <MDBTypography tag="h5" className="mb-0">

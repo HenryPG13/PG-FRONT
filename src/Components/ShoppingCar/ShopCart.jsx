@@ -3,7 +3,6 @@ import axios from 'axios';
 import { CartItem } from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
 import './ShopCart.css'
 import Button from 'react-bootstrap/Button';
 import { Order } from '../Orden/Orden';
@@ -46,42 +45,52 @@ export const ShopCart = ({ history }) => {
     setPrecioTotal(price);
   }, [cart, precioTotal, articulosTotales, setPrecioTotal, setArticulosTotales]);
 
-  // cart.forEach((element) => {
-  //   precioTotal = element.precio + precioTotal;
-  //   articulosTotales = element.qty + articulosTotales;
-  // });
+  const handleArticulosTotales = () => {
+    let items = 0;
+    cart.forEach((item) => {
+      items += item.qty;
+    })
+    setArticulosTotales(items);
+  }
 
   return (
     <div>
-      <NavBar />
-
       <h3>Carrito de compras</h3>
-      {cart.length === 0 ? (
-        <div>
-          <p>El carrito esta vacio </p>
+      <div className="row">
+        <div className="col-md-6 scroll">
+          {cart.length === 0 ? (
+            <div>
+              <p>El carrito esta vacio </p>
 
-          <Link to={"/home"}>Regresar</Link>
+              <Link to={"/home"}>Regresar</Link>
+            </div>
+          ) : (
+            cart.map((e) => <CartItem articulosTotales={handleArticulosTotales} item={e} />)
+          )}
         </div>
-      ) : (
-        cart.map((e) => <CartItem item={e} />)
-      )}
-      <br />
-      <div className="row mb-3">
-        <div className="col-6">
-          <span className="text-muted">Cant. articulos:</span>{" "}
-          {articulosTotales}
+        
+        <div className="col-md-6">
+          <Order props={precioTotal} />
         </div>
-        <div className="col-6">
-          <span className="text-muted">Total:</span> ${" "}
-          {precioTotal}
+        
+        <div className="row mb-3">
+          <div className="col-4">
+            <span className="text-muted">Cant. articulos:</span>{" "}
+            {articulosTotales}
+          </div>
+          <div className="col-4">
+            <span className="text-muted">Total:</span> $ {precioTotal}
+          </div>
         </div>
+
       </div>
+
+      <br />
       {/* <div class="action">
         <Button variant="primary" onClick={handlePay}>
           Comprar
         </Button>
       </div> */}
-      <Order props={[history, precioTotal]} />
     </div>
   );
 };

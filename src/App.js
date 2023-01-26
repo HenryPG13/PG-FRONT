@@ -26,12 +26,17 @@ import SendNotification from "./Components/Dashboard/SendNotification/SendNotifi
 import { ProductosRender } from './Components/Productos/Productos render';
 import { Checkout } from './Components/Checkout/Checkout';
 import { Order } from './Components/Orden/Orden';
+import NavBar from './Components/NavBar/NavBar';
+
+import './App.css'
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className='fondoFootShoop'>
+        <NavBar/>
         <Routes>
           <Route exact path='/detalleorden/:id' element={<DetailsOrder />} ></Route>
           <Route exact path='/tablerordenes' element={<OrderDashboard />} ></Route>
@@ -52,7 +57,6 @@ function App() {
           <Route exact path='/' element={<LandingPage />} />
           <Route exact path='/uploadImg' element={<UploadImg />} />
           <Route path='/Home' element={<Home />} />
-          <Route exact path='/crear' element={<Formulario />} />
           <Route exact path='/zapatillas/:id' element={<Details />} />
           <Route path='/zapatillas' element={<ProductosRender />} />
           <Route path='/zapatillas/ofertas' element={<Ofertas />} />
@@ -60,6 +64,7 @@ function App() {
         </Routes>
         <Contenido />
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

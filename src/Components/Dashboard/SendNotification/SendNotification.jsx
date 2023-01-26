@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import React from "react";
 import { useState } from "react";
 import SidebarDashboard from '../SidebarDashboard/SidebarDashboard'
-
+import './SendNotification.css'
 
 export default function SendNotification () {
 
@@ -28,12 +28,24 @@ export default function SendNotification () {
     }
 
     return (
-        <>
-        <SidebarDashboard/>
-        <span>Escribí tu notificacion: </span>
-        <input onChange={handleInputChange} value={noti}></input>
-        <button onClick={handleNotification} >Mandar Notificación</button>
-        </>
+        
+       <div className='estrucSendNoti'>
+          <SidebarDashboard />
+        <div className='recuadroNoti'>
+        <h3>Escribí tu notificacion: </h3>
+        <form>
+        <div className="txtNoti">
+        <input
+        name="email"
+        onChange={handleInputChange}
+        value={noti}
+        type="text"   
+        />
+        <span></span>
+        <label>Email</label>
+        <input type="ingres" value="Mandar Notificación" />
+        </div></form></div></div>
+
     )
 
 }

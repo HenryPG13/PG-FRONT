@@ -1,3 +1,11 @@
+.fondoFootShoop{
+  background-color: rgba(117, 117, 117, 0.746);
+  background-image: url('./Components/imagenes/fondoDiluido.png');
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 .App {
   text-align: center;
 }

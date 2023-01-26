@@ -1,8 +1,10 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import corredoras from '../imagenes/imagenLanding.png'
 
 import './LandingPage.css'
-import fondo from '../imagenes/quimeyPesado.jpg'
+// import fondo from '../imagenes/quimeyPesado.jpg'
 export default function LandingPage(){
     return(
         
@@ -13,10 +15,15 @@ export default function LandingPage(){
         >
             
             
-            <h1 className="Ltitulo"> Bienvenidos veamos que zapato precisa Cenicienta</h1>
-            <Link to = '/home'>
+            <p1 className="Ltitulo"> Bienvenidos...
+            En FootShop usted encontrara esa zapatilla exclusiva que tanto quiso</p1>
+            <Link  to = '/home'>
             <button className='acceso' >Ingresar</button>
             </Link>
+            <img 
+            className='zapasLanding'
+            src={corredoras}
+            alt='zapa' />
             </div>
        
     )

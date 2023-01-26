@@ -3,21 +3,24 @@ import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { AgregarOrden } from "../../Actions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../Actions";
 import swal from 'sweetalert';
 
 export const Order = (prop) => {
     const { props } = prop;
-    const [history, total] = props;
+    const total = props;
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     // const emailUser = useSelector((state) => state.user.email)
     const user = useSelector((state) => state.user)
 
-    const [userId, setUserId] = useState("")
-    const [mostrar, setMostrar] = useState(false)
+    const [userId, setUserId] = useState("");
+    const [mostrar, setMostrar] = useState(false);
+    const [linkMP, setLinkMP] = useState("");
+    const [ordenFin, setOrdenFin] = useState(false);
     // const [userData, setUserData] = useState()
     const userData = useSelector((state) => state.user)
 
@@ -39,15 +42,19 @@ export const Order = (prop) => {
             setValue("apellido", `${userData?.apellido}`)
             setValue("telefono", `${userData?.telefono}`)  //capaz no va o capaz es del formulario de mercadopago
             setValue("email", `${userData?.email}`)
-            setValue("calle", `${userData?.domicilio?.calle}`)  //capaz no va o capaz es del formulario de mercadopago
-            setValue("numero", `${userData?.domicilio?.numero}`)  //capaz no va o capaz es del formulario de mercadopago
-            setValue("cp", `${userData?.domicilio?.cp}`)  //capaz no va o capaz es del formulario de mercadopago
+            setValue("direccion", `${userData?.direccion}`)  //capaz no va o capaz es del formulario de mercadopago
+            // setValue("numero", `${userData?.domicilio?.numero}`)  //capaz no va o capaz es del formulario de mercadopago
+            setValue("cp", `${""}`)  //capaz no va o capaz es del formulario de mercadopago
             setValue("localidad", `${userData?.ciudad}`)
-            setValue("provincia", `${userData?.domicilio?.provincia}`)  //capaz no va o capaz es del formulario de mercadopago
+            setValue("pais", `${userData?.pais}`)  //capaz no va o capaz es del formulario de mercadopago
             setUserId(userData?._id)
 
         
     }, [userData, setValue])
+
+    
+
+
 
     const onSubmit = async () => {
 
@@ -64,19 +71,25 @@ export const Order = (prop) => {
         const order = {
             items: items,
             user: userId,
-            direccion:"test2", //esto esta hardcodeado
-            pais:"test",
-            ciudad:"test1",
+            direccion: userData.direccion.length !== 0 ? userData.direccion : "No ingreso direccion", //esto esta hardcodeado
+            pais: userData.pais.length !== 0 ? userData.pais : "No ingreso pais",
+            ciudad: userData.ciudad.length !== 0 ? userData.ciudad : "No ingreso ciudad",
             total: total,
         }
         console.log(order)
         const respuesta = await dispatch(AgregarOrden(order))
-        console.log("ESTA ES MI RESPUESTA ", respuesta);
+        // dispatch(AgregarOrden(order))
+        setLinkMP(respuesta)
+        setOrdenFin(true)
+        // dispatch(AgregarOrden(order))
+        // console.log("ESTA ES MI RESPUESTA ", respuesta);
         // dispatch(clearCart())
         swal({
-            icon: "success",
-            title: 'Felicidades, orden aprobada, dirijase a Checkout para completar el pago'
-          });
+          icon: "success",
+          title: 'Felicidades, orden aprobada, dirijase a Checkout para completar el pago',
+        });
+        
+        // navigate(respuesta)
         //console.log(respuesta)
         // history.replace({ pathname: "/Checkout", state: { preferenceId: `${respuesta}` } })
         // (<Link to="/zapatillas">Pagar</Link>)
@@ -93,7 +106,7 @@ export const Order = (prop) => {
               }}
             >
               <span className="h5 me-2 text-muted">
-                Verificar dirección de envio
+                Cambiar datos para el envio
               </span>
               <i className="bi bi-eye text-primary" style={{ fontSize: 25 }} />
             </button>
@@ -105,10 +118,11 @@ export const Order = (prop) => {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="input-group m-1">
+                    <span className="input-group-text">Nombre</span>
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Nombre"
+                        
                         name="nombre"
                         // readOnly
                         {...register("nombre")}
@@ -121,10 +135,11 @@ export const Order = (prop) => {
 
                   <div className="col-md-6">
                     <div className="input-group m-1">
+                    <span className="input-group-text">Apellido</span>
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Apellido"
+                        
                         name="apellido"
                         // readOnly
                         {...register("apellido")}
@@ -136,57 +151,60 @@ export const Order = (prop) => {
                   </div>
                 </div>
 
-                <div className="col">
-                  <div className="input-group m-1 ">
-                    <span className="input-group-text">Telef</span>
-                    <input
-                      type="number"
-                      className="form-control text-center"
-                      placeholder="Telefono"
-                      name="telefono"
-                      // readOnly
-                      {...register("telefono")}
-                    />
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="input-group m-1 ">
+                      <span className="input-group-text">Telef</span>
+                      <input
+                        type="number"
+                        className="form-control text-center"
+                        
+                        name="telefono"
+                        // readOnly
+                        {...register("telefono")}
+                      />
+                    </div>
+                    <span className="text-danger text-small d-block m-1">
+                      {errors.telefono && errors.telefono.message}
+                    </span>
                   </div>
-                  <span className="text-danger text-small d-block m-1">
-                    {errors.telefono && errors.telefono.message}
-                  </span>
+
+                  <div className="col-md-6">
+                    <div className="input-group m-1">
+                      <span className="input-group-text">Email</span>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="email"
+                        // readOnly
+                        {...register("email")}
+                      />
+                    </div>
+                    <span className="text-danger text-small d-block m-1">
+                      {errors.email && errors.email.message}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="col">
-                  <div className="input-group m-1">
-                    <span className="input-group-text">Email</span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="email"
-                      // readOnly
-                      {...register("email")}
-                    />
-                  </div>
-                  <span className="text-danger text-small d-block m-1">
-                    {errors.email && errors.email.message}
-                  </span>
-                </div>
 
                 <div className="row">
                   <div className="col-md-6">
                     <div className="input-group m-1">
-                      <span className="input-group-text">Calle</span>
+                      <span className="input-group-text">Direccion</span>
                       <input
                         type="text"
                         className="form-control"
-                        name="calle"
+                        name="direccion"
                         // readOnly
-                        {...register("calle")}
+                        {...register("direccion")}
                       />
                       <span className="text-danger text-small d-block mb-2">
-                        {errors.calle && errors.calle.message}
+                        {errors.direccion && errors.direccion.message}
                       </span>
                     </div>
                   </div>
 
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <div className="input-group m-1">
                       <span className="input-group-text">N°</span>
                       <input
@@ -201,10 +219,7 @@ export const Order = (prop) => {
                     <span className="text-danger text-small d-block m-1">
                       {errors.numero && errors.numero.message}
                     </span>
-                  </div>
-                </div>
-
-                <div className="row">
+                  </div> */}
                   <div className="col-md-6">
                     <div className="col">
                       <div className="input-group m-1">
@@ -216,13 +231,15 @@ export const Order = (prop) => {
                           // readOnly
                           {...register("localidad")}
                         />
+                        <span className="text-danger text-small d-block mb-2 text-center">
+                          {errors.localidad && errors.localidad.message}
+                        </span>
                       </div>
                     </div>
-
-                    <span className="text-danger text-small d-block mb-2 text-center">
-                      {errors.localidad && errors.localidad.message}
-                    </span>
                   </div>
+
+                  {/* <div className="row">
+                  </div> */}
 
                   <div className="col-md-6">
                     <div className="input-group m-1">
@@ -235,47 +252,82 @@ export const Order = (prop) => {
                         // readOnly
                         {...register("cp")}
                       />
+                      <span className="text-danger text-small d-block mb-2 text-center">
+                        {errors.cp && errors.cp.message}
+                      </span>
                     </div>
+                  </div>
 
-                    <span className="text-danger text-small d-block mb-2 text-center">
-                      {errors.cp && errors.cp.message}
+
+                  <div className="col-md-6">
+                    <div className="input-group m-1 ">
+                      <span className="input-group-text">Pais</span>
+                      <input
+                        type="text"
+                        className="form-control text-center"
+                        placeholder="Pais"
+                        name="pais"
+                        // readOnly
+                        {...register("pais")}
+                      />
+                    </div>
+                    <span className="text-danger text-small d-block m-1">
+                      {errors.provincia && errors.provincia.message}
                     </span>
                   </div>
-                </div>
-                <div className="col">
-                  <div className="input-group m-1 ">
-                    <span className="input-group-text">Provincia</span>
-                    <input
-                      type="text"
-                      className="form-control text-center"
-                      placeholder="Provincia"
-                      name="provincia"
-                      // readOnly
-                      {...register("provincia")}
-                    />
-                  </div>
-                  <span className="text-danger text-small d-block m-1">
-                    {errors.provincia && errors.provincia.message}
-                  </span>
                 </div>
               </>
             )}
             <div className="d-grid">
               <div className="text-center gap-2 mt-3">
-                {cart.length !== 0 &&
-                                <button className="btn btn-sm me-2 text-success" style={{ fontSize: 25 }} type="submit">
-                                    <i className="bi bi-check-circle" />
-                                    <h6>Confirmar</h6>
-                                </button>
-                            }
+                {cart.length !== 0 && (
+                  <button
+                    className="btn btn-sm me-2 text-success"
+                    style={{ fontSize: 25 }}
+                    type="submit"
+                  >
+                    <i className="bi bi-check-circle" />
+                    <h6>Comenzar proceso de pago</h6>
+                  </button>
+                )}
+                {ordenFin ? (
+                  <div>
+                    <button className="btn btn-sm me-2 text-success">
+                      <a
+                        href={linkMP}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        IR A PAGAR
+                      </a>
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <button
+                      className="bg-transparent border-0 text-white"
+                      disabled
+                    >
+                      IR A PAGAR
+                    </button>
+                  </div>
+                )}
                 {/* <Link to="/Checkout" type="submit">Pagar</Link> */}
-
-                {/* {mostrar === true &&
-                                <Link to="/user" className="btn btn-sm text-warning" style={{ fontSize: 20 }}>
-                                    <i className="bi bi-pencil-fill" />
-                                    <h6>Cambiar dirección</h6>
-                                </Link>
-                            } */}
+                {/* <Link to="/checkout">
+            <button className="bg-transparent border-0 text-white">
+              Checkout
+            </button>
+          </Link> */}
+                {/* {mostrar === true && (
+                  <Link
+                    to="/user"
+                    className="btn btn-sm text-warning"
+                    style={{ fontSize: 20 }}
+                  >
+                    <i className="bi bi-pencil-fill" />
+                    <h6>Cambiar dirección</h6>
+                  </Link>
+                )} */}
               </div>
             </div>
           </form>
