@@ -12,12 +12,12 @@ export function getZapas() {
     }
 };
 
-export function getZapasRango({inicial, final}){
-    return async function(dispatch){
+export function getZapasRango({ inicial, final }) {
+    return async function (dispatch) {
         var json = await axios.get(`http://localhost:3001/productos/zapatillas/rango?inicial=${inicial}&&final=${final}`)
         return dispatch({
-        type: 'GET_ZAPAS_RANGO',
-        payload: json.data
+            type: 'GET_ZAPAS_RANGO',
+            payload: json.data
         })
     }
 }
@@ -76,8 +76,8 @@ export function addToCart(id) {
     return async function (dispatch) {
         const product = await axios.get(`http://localhost:3001/productos/zapatillas/${id}`);
         dispatch({
-          type: "ADD_TO_CART",
-          payload: product.data,
+            type: "ADD_TO_CART",
+            payload: product.data,
         });
     }
 };
@@ -162,7 +162,7 @@ export function createUser(payload) {
         const createUser = await axios.post(`http://localhost:3001/usuarios`, payload)
         dispatch({
             type: "CREATE_USER",
-            createUser
+            payload: createUser.data
         })
     }
 };
@@ -351,16 +351,48 @@ export function getSingleOrder(id) {
     }
 };
 
-export function getOfertasZapas(ofertas){
-    return async function(dispatch){
+export function getOfertasZapas(ofertas) {
+    return async function (dispatch) {
         var ofertas = await axios.get(`http://localhost:3001/productos/ofertas`)
-
-        // var json = await axios.get('http://localhost:3001/productos/zapatillas')
-        
         return dispatch({
-        type: 'GET_OFERTAS_ZAPAS',
-        payload: ofertas.data
+            type: 'GET_OFERTAS_ZAPAS',
+            payload: ofertas.data
         })
+    }
+};
+
+export function getAllReviews() {
+    return async function (dispatch) {
+        try {
+            let review = await axios.get(`http://localhost:3001/productos/revisiones`)
+            return dispatch({
+                type: 'GET_ALL_REVIEWS',
+                payload: review.data
+            })
+        } catch (error) {
+            console.log(error, 'err')
+        }
+    }
+};
+
+export function addReview({ id, reviewData, score, usuario, nombre }) {
+    const payload = {
+        comentarios: reviewData,
+        calificacion: score,
+        usuario,
+        nombre,
+    }
+    return async function (dispatch) {
+        try {
+            const revisiones = await axios.post(`http://localhost:3001/productos/zapatillas/${id}/comentario`, payload);
+            return dispatch({
+                type: 'ADD_REVIEWS',
+                payload: revisiones.data
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 };
 

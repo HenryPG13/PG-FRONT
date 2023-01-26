@@ -8,13 +8,13 @@ import { singleUser } from '../../Actions';
 import './CSS/UserPerfil.css'
 
 export const UserPerfil = () => {
-    
+
     const userLog = useSelector(state => state.userLog);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(singleUser(userLog.userInfo._id))
+        dispatch(singleUser(user._id))
     }, [])
 
     const user = useSelector(state => state.user)
@@ -23,7 +23,7 @@ export const UserPerfil = () => {
     return (
         <div>
             <div className='estrcPerfilUsuario'>
-            <h1 className='userprofTitulo'>Bienvenido {user.nombre}</h1>
+                <h1 className='userprofTitulo'>Bienvenido {user.nombre}</h1>
                 <h4>Informacion de usuario:</h4>
                 <p>Nombre: {user.nombre}</p>
                 <p>apellido: {user.apellido}</p>
@@ -34,27 +34,27 @@ export const UserPerfil = () => {
                 {/* <p>Tarjeta: {user.tarjeta}</p> */}
             </div>
             <div className='listadoOpcionesUsuario'>
-            {
-                user.admin &&
-                <Link  to={"/perfiladmin"}>
-                 <input type="bttnperfil" value="Perfil admin" />
+                {
+                    user.admin &&
+                    <Link to={"/perfiladmin"}>
+                        <input type="bttnperfil" value="Perfil admin" />
 
-                 {/* <Button>Perfil admin</Button> */}
+                        {/* <Button>Perfil admin</Button> */}
+                    </Link>
+                }
+                <Link to={`/perfilusuario/${user._id}/favoritos`}>
+                    <input type="bttnperfil" value="Favoritos" />
+                    {/* <Button >favoritos</Button> */}
                 </Link>
-            }
-                        <Link  to={`/perfilusuario/${user._id}/favoritos`}>
-                        <input type="bttnperfil" value="Favoritos" />
-                {/* <Button >favoritos</Button> */}
-            </Link>
-            <Link  to={`/perfilusuario/${user._id}/modificarinfo`}>
-            <input type="bttnperfil" value="Modificar Perfil" />
-                {/* <Button>Cambiar datos de usuario</Button> */}
-            </Link>
-            <Link  to={`/perfilusuario/${user._id}/ordenesdecompra`}>
-            <input type="bttnperfil" value="Historial de compras" />
-                {/* <Button>Historial ordenes de compra</Button> */}
-            </Link>
-         
+                <Link to={`/perfilusuario/${user._id}/modificarinfo`}>
+                    <input type="bttnperfil" value="Modificar Perfil" />
+                    {/* <Button>Cambiar datos de usuario</Button> */}
+                </Link>
+                <Link to={`/perfilusuario/${user._id}/ordenesdecompra`}>
+                    <input type="bttnperfil" value="Historial de compras" />
+                    {/* <Button>Historial ordenes de compra</Button> */}
+                </Link>
+
             </div>
             <h5 className='detalleUsuarioPerfil'>*No es requerido agregar los datos de Ciudad, Pais y Direccion. Pero son necesarios para realizar el pedido*</h5>
         </div>
