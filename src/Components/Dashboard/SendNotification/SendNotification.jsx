@@ -23,7 +23,7 @@ export default function SendNotification () {
 
         socket.emit("notificacion", noti)
         setNoti("")
-        alert("notificación enviada con exito ;)");
+        
     }
 
     return (

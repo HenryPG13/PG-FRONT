@@ -82,16 +82,21 @@ export default function NavBar() {
             {notificaciones.length > 0 && (
               <div className="counter">{notificaciones.length}</div>
             )}
+         
             {open && (
               <div className="notifications">
                 {notificaciones.map((n) => (
-                  <span>{n}</span>
+                  <div className="n">
+                  <span className="notification">{n}</span>
+                  </div>
                 ))}
+                {notificaciones.length === 0 && <span className="notification">No hay notificaciones sin leer</span> }
                 <button className="nButton" onClick={handleRead}>
                   Marcar como leido
                 </button>
               </div>
             )}
+            
           </div>
         </div>
 
