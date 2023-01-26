@@ -111,26 +111,31 @@ export default function NavBar() {
         <Link className="btnCart" to={"/compras"}>
           <Button className="bg-transparent border-dark">🛒</Button>
         </Link>
-
+        
+        <div className="btnFav">
         {Object.entries(logUser).length > 0 ?
-          <Link className="btnFav" to={`/perfilusuario/${logUser._id}/favoritos`}>
+          <Link  to={`/perfilusuario/${logUser._id}/favoritos`}>
             <Button className="bg-transparent border-dark ">❤️</Button>
           </Link> : <Button className="bg-transparent border-dark " disabled>❤️</Button>
         }
-
+        </div>
+        
+        <div className="adminBtn">
         {Object.entries(logUser).length !== 0 || user ? <Link to='/perfilusuario'>
-          <Button className="productos" >Mi perfil</Button>
+          <Button variant='outline-info' className="text-white" >Mi perfil</Button>
         </Link> : null}
+        </div>
 
         {Object.entries(logUser).admin ? <Link to='/perfiladmin'>
           <Button className="productos" >Admin</Button>
         </Link> : null}
         {/* <SearchBar /> */}
         {Object.entries(logUser).length !== 0 || user ?
-          <button onClick={handleLogOut}>Logout</button>
+          <Button onClick={handleLogOut} variant="secondary">Logout</Button>
           : <Link className="btnLogin" to="/login">
             <Button variant="light">Ingresar</Button>
           </Link>}
+          
 
 
 

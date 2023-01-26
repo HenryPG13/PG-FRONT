@@ -50,6 +50,7 @@ export default function Ofertas(){
 
 
 <FiltersOfertas />
+            
             <div className="cards">
                 {
                     currentZapas.map((e, i) => {
@@ -69,6 +70,7 @@ export default function Ofertas(){
                     })
                 }
             </div>
+            
 
             
 
