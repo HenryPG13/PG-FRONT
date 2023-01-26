@@ -9,11 +9,11 @@ import ListadoProductos from './Apartados/ApartadosProductos';
 
 
 const theme = {
-    background: '#f5f8fb',
+    background: '#666666',
     headerBgColor: '#643cf3',
     headerFontColor: '#fff',
     headerFontSize: '20px',
-    botBubbleColor: '#643cf3',
+    botBubbleColor: 'rgb(68, 178, 186)',
     botFontColor: '#fff',
     userBubbleColor: '#0c6098',
     userFontColor: '#fff',

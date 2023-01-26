@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleOrder } from '../../../Actions';
 
+import './DetailOrder.css'
 export const DetailsOrder = () => {
 
     const dispatch = useDispatch();
@@ -16,14 +17,14 @@ export const DetailsOrder = () => {
 
 
     return (
-        <div>
+        <div className='estruOrden'>
             <h1>Detalle de la orden: </h1> 
             <p>Id orden: {order._id}</p>
             <p>Id usuario: {order.usuario}</p>
-            <h3>Productos asociados a la orden de compra</h3>
+            <h3>Productos asociados a la orden de compra:</h3>
             {order.orderItems?.map(e => {
                 return (
-                    <div>
+                    <div className='detalleZapa'>
                         <p>marca: {e.marca}</p>
                         <p>modelo: {e.modelo}</p>
                         <p>cantidad: {e.cantidad}</p>
@@ -31,7 +32,7 @@ export const DetailsOrder = () => {
                         <p>Id producto: {e.producto}</p>
                     </div>
                 )
-            })};
+            })}
             <h3>Informacion de envio</h3>
             <p>Direccion: {order.direccionEntrega?.direccion}</p>
             <p>Ciudad: {order.direccionEntrega?.ciudad}</p>

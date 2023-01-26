@@ -12,7 +12,7 @@ import '../CSS/Home.css'
 // import './Productos.css'
 import '../CardsZapas/CardOferta.css'
 
-import { Filters } from "../Filters/Filters";
+import { FiltersOfertas } from './filtrosOfertas/FiltrosOfertas'
 
 
 
@@ -49,7 +49,7 @@ export default function Ofertas(){
 
 
 
-<Filters />
+<FiltersOfertas />
             <div className="cards">
                 {
                     currentZapas.map((e, i) => {

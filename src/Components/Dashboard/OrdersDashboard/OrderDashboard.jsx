@@ -7,6 +7,8 @@ import BarUsersOrders from "../Charts/BarUserOrders";
 import { Link } from "react-router-dom";
 import SidebarDashboard from "../SidebarDashboard/SidebarDashboard";
 
+import '../Dashboard.css'
+
 export default function OrderDashboard() {
 
   const columns = [
@@ -22,6 +24,7 @@ export default function OrderDashboard() {
         return (
           <>
             <button
+            className="actualizar"
               variant="contained"
               color="primary"
               onClick={(event) => {
