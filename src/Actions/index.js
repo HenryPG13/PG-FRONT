@@ -73,21 +73,23 @@ export function postProduct(payload) {
 };
 
 export function addToCart(id) {
-    return async function (dispatch) {
+    return async function (dispatch, getState)  {
         const product = await axios.get(`http://localhost:3001/productos/zapatillas/${id}`);
         dispatch({
             type: "ADD_TO_CART",
             payload: product.data,
         });
+        // localStorage.setItem("cart", JSON.stringify(getState()))
     }
 };
 
 export function removeToCart(id) {
-    return async function (dispatch) {
+    return async function (dispatch, getState) {
         dispatch({
             type: "REMOVE_TO_CART",
             payload: id
         })
+        // localStorage.setItem("cart", JSON.stringify(getState()))
     }
 };
 
