@@ -46,8 +46,8 @@ export default function NavBar() {
   console.log(notificaciones);
 
   return (
-
     <Navbar className="bg-primary bg-gradient">
+      
       <Link to="/Home">
         <img
           src={logo}
@@ -135,6 +135,8 @@ export default function NavBar() {
         {/* <SearchBar /> */}
 
       </Container>
+      
     </Navbar>
+
   );
 }

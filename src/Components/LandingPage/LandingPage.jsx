@@ -18,7 +18,7 @@ export default function LandingPage(){
             <p1 className="Ltitulo"> Bienvenidos...
             En FootShop usted encontrara esa zapatilla exclusiva que tanto quiso</p1>
             <Link  to = '/home'>
-            <button className='acceso' >Ingresar</button>
+            <button className='acceso'><span>Ingresar </span></button>
             </Link>
             <img 
             className='zapasLanding'

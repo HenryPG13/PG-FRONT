@@ -202,7 +202,6 @@ export default function Details() {
                <Reviews id={id} />
             </div>
          </div>
-         <Footer />
       </div>
 
    );

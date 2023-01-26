@@ -7,33 +7,34 @@ import Carousel from 'react-bootstrap/Carousel';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import './MasVendidos.css'
 
 
-import '../CSS/Carrusel.css'
-import '../Productos/Productos.css'
-import '../CSS/Home.css'
 import Cards from '../Card';
 
 export default function CarruselMasV(){
 
   const allZapas = useSelector((state) => state.zapas);
   const [currentPage, setCurrentPage] = useState(1);
-  const [zapasPerPage, setZapasPerPage] = useState(1);
+  const [zapasPerPage, setZapasPerPage] = useState(4);
   const indexOfLastZapa = currentPage * zapasPerPage;
   const indexOfFirstZapa = indexOfLastZapa - zapasPerPage;
   const currentZapas = allZapas.slice(indexOfFirstZapa, indexOfLastZapa);
+  console.log(currentZapas, 'zapas')
 
   return(
 <div>
-  <div>
+  
     <h1 className='palabras'>Mas Vendidos</h1>
-  </div>
-      <Carousel variant="dark">
-      <Carousel.Item>
-      
+  
+      {/* <Carousel variant="dark">
+      <Carousel.Item> */}
+     <div className='cardsVend' >
       {currentZapas.map((e, i) => {
           return (
-            <div className="cartas" key={i}>
+            <div>
+              {e.oferta === false ? (
+            <div className="cardsVend" key={i}>
               <Link to={"/zapatillas/" + e._id} className="cardLink">
                 <Cards
                   marca={e.marca}
@@ -42,10 +43,27 @@ export default function CarruselMasV(){
                   precio={e.precio}
                 />
               </Link>
+            </div> ) : (
+              <div className="cardsVend" key={i}>
+              <Link to={"/zapatillas/" + e._id} className="cardLink">
+                <Cards
+                  marca={e.marca}
+                  image={e.imagenes && e.imagenes[0]}
+                  modelo={e.modelo}
+                  precio={e.precio}
+                  oferta={e.oferta}
+                />
+              </Link>
             </div>
+            )}
+            </div>
+            
           );
+          
         })}
-      <img
+        
+      </div>
+      {/* <img
       className="propa"
       src={publi01}
       alt="First slide"
@@ -84,7 +102,7 @@ alt="Forth slide"
     </Link>
     
     </Carousel.Item>
-    </Carousel>
+    </Carousel> */}
 </div>
     )  
 }

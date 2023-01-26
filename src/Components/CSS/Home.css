@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 1cm;
+    
 }
 .list{
     list-style: none;

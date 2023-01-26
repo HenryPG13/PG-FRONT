@@ -1,0 +1,7 @@
+.cardsVend{
+    justify-content: center;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1cm;
+}

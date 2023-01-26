@@ -77,8 +77,8 @@ function App() {
           <Route path='/reseña/:id' element={<ReviewForm />} />
         </Routes>
         <Contenido />
-      </div>
       <Footer />
+      </div>
     </BrowserRouter>
   );
 }
