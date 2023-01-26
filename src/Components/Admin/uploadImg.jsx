@@ -125,8 +125,6 @@ export default function UploadImg() {
 
   return (
     <div>
-      <NavBar />
-      
       <div >
 
         <div>

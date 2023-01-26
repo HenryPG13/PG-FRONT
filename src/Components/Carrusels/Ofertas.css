@@ -1,0 +1,19 @@
+.cardsFav{
+    justify-content: center;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0cm;
+}
+.propa{
+    margin-left: 0cm;
+    padding: 0cm 0cm;
+    border: 2px solid rgb(78, 78, 78);
+    border-radius: 8px;
+    width: 7cm;
+    transition: 0.3s;
+}
+.propa:hover{
+    width: 7.5cm;
+    box-shadow: -15px 15px 20px rgb(41, 41, 41);
+}

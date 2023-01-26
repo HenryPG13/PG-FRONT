@@ -7,7 +7,7 @@ export function ProductosRender() {
     return (
         <div>
            
-            <SearchBar />
+            <SearchBar/>
             <Filters/>
             <Productos/>
         </div>

@@ -194,8 +194,7 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
         
       </Carousel.Item>
     </Carousel> */}
-         </div>
-         <Footer/>  
+         </div> 
       </div>
 
    );
