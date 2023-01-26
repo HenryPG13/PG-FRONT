@@ -1,13 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { ajustarCantidad, removerDelCarrito } from "../../Actions";
+
+import { useLocalStorage } from '../../Hooks/useLocalStorage'
+
 
 
 export default function Carrito({history}){
+   
     const dispatch = useDispatch();
-    const carrito = useSelector(state => state.carrito);
-    const [precioTotal, setPrecioTotal] = useState(0);
-    const [itemsTotal, setItemsTotal] = useState(0);
+    const carro = useSelector(state => state.cart);
+    const [precioTotal, setPrecioTotal] = useLocalStorage('precioTotal','');
+    const [itemsTotal, setItemsTotal] = useLocalStorage('itemTotal','');
+
+let carrito = JSON.parse(localStorage.getItem('carrito')) || carro
+    ////
+
+// const saveLoca = () => {
+//     localStorage.setItem("carrito", JSON.stringify(carrito));
+//     }
+
+
+//     //////////
+//     const [update, setUpdate] = useState(false)
+//   const navigate = useNavigate();
+
+//   function handelClear() {
+//     let boolean = window.confirm("Desea vaciar todo el carrito?")
+//     if (boolean) {
+//       localStorage.setItem("products", JSON.stringify([]))
+//       setUpdate(!update)
+//     }
+//   }
+
+//   function handelBuy() {
+//     let productsStorage = JSON.parse(localStorage.getItem("itemsTotal"))
+//     if (productsStorage.length) {
+//       setUpdate(!update)
+//       navigate("/compras")
+//     } else {
+//       alert("Para continuar con la compra, primero debes agregar productos a tu carrito.")
+//     }
+//   }
+//   const elementsCart = JSON.parse(localStorage.getItem("itemsTotal"))
+
+//   let total = elementsCart?.map(e => parseInt(e.price))
+
+//   total = total.length > 1 ? total.reduce((a, b) => a + b, 0) : total
+
+// ///////
+
+
 
     useEffect(() => {
         let items = 0;
@@ -87,6 +131,8 @@ export default function Carrito({history}){
                                                             name="qty"
                                                             value={item.qty}
                                                             onChange={(e) => handleInputChange(e, item._id)} 
+                                                            // onClick={() => handelBuy()}
+                                                            ///
                                                             />
                                                         </div>
 
@@ -95,6 +141,8 @@ export default function Carrito({history}){
                                                                 Quitar item
                                                             </button>
                                                         </div>
+
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

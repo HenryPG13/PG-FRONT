@@ -38,7 +38,7 @@ import Card from 'react-bootstrap/Card';
 // export default Cards;
 export default function Cards({id, marca, image, modelo, precio, oferta}){
   const Dinero = oferta ? (precio/2)  : precio
-   console.log(oferta,'asdsadsadsad')
+   
 
   
    return(

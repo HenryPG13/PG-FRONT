@@ -38,6 +38,15 @@ export default function Details() {
    // console.log("ZAPA," , zapa);
    const user = useSelector(state => state.user)
 
+   const carrito = useSelector(state => state.cart);
+   const saveLoca = () => {
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      }
+
+      const prueba123 = localStorage.getItem('user');
+      const salio123 = JSON.parse(prueba123);
+
+      
    useState(() => {
       dispatch(getZapaById(id))
    }, [id, zapa])
@@ -46,7 +55,8 @@ export default function Details() {
    const handleToCart = (e) => {
       e.preventDefault();
       //console.log(id)
-      dispatch(addToCart(id))
+      dispatch(addToCart(id));
+      saveLoca()
       swal({
          icon: "success",
          title: 'Producto añadido con éxito!'

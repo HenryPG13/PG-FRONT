@@ -3,7 +3,7 @@ const initialState = {
   zapas: [],
   allZapas: [],
   detail: {},
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('carrito')) || [],
   favorite: [],
   users: [],
   user: {},
