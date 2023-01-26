@@ -80,7 +80,7 @@ export default function ProductDashboard() {
       <div className='estrucUserDash'>
           <SidebarDashboard />
         <div className='listadoUsers'>
-        <Link  to= '/Crear'>
+        <Link  to= '/crear'>
         <input type="cargarZapa" value="Cargar Zapas" />
         </Link>  
 

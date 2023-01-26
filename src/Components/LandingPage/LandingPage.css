@@ -1,38 +1,48 @@
 .landing{
 
-    background-color: rgba(22, 22, 226, 0.9);
-
-     width: 100%;
-    height: 100%;
-    margin-top: 100px;
-    position: relative;
-    box-shadow:   0 0 30px;
-
-    /* background-size: cover; */
-    /* background-position: center; */
-    /* min-height: 100vh; */
-    /* display: table; */
-    /* margin: 0; */
-    /* top: 0;   */
-    /* background-attachment: fixed; */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg,#2980b9, #8e44ad);
+    height: 100vh;
 
 }
 .acceso {
     font-size: 40px;
     text-decoration: none;
-    margin-top: 400px;
+    margin-top: 300px;
     margin-left:280px;
     padding: 5px 10px;
     color: rgb(255, 255, 255);
     border: none;
     border-radius: 10px;
-    background:rgb(37, 87, 253);
+    background: linear-gradient(90deg, rgb(58, 102, 248) 0%, rgb(31, 75, 223) 35%, rgb(58, 102, 248) 100%);
     cursor: pointer;
+    transition: all 1s;
+    box-shadow: -10px 10px 20px rgb(41, 41, 41);
 }
 .acceso:hover{
-    transition: 0.2s;
     border: none;
-    background:rgb(31, 75, 223);
+    background: linear-gradient(120deg,#2980b9, #8e44ad);
+}
+.acceso:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+.acceso:hover span{
+    padding-right: 25px;
+}
+.acceso span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.acceso span:after{
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
 }
 
 .Ltitulo{
@@ -42,8 +52,8 @@
   font-size: 25px;
   margin: 5px;
   color: rgb(255, 255, 255);
-  box-shadow:   0 0 15px;
-  background: rgb(37, 87, 253);;
+  box-shadow: -15px 15px 20px rgb(41, 41, 41);
+  background: linear-gradient(90deg, rgb(58, 102, 248) 0%, rgb(31, 75, 223) 35%, rgb(58, 102, 248) 100%);
   position: absolute;
   margin-top: 10px;
   margin-left:190px;
@@ -67,22 +77,20 @@
 
 }
 .zapasLanding{
-    height: 500px;
-    width: 700px;
-    position: relative;
+    height: 300px;
+    width: 400px;
     left: 450px;
-    top: -100px;
-    /* left: 500px; */
-    /* top: 50px; */
+    top: -200px;
+    position: relative;
     animation-name: corriendo;
     animation-duration: 4s;
     animation-delay: 2s;
     animation-iteration-count: infinite;
 }
 @keyframes corriendo {
-    0%{left: 450px;top: -100px;}
-    25%{left: 400px;top: -55px}
-    50%{left: 300px;top: -100px;}
-    75%{left: 400px;top: -55px}
-    100%{left: 450px;top: -100px;}
+    0%{left: 350px;top: -100px;}
+    25%{left: 300px;top: -55px}
+    50%{left: 200px;top: -100px;}
+    75%{left: 300px;top: -55px}
+    100%{left: 350px;top: -100px;}
 }

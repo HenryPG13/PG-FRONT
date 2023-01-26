@@ -14,17 +14,16 @@ export default function SendNotification () {
         setSocket(io("http://localhost:5000"))
     },[])
 
-
     const handleInputChange = function(e){
         e.preventDefault()
         setNoti(e.target.value);
-    } 
+    }
 
     const handleNotification = () => {
 
         socket.emit("notificacion", noti)
         setNoti("")
-        alert("notificación enviada con exito ;)");
+        
     }
 
     return (
@@ -35,16 +34,16 @@ export default function SendNotification () {
         <h3>Escribí tu notificacion: </h3>
         <form>
         <div className="txtNoti">
-        <input
-        name="email"
-        onChange={handleInputChange}
-        value={noti}
-        type="text"   
-        />
-        <span></span>
-        <label>Email</label>
-        <input type="ingres" value="Mandar Notificación" />
-        </div></form></div></div>
+
+        <input onChange={handleInputChange} value={noti}></input>
+        
+        <label>Notificaión :</label>
+        <button onClick={handleNotification} >Mandar Notificación</button>
+        </div>
+        </form>
+        </div>
+        </div>
+
 
     )
 

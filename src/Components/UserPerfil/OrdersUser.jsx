@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getOrders } from '../../Actions';
 
+
 import './CSS/OrdersUser.css'
+
 
 export const OrdersUser = () => {
 
@@ -39,6 +41,9 @@ export const OrdersUser = () => {
                                     <p>Modelo: {p.modelo}</p>
                                     <p>Precio: {p.precio}</p>
                                     <p>Cantidad: {p.cantidad}</p>
+                                    <Link to={`/reseña/${p.producto}`}>
+                                        <button>Agregar reseña</button>
+                                    </Link>
                                 </div>
                             )
                         })}

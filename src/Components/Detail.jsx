@@ -10,6 +10,8 @@ import { payOneZapa } from '../Actions';
 import Footer from './Footer/Footer';
 import swal from 'sweetalert';
 import { addToFav, removeToFav } from '../Actions';
+import Reviews from './Reviews/Reviews';
+
 
 
 
@@ -45,7 +47,7 @@ export default function Details() {
       swal({
          icon: "success",
          title: 'Producto añadido con éxito!'
-       });
+      });
    }
    const handleToFavorite = (e) => {
       e.preventDefault();
@@ -54,12 +56,12 @@ export default function Details() {
       swal({
          icon: "success",
          title: 'Producto agregado a la lista de favoritos!'
-       });
+      });
    }
 
 
 
-const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
+   const Dinero = zapa.oferta ? (zapa.precio / 2) : zapa.precio
 
    return (
 
@@ -109,9 +111,10 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                      <div className="details col-md-6">
                         <h3 className="product-title">{zapa.marca}</h3>
                         <p className="product-description">{zapa.modelo}</p>
+
                        {zapa.oferta ? (
                        <>
-                        <h4 className="price">PRECIO: <span>${zapa.precio}</span></h4>
+                        <h4 className="precioprev">PRECIO: <span>${zapa.precio}</span></h4>
                         <h4 className="price">OFERTA: <span>${Dinero}</span></h4>
                        </>
                        ):
@@ -121,6 +124,7 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                        )
 
                        }
+
                         <h6 className="price">En Stock: <span>{zapa.inventario}</span></h6>
 
                         <h5>TALLES:
@@ -140,7 +144,7 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
                            {/* <Button variant="primary">Comprar</Button> */}
                            <Button value='add' className='btnCart' variant="primary" onClick={handleToCart}
                            >Añadir al carrito</Button>
-                                                                                                               
+
 
                         </div>
                      </div>
@@ -194,7 +198,10 @@ const Dinero = zapa.oferta ? (zapa.precio/2)  : zapa.precio
         
       </Carousel.Item>
     </Carousel> */}
-         </div> 
+            <div>
+               <Reviews id={id} />
+            </div>
+         </div>
       </div>
 
    );

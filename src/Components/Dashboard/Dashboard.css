@@ -54,9 +54,10 @@ input[type="btnPerfAdm"]{
     transition: .5s;
   }
 
+
   input[type="actualizar"]{
-    width: 90px;
-    height: 40px;
+    width: 70px;
+    height: 30px;
     border: 1px solid;
     /* margin-top: 1%; */
     text-align: center;
