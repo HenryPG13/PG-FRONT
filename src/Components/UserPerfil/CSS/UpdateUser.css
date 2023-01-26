@@ -1,34 +1,41 @@
-.fondoCambioUsuario{
+.fondoCambioUsuario {
   margin: 0;
-    padding: 0;
-    background:  #a929baa3;
-    height: 100vh;
+  padding: 0;
+  background: #a929baa3;
+  height: 100vh;
 }
-.centro{
+
+.centro {
   position: absolute;
-top: 55%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 400px;
-background: white;
-border-radius: 10px;
-box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+  padding-bottom: 8px;
 }
-.centro h1{
+
+
+.centro h1 {
   text-align: center;
   padding: 20px 0;
   border-bottom: 1px solid silver;
 }
-.centro form{
+
+.centro form {
   padding: 0 40px;
   box-sizing: border-box;
 }
-form .recuadroInfo{
+
+form .recuadroInfo {
   position: relative;
   border-bottom: 2px solid #adadad;
-  margin: 30px 0;
+  margin: 25px 0;
 }
-.recuadroInfo input{
+
+.recuadroInfo input {
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -37,7 +44,8 @@ form .recuadroInfo{
   background: none;
   outline: none;
 }
-.recuadroInfo label{
+
+.recuadroInfo label {
   position: absolute;
   top: 50%;
   left: 5px;
@@ -47,7 +55,8 @@ form .recuadroInfo{
   pointer-events: none;
   transition: .5s;
 }
-.recuadroInfo span::before{
+
+.recuadroInfo span::before {
   content: '';
   position: absolute;
   top: 40px;
@@ -57,24 +66,29 @@ form .recuadroInfo{
   background: #2691d9;
   transition: .5s;
 }
-.recuadroInfo input:focus ~ label,
-.recuadroInfo input:valid ~ label{
+
+.recuadroInfo input:focus~label,
+.recuadroInfo input:valid~label {
   top: -5px;
   color: #2691d9;
 }
-.recuadroInfo input:focus ~ span::before,
-.recuadroInfo input:valid ~ span::before{
+
+.recuadroInfo input:focus~span::before,
+.recuadroInfo input:valid~span::before {
   width: 100%;
 }
-.pass{
+
+.pass {
   margin: -5px 0 20px 5px;
   color: #a6a6a6;
   cursor: pointer;
 }
-.pass:hover{
+
+.pass:hover {
   text-decoration: underline;
 }
-input[type="submit"]{
+
+input[type="submit"] {
   width: 100%;
   height: 50px;
   border: 1px solid;
@@ -86,21 +100,23 @@ input[type="submit"]{
   cursor: pointer;
   outline: none;
 }
-input[type="submit"]:hover{
+
+input[type="submit"]:hover {
   border-color: #2691d9;
   transition: .5s;
 }
 
-    .bttnGuardar{
-        letter-spacing: 3px;
-        padding: 20px;
-        width: 350px;
-        font-size: 25px;
-        margin: 500px;
-        color: rgb(0, 0, 0);
-        box-shadow:   0 0 15px;
-        background: rgb(106, 106, 106);;
-        position: absolute;
-        margin-left:1050px;
-        bottom: -400px;
-    }
+.bttnGuardar {
+  letter-spacing: 3px;
+  padding: 20px;
+  width: 350px;
+  font-size: 25px;
+  margin: 500px;
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 15px;
+  background: rgb(106, 106, 106);
+  ;
+  position: absolute;
+  margin-left: 1050px;
+  bottom: -400px;
+}

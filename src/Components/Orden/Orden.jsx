@@ -6,6 +6,7 @@ import { AgregarOrden } from "../../Actions";
 import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../../Actions";
 import swal from 'sweetalert';
+import Button from 'react-bootstrap/Button';
 
 export const Order = (prop) => {
     const { props } = prop;
@@ -121,7 +122,7 @@ export const Order = (prop) => {
 
     return (
       <>
-        <div className="p-2 align-items-center rounded-3 border confirm shadow-lg">
+        <div>
           <div className="card-header h6 text-center mb-3">
             <Link to={`/perfilusuario/${user._id}/modificarinfo`}>
             <button
@@ -307,20 +308,24 @@ export const Order = (prop) => {
             
             
             <div className="d-grid">
-              <div className="text-center gap-2 mt-3">
+              <div className="text-center gap-5 mb-2 mt-0">
                 {cart.length !== 0 && (
-                  <button
-                    className="btn btn-sm me-2 text-success"
+                  <Button
+                    variant='primary'
+                    className="btn btn-sm me-2 text-white text-success"
                     style={{ fontSize: 25 }}
                     type="submit"
                   >
                     <i className="bi bi-check-circle" />
                     <h6>Comenzar proceso de pago</h6>
-                  </button>
+                  </Button>
                 )}
+                
                 {ordenFin ? (
-                  <div>
-                    <button className="btn btn-sm me-2 text-success">
+                  <div className="mt-3">
+                    <Button 
+                      variant="primary"
+                      className="btn btn-sm me-2 text-white">
                       <a
                         href={linkMP}
                         target="_blank"
@@ -328,16 +333,17 @@ export const Order = (prop) => {
                       >
                         IR A PAGAR
                       </a>
-                    </button>
+                    </Button>
                   </div>
                 ) : (
-                  <div>
-                    <button
-                      className="bg-transparent border-0 text-white"
+                  <div className="mt-3">
+                    <Button
+                      variant='secondary'
+                      className="border-0 text-white"
                       disabled
                     >
                       IR A PAGAR
-                    </button>
+                    </Button>
                   </div>
                 )}
                 {/* <Link to="/Checkout" type="submit">Pagar</Link> */}

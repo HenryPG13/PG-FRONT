@@ -1,7 +1,24 @@
 .btnBuy{
     justify-content: center;
 }
-
+.emptyCart{
+    background-color: rgb(255, 255, 255);
+    width: 5cm;
+    margin-left: 12cm;
+    border-radius: 8px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    
+}
+.cartCont{
+    margin-top: -1cm;
+}
+.emptyCartText{
+    margin-left: 15px;
+}
+.emptyCartBtn{
+    margin-left: 45px;
+}
 div.scroll {
     /* background-color: #fed9ff; */
     /* width: 600px; */
@@ -10,4 +27,16 @@ div.scroll {
     overflow-y: auto;
     text-align: center;
     padding: 20px;
+  }
+  .cartCard{
+    width: 80%;
+    margin-left: 3.5cm;
+    background: transparent;
+  }
+  .cardPay{
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    margin-left: 8.9cm;
+    border-radius: 8px;
+    margin-top: 1cm
   }

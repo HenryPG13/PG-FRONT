@@ -44,99 +44,103 @@ export const UpdateUser = () => {
     return (
         <div className='fondoCambioUsuario' >
             <div className='centro'>
-            <h3>Datos de usuario</h3>
-            <form onSubmit={handleSubmitRegister}>
-                <div className='recuadroInfo'>
-                    <p>Nombre</p>
-                    <input
-                        placeholder="Nombre"
-                        value={data.nombre}
-                        name="nombre"
-                        onChange={handleChange}
-                        type="text"
-                       
-                    />
-                </div>
+                <h3>Datos de usuario</h3>
+                <div className='form' >
+                    <form onSubmit={handleSubmitRegister}>
+                        <div className='recuadroInfo'>
+                            <input
+                                placeholder="Nombre"
+                                value={data.nombre}
+                                name="nombre"
+                                onChange={handleChange}
+                                type="text"
 
-                <div className='recuadroInfo'>
-                    <input
-                        placeholder="apellido"
-                        value={data.apellido}
-                        name="apellido"
-                        onChange={handleChange}
-                        type="text"
-                        
-                        />
-                        <span></span>
-                    <label>Apellido</label>
-                </div>
+                            />
+                            <span></span>
+                            <label>Nombre</label>
+                        </div>
 
-                <div className='recuadroInfo'>
-                    <p>E-mail</p>
-                    <input
-                        placeholder="email"
-                        value={data.email}
-                        name="email"
-                        onChange={handleChange}
-                        type="email"
-                    
-                    />
-                </div>
+                        <div className='recuadroInfo'>
+                            <input
+                                placeholder="Apellido"
+                                value={data.apellido}
+                                name="apellido"
+                                onChange={handleChange}
+                                type="text"
 
-                <div className='recuadroInfo'>
-                    <input
-                        placeholder="ciudad"
-                        value={data.ciudad}
-                        name="ciudad"
-                        onChange={handleChange}
-                        type="text"
-                        />
-                        <span></span>
-                        <label>Ciudad</label>
-                </div>
+                            />
+                            <span></span>
+                            <label>Apellido</label>
+                        </div>
 
-                <div className='recuadroInfo'>
-                    <input
-                        placeholder="pais"
-                        value={data.pais}
-                        name="pais"
-                        onChange={handleChange}
-                        type="text"
-                        />
-                    <span></span>
-                    <label>Pais</label>
-                </div>
+                        <div className='recuadroInfo'>
+                            <input
+                                placeholder="E-mail"
+                                value={data.email}
+                                name="email"
+                                onChange={handleChange}
+                                type="email"
 
-                <div className='recuadroInfo'>
-                    <input
-                        placeholder="direccion"
-                        value={data.direccion}
-                        name="direccion"
-                        onChange={handleChange}
-                        type="text"
-                        />
-                        <span></span>
-                        <label>Direccion</label>
-                </div>
+                            />
+                            <span></span>
+                            <label>E-mail</label>
+                        </div>
 
-                <div className='recuadroInfo'>
-                    <input
-                        placeholder="Contraseña"
-                        value={data.contraseña}
-                        name="contraseña"
-                        onChange={handleChange}
-                        type="password"
-                        
-                        />
-                        <span></span>
-                        <label>Contraseña</label>
-                </div>
+                        <div className='recuadroInfo'>
+                            <input
+                                placeholder="Ciudad"
+                                value={data.ciudad}
+                                name="ciudad"
+                                onChange={handleChange}
+                                type="text"
+                            />
+                            <span></span>
+                            <label>Ciudad</label>
+                        </div>
 
-                <div >
-                <input type="submit" value="Guardar Cambios" />
-                    {/* <button className='bttnGuardar'>Guardar cambios</button> */}
+                        <div className='recuadroInfo'>
+                            <input
+                                placeholder="País"
+                                value={data.pais}
+                                name="pais"
+                                onChange={handleChange}
+                                type="text"
+                            />
+                            <span></span>
+                            <label>País</label>
+                        </div>
+
+                        <div className='recuadroInfo'>
+                            <input
+                                placeholder="Dirección"
+                                value={data.direccion}
+                                name="direccion"
+                                onChange={handleChange}
+                                type="text"
+                            />
+                            <span></span>
+                            <label>Dirección</label>
+                        </div>
+
+                        <div className='recuadroInfo'>
+                            <input
+                                placeholder="Contraseña"
+                                value={data.contraseña}
+                                name="contraseña"
+                                onChange={handleChange}
+                                type="password"
+
+                            />
+                            <span></span>
+                            <label>Contraseña</label>
+                        </div>
+
+                        <div >
+                            <input type="submit" value="Guardar Cambios" />
+                            {/* <button className='bttnGuardar'>Guardar cambios</button> */}
+                        </div>
+                    </form>
                 </div>
-            </form>
             </div>
         </div>
 
